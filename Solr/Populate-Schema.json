@@ -1,0 +1,37 @@
+{
+    "Parameters": {
+        "Hostname": {
+            "Type": "string",
+            "Description": "Hostname along with protocol (https).",
+            "DefaultValue": "platform"
+        },
+        "IndexName": {
+            "Type": "string",
+            "Description": "The name of index to populate managed schema for.",
+            "DefaultValue" : "sitecore_master_link_index"
+        },
+        "AdminUsername": {
+            "Type": "string",
+            "Description": "The name of administrative account.",
+            "DefaultValue" : "admin"
+        }
+        ,
+        "AdminPassword": {
+            "Type": "string",
+            "Description": "Password for an administrative account.",
+            "DefaultValue" : "b"
+        }
+    },
+    "Tasks": {
+        "UpdateSolrSchema": {
+            "Description": "Update the solr schema.",
+            "Type": "SitecoreUrl",
+            "Params": {
+                "SitecoreInstanceRoot": "[parameter('Hostname')]",
+                "SitecoreActionPath": "[concat('sitecore/admin/PopulateManagedSchema.aspx?indexes=', parameter('IndexName'))]",
+                "UserName": "[parameter('AdminUsername')]",
+                "Password": "[parameter('AdminPassword')]"
+            }
+        }
+    }
+}
