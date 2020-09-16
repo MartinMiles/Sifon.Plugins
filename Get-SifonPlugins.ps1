@@ -7,4 +7,4 @@ Remove-Item -Path Sifon.Plugins -Recurse -Force -Confirm:$false
 git clone https://github.com/MartinMiles/Sifon.Plugins.git
 
 Write-output "Sifon-UnmuteOutput"
-Write-output "Script installed under Plugins menu"
+Write-output "Script installed under Plugins menu."
