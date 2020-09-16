@@ -19,12 +19,15 @@ $NewSitecoreLinkCore = $Website + "_" + $NewCoreName
 $ThisScript = $MyInvocation.MyCommand.Definition
 
 
+Function Display-Progress($action, $percent){
+
+    Write-Progress -Activity "Installing Sitecore Link website" -CurrentOperation $action -PercentComplete $percent
+}
+Display-Progress -action "Retrieving URL of Sitecore instance " -percent 3
 
 
 
-#
-#   3. Retrieve the target site bindings to install package into
-#
+
 Function Get-InstanceUrl {
 
     Import-Module WebAdministration
@@ -37,7 +40,9 @@ Function Get-InstanceUrl {
 
         if($Webroot.TrimEnd('\') -eq $path)
         {
-            $bindings = Get-WebBinding -Name $site.Name
+            $bindings = [PowerShell]::Create().AddCommand("Get-WebBinding"). `
+                AddParameter("Name", $site.Name).Invoke()
+
             $bindings | ForEach-Object {
                 [string[]]$arr = $_.protocol,$_.bindingInformation.Split(':')[2]
                 $dict.Add($arr)
@@ -54,6 +59,7 @@ Function Get-InstanceUrl {
 [string]$InstanceUrl = Get-InstanceUrl
 
 
+Display-Progress -action "Creating JSS API Key" -percent 5
 
 
 Write-Output "Creating JSS API Key: establishing a remote SPE session ..."
@@ -69,9 +75,15 @@ $Guid = Invoke-RemoteScript -ScriptBlock {
 } -Session $session
 
 
+Display-Progress -action "Verifying JSS EndPoint with new API Key" -percent 9
+
+
 Function Verify-EndPoint{
     
-    Write-Output "GUID: $Guid"
+    Write-Output "=========================================================================================="
+    Write-Output "=     JSS API Key: $Guid                                  ="
+    Write-Output "=========================================================================================="
+
     $CheckEndpointUrl = "$InstanceUrl/sitecore/api/layout/render/jss?item=/&sc_apikey={$Guid}"
     $HTTP_Request = [System.Net.WebRequest]::Create($CheckEndpointUrl)
     $HTTP_Response = $HTTP_Request.GetResponse()
@@ -84,12 +96,16 @@ Verify-EndPoint
 Push-Location
 
 
+Display-Progress -action "Getting project source code from GitHub" -percent 15
 
 
 Function Prepare-Project{
 
-    New-Item -ItemType Directory -Force -Path $ProjectDirectory
-    cd $ProjectDirectory
+    Write-Output "Sifon-MuteOutput"
+        New-Item -ItemType Directory -Force -Path $ProjectDirectory
+        cd $ProjectDirectory
+    Write-Output "Sifon-UnmuteOutput"
+
     git clone https://github.com/MartinMiles/Sitecore.Link.git     
     cd "Sitecore.Link"
 
@@ -107,14 +123,19 @@ Function Prepare-Project{
     $ConstanceConfig = "$((Get-Location).Path)\src\global\constants.js"
     (Get-Content -Path $ConstanceConfig).Replace("sitecore_web_link_index", "sitecore_master_link_index") | Set-Content -Path $ConstanceConfig
 
-    Write-Output "Sifon-MuteOutput"
-    npm install
-    Write-Output "Sifon-UnmuteOutput"
 
+    Display-Progress -action "Running npm install" -percent 18
+
+
+    Write-Output "Sifon-MuteOutput"
+        npm install
+    Write-Output "Sifon-UnmuteOutput"
     Write-Output "All NPM packages have been installed. Now let's setup the app config:"
 }
 Prepare-Project
 
+
+Display-Progress -action "Installing Sitecore packages with the templates and sample data" -percent 27
 
 
 Function Install-DataPackages{
@@ -135,37 +156,38 @@ Function Install-DataPackages{
     
 
     Write-Output "Sending SPE remote call to: $InstanceUrl"
-    $session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
-    Invoke-RemoteScript -ScriptBlock {
-        Install-Package -Path "$($using:PackageToInstallTemplates)" -InstallMode Overwrite
-        Install-Package -Path "$($using:PackageToInstallData)" -InstallMode Overwrite
-    } -Session $session
+    Write-Output "Sifon-MuteOutput"
+        $session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
+        Invoke-RemoteScript -ScriptBlock {
+            Install-Package -Path "$($using:PackageToInstallTemplates)" -InstallMode Overwrite
+            Install-Package -Path "$($using:PackageToInstallData)" -InstallMode Overwrite
+        } -Session $session
+    Write-Output "Sifon-UnmuteOutput"
 }
 Install-DataPackages
 
 
 
-
-
+Display-Progress -action "Installing a new Solr core: $($Website + "_" + $NewCoreName)" -percent 38
 
 
 Function Install-SolrCore {
-    
-    $sitecoreParams = @{
-        Path             = $ThisScript.Replace(".ps1", ".json")
-        SolrUrl          = $Solr
-        SolrService      = "solr-8.4.0"
-        SolrRoot         = "c:\Solr\Solr-8.4.0"
-        CorePrefix       = $Website
-        CoreNameWithoutPrefix = $NewCoreName
-    }
 
-    Install-SitecoreConfiguration @sitecoreParams
+    Write-Output "Sifon-MuteOutput"
+        $sitecoreParams = @{
+            Path             = $ThisScript.Replace(".ps1", ".json")
+            SolrUrl          = $Solr
+            SolrService      = "solr-8.4.0"
+            SolrRoot         = "c:\Solr\Solr-8.4.0"
+            CorePrefix       = $Website
+            CoreNameWithoutPrefix = $NewCoreName
+        }
+        Install-SitecoreConfiguration @sitecoreParams
+    Write-Output "Sifon-UnmuteOutput"
+    Write-Output "Added new Solr core: $($Website + "_" + $NewCoreName)"
 }
+
 Install-SolrCore 
-
-
-
 
 
 #
@@ -176,29 +198,40 @@ Function Get-Thumbprint {
     Write-Output "Need to find out the certificate thumbprint to use with deploy"
     $log = "$((Get-Location).Path)\deploy.log"
 
+    Write-Output "Sifon-MuteOutput"
+        Start-Transcript -Path $log
+        jss deploy app -c -d --acceptCertificate test
+        Stop-Transcript
 
-    Start-Transcript -Path $log
-    jss deploy app -c -d --acceptCertificate test
-    Stop-Transcript
-    
-
-    (Get-Content $log -Raw).Replace("`r`n","") | Set-Content $log -Force
-    $LogContent = [IO.File]::ReadAllText($log)
-    $script:Thumbprint = Select-String -InputObject $LogContent -Pattern "((\w{2}:){19}\w{2})" -AllMatches | % {$_.Matches.Groups[1].Value}
-    
-    Remove-Item -Path $log
-    Write-Output "Obtained thumbprint: $Thumbprint"
+        (Get-Content $log -Raw).Replace("`r`n","") | Set-Content $log -Force
+        $LogContent = [IO.File]::ReadAllText($log)
+        $script:Thumbprint = Select-String -InputObject $LogContent -Pattern "((\w{2}:){19}\w{2})" -AllMatches | % {$_.Matches.Groups[1].Value}
+        
+        Remove-Item -Path $log
+    Write-Output "Sifon-UnmuteOutput"
+    Write-Output "=========================================================================================="
+    Write-Output "=     Obtained thumbprint: $Thumbprint   =" 
+    Write-Output "=========================================================================================="
 }
+
+Display-Progress -action "Setting up JSS site and deploying configs" -percent 41
+
 
 jss setup --instancePath $Webroot --apiKey $Guid --deployUrl "$InstanceUrl/sitecore/api/jss/import" --layoutServiceHost $InstanceUrl --deploySecret "5bsa11x0rfdyunfsrgipmd3x44oyllcnzmty7xh6mq" --nonInteractive
 jss deploy config
 
-Write-Output "Sifon-MuteOutput"
+Display-Progress -action "Attempting to retrieve certificate thumbprint" -percent 52
+
+
 Get-Thumbprint
-jss deploy app -c -d --acceptCertificate $Thumbprint
+
+
+Display-Progress -action "Deploying the app with the obtained thumbprint" -percent 61
+
+
+Write-Output "Sifon-MuteOutput"
+    jss deploy app -c -d --acceptCertificate $Thumbprint
 Write-Output "Sifon-UnmuteOutput"
-
-
 
 
 
@@ -207,16 +240,25 @@ Function Process-NewIndex{
 
     $IndexName = "sitecore_$NewCoreName"
 
+    Display-Progress -action "Populate Solr managed schema for index: $IndexName" -percent 77
+
     # Populate index managed schema
-    $params = @{
-        Path            = $ThisScript.Replace("Install-SitecoreLink.ps1", "Populate-Schema.json")
-        Hostname        = $InstanceUrl
-        IndexName       = $IndexName
-        AdminUsername   = $AdminUsername
-        AdminPassword   = "$AdminPassword"
-    }
-    Install-SitecoreConfiguration  @params
+    Write-Output "Sifon-MuteOutput"
+        $params = @{
+            Path            = $ThisScript.Replace("Install-SitecoreLink.ps1", "Populate-Schema.json")
+            Hostname        = $InstanceUrl
+            IndexName       = $IndexName
+            AdminUsername   = $AdminUsername
+            AdminPassword   = "$AdminPassword"
+        }
+        Install-SitecoreConfiguration  @params
+    Write-Output "Sifon-UnmuteOutput"
+    Write-Output "Populated Solr managed schema for index: $IndexName"
     
+    
+    Display-Progress -action "Rebuilding new index: $IndexName" -percent 92
+
+
     # Finally rebuild the index at the new core
     $session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
     Invoke-RemoteScript -ScriptBlock { 
@@ -227,6 +269,8 @@ Function Process-NewIndex{
 }
  Process-NewIndex
 
+
+Display-Progress -action "Operation complete" -percent 100
 
 Pop-Location
 Write-Output "#COLOR:GREEN# Operation complete"
