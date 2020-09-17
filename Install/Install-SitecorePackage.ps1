@@ -27,18 +27,25 @@ namespace Validation
                     return String.Empty;
                 }
             }
-
             return "The file provided is not a Sitecore package";
         }
     }
 }
 "@;
 
+# Wrapper over progress reporting stream
+Function Display-Progress($action, $percent){
+    Write-Progress -Activity "Installing Sitecore package" -CurrentOperation $action -PercentComplete $percent
+}
+
+
 
 #
 #	2. Reference DLL with LocalFilePickerDialog and pass the parameters, including the above validation 
 #
-[Reflection.Assembly]::LoadFile("$((Get-Location).Path)\Sifon.Shared.dll")
+Write-Output "Sifon-MuteOutput"
+    [Reflection.Assembly]::LoadFile("$((Get-Location).Path)\Sifon.Shared.dll")
+Write-Output "Sifon-UnmuteOutput"
 
 [string]$PackageFullPath = ""
 
@@ -68,7 +75,7 @@ If([string]::IsNullOrEmpty($PackageFullPath))
 
 $PackageName = Split-Path $PackageFullPath -leaf
 Write-Output "Installing package: $PackageName ..."
-
+Display-Progress -action "Installing package: $PackageName ..." -percent 3
 
 #
 #   3. Retrieve local sites to find where to install package
@@ -103,21 +110,26 @@ If($dict.Count -gt 0)
     [string]$Url = $dict[0][0] + "://" + $dict[0][1]
     [string]$PackageToInstall = "$Webroot\App_Data\packages\$PackageName"
     
+    Display-Progress -action "Copying the package into instalation directory" -percent 5
+
     copy $PackageFullPath $PackageToInstall
     Write-Output "Package copied to: $PackageToInstall"
     
     #Set-ExecutionPolicy RemoteSigned
     Import-Module -Name SPE
     
+    
     Write-Output "Creating a remote SPE session ..."
     $session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $Url
-
+    
+    Display-Progress -action "Sending SPE remote call to: $Url" -percent 15
     Write-Output "Sending SPE remote call to: $Url"
 
     Invoke-RemoteScript -ScriptBlock {
        Install-Package -Path "$($using:PackageToInstall)" -InstallMode Overwrite
     } -Session $session
 
+    Display-Progress -action " Package installation complete" -percent 100
     Write-Output "#COLOR:GREEN# Package installation complete"
 }
 
