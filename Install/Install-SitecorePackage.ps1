@@ -3,14 +3,13 @@
 ### Compatibility: Sifon 0.95
 
 param(
-
 	[string]$Webroot,
     [string]$AdminUsername = "admin",
     [string]$AdminPassword = "b"
 )
 
 #
-#	1. Inline function passed into LocalFilePickerDialog that validates selected zip file is actually a Sitecore package
+#	1. Inline function passed into LocalFilePickerDialog that validates selected zip file to be actually a Sitecore package
 #
 Add-Type -ReferencedAssemblies System.IO.Compression,System.IO.Compression.FileSystem -Language CSharp @"
 using System;
@@ -27,8 +26,6 @@ namespace Validation
                 {
                     return String.Empty;
                 }
-
-                // MessageBox.Show("The file provided is not a Sitecore package", "Installation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return "The file provided is not a Sitecore package";
@@ -41,13 +38,11 @@ namespace Validation
 #
 #	2. Reference DLL with LocalFilePickerDialog and pass the parameters, including the above validation 
 #
-[Reflection.Assembly]::LoadFile("$((Get-Location).Path)\Sifon.Shared.dll") >> null
+[Reflection.Assembly]::LoadFile("$((Get-Location).Path)\Sifon.Shared.dll")
 
 [string]$PackageFullPath = ""
 
 $form = new-object Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker
-
-#$form.Topmost = $true
 $form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterParent;
 
 $form.Caption = "Sifon Package Installer for Sitecore";
@@ -88,7 +83,9 @@ Foreach ($site in $sites)
 
     if($Webroot.TrimEnd('\') -eq $path)
     {
-		$bindings = Get-WebBinding -Name $site.Name
+		$bindings = [PowerShell]::Create().AddCommand("Get-WebBinding"). `
+                AddParameter("Name", $site.Name).Invoke()
+                
 		$bindings | ForEach-Object {
 			[string[]]$arr = $_.protocol,$_.bindingInformation.Split(':')[2]
 			$dict.Add($arr)
