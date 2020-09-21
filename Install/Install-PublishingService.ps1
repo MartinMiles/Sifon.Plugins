@@ -101,7 +101,7 @@ if($response.status -eq 0)
         $content = $content.Replace("_HOSTNAME_",$Hostname)
         Set-Content -Path "$Webroot\App_Config\Modules\PublishingService\Sitecore.Publishing.Service.Patched.config" -Value $content
         Write-Output "Publishing Module config patched."
-        Start-Process -FilePath $exe  -Wait -WindowStyle Minimized-NoNewWindow
+        Start-Process -FilePath $exe
         Write-Output "#COLOR:GREEN# Publishing Service and Module for Sitecore have been installed."
     }
 }
