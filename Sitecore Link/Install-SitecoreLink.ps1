@@ -7,8 +7,8 @@ param(
     [string]$Webroot,
     [string]$Website,
     [string]$Solr = "https://localhost:8840/solr",
-    [string]$AdminUsername = "admin",
-    [string]$AdminPassword = "b"
+    [string]$AdminUsername,
+    [string]$AdminPassword
 )
 
 

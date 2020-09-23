@@ -4,8 +4,8 @@
 
 param(
 	[string]$Webroot,
-    [string]$AdminUsername = "admin",
-    [string]$AdminPassword = "b"
+    [string]$AdminUsername,
+    [string]$AdminPassword
 )
 
 #

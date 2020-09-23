@@ -5,8 +5,8 @@
 param(
     [string]$Webroot,
     [PSCredential]$PortalCredentials,
-    [string]$AdminUsername = "admin",
-    [string]$AdminPassword = "b"
+    [string]$AdminUsername,
+    [string]$AdminPassword
 )
 
 Function Display-Progress($action, $percent)

@@ -4,13 +4,15 @@
 
 param(
     [string]$IndexName = "sitecore_master_index",
-    [string]$AdminUsername = "admin",
-    [string]$AdminPassword = "b"
+    [string]$AdminUsername,
+    [string]$AdminPassword
 )
+
+[string]$Hostname = Get-InstanceUrl -Webroot $Webroot
 
 $params = @{
     Path            = $MyInvocation.MyCommand.Definition.Replace(".ps1", ".json")
-    Hostname        = "https://platform"
+    Hostname        = $Hostname
     IndexName       = $IndexName
     AdminUsername   = $AdminUsername
     AdminPassword   = "$AdminPassword"

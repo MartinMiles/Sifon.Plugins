@@ -7,8 +7,8 @@ param(
     [string]$Website,
     [string]$Username,  # SQL server admin username
     [string]$Password,  # SQL server admin password
-    [string]$AdminUsername = "admin",
-    [string]$AdminPassword = "b"
+    [string]$AdminUsername,
+    [string]$AdminPassword
 )
 
 Function Replace-WithDatabaseAdmin($ConnectionString, $Username, $Password)
