@@ -23,46 +23,27 @@ Function Display-Progress($action, $percent){
     Write-Progress -Activity "Installing Publishing Service" -CurrentOperation $action -PercentComplete $percent
 }
 
-# Executes in local or remote context
-# Assumed that the below file exists in Sifon root folder
-$moduleFilename = (Get-Location).Path + "\Downloads\Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"   # must be full name
-$moduleResourceUrl = "https://dev.sitecore.net/~/media/A06BC5BBBCA84F2F90AC08CB456A3801.ashx"
-
-If(!(Test-Path -Path $moduleFilename))
+Function VerifyOrDownload-File($moduleFilename, $moduleResourceUrl, $progress)
 {
-    Write-Output "Downloading package from Sitecore Developers Portal..."
-    Display-Progress -action "downloading package from Sitecore Developers Portal." -percent 3
-
-    Write-Output "Sifon-MuteProgress"
-        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $moduleResourceUrl -TargertFilename $moduleFilename
-    Write-Output "Sifon-UnmuteProgress"
-}
-else
-{
-    Write-Output "Found package already downloaded at: $moduleFilename"
-}
-
-
-
-$serviceFilename = (Get-Location).Path + "\Downloads\Sitecore Publishing Service 4.3.0-win-x64.zip"
-$serviceResourceUrl = "https://dev.sitecore.net/~/media/3BA8C0FD6894405ABF3CD53803007272.ashx"
-
-If(!(Test-Path -Path $serviceFilename))
-{
-    Write-Output "Downloading package from Sitecore Developers Portal..."
-    Display-Progress -action "downloading package from Sitecore Developers Portal." -percent 7
-
-    Write-Output "Sifon-MuteProgress"
-        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $serviceResourceUrl -TargertFilename $serviceFilename
-    Write-Output "Sifon-UnmuteProgress"
-}
-else
-{
-    Write-Output "Found package already downloaded at: $serviceFilename"
+    $moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleFilename
+    
+    If(!(Test-Path -Path $moduleFilename))
+    {
+        Write-Output "Downloading $moduleFilename package from Sitecore Developers Portal..."
+        Display-Progress -action "downloading $moduleFilename package from Sitecore Developers Portal." -percent $progress
+    
+        Write-Output "Sifon-MuteProgress"
+            Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $moduleResourceUrl -TargertFilename $moduleFilename
+        Write-Output "Sifon-UnmuteProgress"
+    }
+    else
+    {
+        Write-Output "Found package already downloaded at: $moduleFilename"
+    }
 }
 
-
-
+VerifyOrDownload-File -moduleFilename "Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip" -moduleResourceUrl "https://dev.sitecore.net/~/media/A06BC5BBBCA84F2F90AC08CB456A3801.ashx" -progress 3
+VerifyOrDownload-File -moduleFilename "Sitecore Publishing Service 4.3.0-win-x64.zip" -moduleResourceUrl "https://dev.sitecore.net/~/media/3BA8C0FD6894405ABF3CD53803007272.ashx" -progress 7
 
 $Hostname = "$Website.publishing"
 $parentFolder =  Split-Path $Webroot -Parent
