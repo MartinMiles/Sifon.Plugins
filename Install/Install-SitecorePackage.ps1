@@ -78,16 +78,7 @@ Display-Progress -action "Installing package: $PackageName ..." -percent 13
 
 
 $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
-
-Write-Output "Creating a remote SPE session ..."
-$session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
-
-Display-Progress -action "Sending SPE remote call to: $InstanceUrl" -percent 54
-Write-Output "Sending SPE remote call to: $InstanceUrl"
-
-Invoke-RemoteScript -ScriptBlock {
-    Install-Package -Path "$($using:PackageFullPath)" -InstallMode Overwrite
-} -Session $session
+Install-SitecorePackage -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $PackageFullPath
 
 Display-Progress -action " Package installation complete" -percent 100
 Write-Output "#COLOR:GREEN# Package installation complete"
