@@ -8,7 +8,8 @@ param(
     [string]$Username,  # SQL server admin username
     [string]$Password,  # SQL server admin password
     [string]$AdminUsername,
-    [string]$AdminPassword
+    [string]$AdminPassword,
+    $PortalCredentials
 )
 
 Function Replace-WithDatabaseAdmin($ConnectionString, $Username, $Password)
@@ -24,15 +25,51 @@ Function Display-Progress($action, $percent){
 
 # Executes in local or remote context
 # Assumed that the below file exists in Sifon root folder
-$moduleFilename = "c:\Sifon\Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"   # must be full name
-$serviceFilename = "Sitecore Publishing Service 4.3.0-win-x64.zip"
+$moduleFilename = (Get-Location).Path + "\Downloads\Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"   # must be full name
+$moduleResourceUrl = "https://dev.sitecore.net/~/media/A06BC5BBBCA84F2F90AC08CB456A3801.ashx"
+
+If(!(Test-Path -Path $moduleFilename))
+{
+    Write-Output "Downloading package from Sitecore Developers Portal..."
+    Display-Progress -action "downloading package from Sitecore Developers Portal." -percent 3
+
+    Write-Output "Sifon-MuteProgress"
+        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $moduleResourceUrl -TargertFilename $moduleFilename
+    Write-Output "Sifon-UnmuteProgress"
+}
+else
+{
+    Write-Output "Found package already downloaded at: $moduleFilename"
+}
+
+
+
+$serviceFilename = (Get-Location).Path + "\Downloads\Sitecore Publishing Service 4.3.0-win-x64.zip"
+$serviceResourceUrl = "https://dev.sitecore.net/~/media/3BA8C0FD6894405ABF3CD53803007272.ashx"
+
+If(!(Test-Path -Path $serviceFilename))
+{
+    Write-Output "Downloading package from Sitecore Developers Portal..."
+    Display-Progress -action "downloading package from Sitecore Developers Portal." -percent 7
+
+    Write-Output "Sifon-MuteProgress"
+        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $serviceResourceUrl -TargertFilename $serviceFilename
+    Write-Output "Sifon-UnmuteProgress"
+}
+else
+{
+    Write-Output "Found package already downloaded at: $serviceFilename"
+}
+
+
+
 
 $Hostname = "$Website.publishing"
 $parentFolder =  Split-Path $Webroot -Parent
 $serviceFolderPath = "$parentFolder\$Hostname"
 if(![System.IO.Directory]::Exists($serviceFolderPath))
 {
-    Display-Progress -action "extracting Publishing Service files" -percent 3
+    Display-Progress -action "extracting Publishing Service files" -percent 10
     $psFolder = New-Item -ItemType Directory -Path $serviceFolderPath -force
     Write-Output "Sifon-MuteProgress"
     Expand-Archive -Path $serviceFilename -DestinationPath $psFolder.FullName
