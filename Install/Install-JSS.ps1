@@ -14,14 +14,7 @@ Function Display-Progress($action, $percent)
     Write-Progress -Activity "Installing Sitecore JSS" -CurrentOperation $action -PercentComplete $percent
 }
 
-if($null -eq $PortalCredentials){
-    Write-Output "-----------------------------------"
-    Write-Error  "Sitecore Portal Credentials missing"
-    Write-Output "-----------------------------------"
-    Write-Output "In order to be able downloading the resorces from Sitecore Developers Portal, please enter your Sitecore credintials first."
-    Write-Output "You can do that from 'Sitecore Portal Credentials' under Sifon 'Settings' menu."
-    exit
-}
+Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 $package = (Get-Location).Path + "\Downloads\Sitecore JavaScript Services Server for Sitecore 10.0.0 XP 14.0.0 rev. 200714.zip"
 If(!(Test-Path -Path $package))

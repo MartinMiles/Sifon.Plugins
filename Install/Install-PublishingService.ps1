@@ -12,6 +12,8 @@ param(
     $PortalCredentials
 )
 
+Verify-PortalCredentials -PortalCredentials $PortalCredentials
+
 Function Replace-WithDatabaseAdmin($ConnectionString, $Username, $Password)
 {
     $ConnectionString = $ConnectionString -replace "User ID=(\w+);", "User ID=$Username;"
