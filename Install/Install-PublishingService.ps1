@@ -12,6 +12,11 @@ param(
     $PortalCredentials
 )
 
+$moduleName = "Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"
+$serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip"
+$moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
+$serviceFilename = (Get-Location).Path + "\Downloads\" + $serviceName
+
 Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 Function Replace-WithDatabaseAdmin($ConnectionString, $Username, $Password)
@@ -25,39 +30,44 @@ Function Display-Progress($action, $percent){
     Write-Progress -Activity "Installing Publishing Service" -CurrentOperation $action -PercentComplete $percent
 }
 
-Function VerifyOrDownload-File($moduleFilename, $moduleResourceUrl, $progress)
+Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
 {
-    $moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleFilename
-    
-    If(!(Test-Path -Path $moduleFilename))
+    $fullPath = (Get-Location).Path + "\Downloads\$moduleName"
+
+    If(!(Test-Path -Path $fullPath))
     {
-        Write-Output "Downloading $moduleFilename package from Sitecore Developers Portal..."
-        Display-Progress -action "downloading $moduleFilename package from Sitecore Developers Portal." -percent $progress
+        Write-Output "Downloading $moduleName package from Sitecore Developers Portal..."
+        Display-Progress -action "downloading $moduleName package from Sitecore Developers Portal." -percent $progress
     
         Write-Output "Sifon-MuteProgress"
-            Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $moduleResourceUrl -TargertFilename $moduleFilename
+            Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $moduleResourceUrl -TargertFilename $fullPath
         Write-Output "Sifon-UnmuteProgress"
     }
     else
     {
-        Write-Output "Found package already downloaded at: $moduleFilename"
+        Write-Output "Found package $moduleName already downloaded within Downloads folder."
     }
 }
 
-VerifyOrDownload-File -moduleFilename "Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip" -moduleResourceUrl "https://dev.sitecore.net/~/media/A06BC5BBBCA84F2F90AC08CB456A3801.ashx" -progress 3
-VerifyOrDownload-File -moduleFilename "Sitecore Publishing Service 4.3.0-win-x64.zip" -moduleResourceUrl "https://dev.sitecore.net/~/media/3BA8C0FD6894405ABF3CD53803007272.ashx" -progress 7
+VerifyOrDownload-File -moduleName $moduleName -moduleResourceUrl "https://dev.sitecore.net/~/media/A06BC5BBBCA84F2F90AC08CB456A3801.ashx" -progress 3
+VerifyOrDownload-File -moduleName $serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip" -moduleResourceUrl "https://dev.sitecore.net/~/media/3BA8C0FD6894405ABF3CD53803007272.ashx" -progress 7
 
 $Hostname = "$Website.publishing"
 $parentFolder =  Split-Path $Webroot -Parent
 $serviceFolderPath = "$parentFolder\$Hostname"
-if(![System.IO.Directory]::Exists($serviceFolderPath))
+if([System.IO.Directory]::Exists($serviceFolderPath))
 {
-    Display-Progress -action "extracting Publishing Service files" -percent 10
-    $psFolder = New-Item -ItemType Directory -Path $serviceFolderPath -force
-    Write-Output "Sifon-MuteProgress"
-    Expand-Archive -Path $serviceFilename -DestinationPath $psFolder.FullName
-    Write-Output "Sifon-UnmuteProgress"
+    Write-Warning "Folder $serviceFolderPath already exists."
+    Write-Warning "Please remove it prior installing Publishing Service and repeat this process."
+    Write-Output "#COLOR:GREEN# Script operation complete."
 }
+
+Display-Progress -action "extracting Publishing Service files" -percent 10
+$psFolder = New-Item -ItemType Directory -Path $serviceFolderPath -force
+
+Write-Output "Sifon-MuteProgress"
+Expand-Archive -Path $serviceFilename -DestinationPath $serviceFolderPath
+Write-Output "Sifon-UnmuteProgress"
 
 $core = Get-ConnectionString -ConfigPath "$Webroot\App_Config\ConnectionStrings.config" -DbName "core"
 $core = Replace-WithDatabaseAdmin -ConnectionString $core -Username $Username -Password $Password
@@ -88,12 +98,14 @@ Display-Progress -action "upgrading database schema" -percent 31
 Display-Progress -action "setting up site in IIS" -percent 41
 & $exe iis install --hosts --sitename "$Hostname" --force
 
+
+
 $appPoolState = [PowerShell]::Create().AddCommand("Get-WebAppPoolState").AddParameter("Name", $Hostname).Invoke()
 if($appPoolState.Value -ne "Started")
 {
     Write-Output "starting AppPool: $Hostname"
     Display-Progress -action "Starting AppPool" -percent 44
-    Start-WebAppPool -Name "$Hostname"
+    [PowerShell]::Create().AddCommand("Start-WebAppPool").AddParameter("Name", $Hostname).Invoke()
 }
 
 $siteState = [PowerShell]::Create().AddCommand("Get-IISSite").AddParameter("Name", $Hostname).Invoke()
@@ -101,8 +113,9 @@ if($siteState.State -ne "Started")
 {
     Write-Output "starting website: $Hostname"
     Display-Progress -action "Starting website" -percent 48
-    Start-Website -Name "$Hostname"
+    [PowerShell]::Create().AddCommand("Start-Website").AddParameter("Name", $Hostname).Invoke()
 }
+
 
 [string]$endpointUri ="http://$Hostname/api/publishing/operations/status"
 Display-Progress -action "validating installation status at $endpointUri" -percent 52
