@@ -1,4 +1,4 @@
-### Name: Install Publishing Service
+### Name: Install Publishing Service 4.3.0
 ### Description: Installs Sitecore Publishing Service
 ### Compatibility: Sifon 0.96. Requres Sifon PowerShell module
 
