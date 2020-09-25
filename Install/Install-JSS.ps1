@@ -55,5 +55,5 @@ Write-Output "Sifon-MuteOutput"
 Write-Output "Sifon-UnmuteOutput"    
 
 
-Write-Output "Operation complete"
+Write-Output "#COLOR:GREEN# Operation complete."
 Display-Progress -action "operation complete." -percent 100

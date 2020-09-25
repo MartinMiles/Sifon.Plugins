@@ -243,4 +243,4 @@ Function Process-NewIndex{
 Display-Progress -action "Operation complete" -percent 100
 
 Pop-Location
-Write-Output "#COLOR:GREEN# Operation complete"
+Write-Output "#COLOR:GREEN# Operation complete."
