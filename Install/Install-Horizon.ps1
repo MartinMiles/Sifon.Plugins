@@ -108,9 +108,11 @@ Write-Output "Sifon-MuteOutput"
     New-Item -ItemType Directory -Path $horizonFolder -force
 Write-Output "Sifon-UnmuteOutput"
 
+Write-Output "Sifon-MuteOutput"
 Write-Output "Sifon-MuteProgress"
 & "$workingFolder\InstallHorizon.ps1" -horizonInstanceName "$Prefix.horizon" -horizonPhysicalPath $horizonFolder -sitecoreCmInstanceName $Website -sitecoreCmInstansePath $Webroot -identityServerPoolName "$Prefix.identityserver" -identityServerPhysicalPath "$baseInstallationFolder\$Prefix.identityserver" -licensePath $form.FilePath -topology "XP"
 Write-Output "Sifon-UnmuteProgress"
+Write-Output "Sifon-UnmteOutput"
 
 Remove-Item $workingFolder -Recurse -Force -Confirm:$false
 
