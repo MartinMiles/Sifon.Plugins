@@ -40,7 +40,7 @@ If(!(Test-Path -Path $package))
 Write-Output "Installing package into Sitecore."
 Display-Progress -action "installing package into Sitecore." -percent 31
 $InstanceUrl= InstanceUrl -Webroot $Webroot
-Install-SitecorePackage -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $package
+Install-SitecorePackageUsingRemoting -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $package
 
 Display-Progress -action "installing JSS CLI." -percent 81
 Write-Output "Sifon-MuteOutput"

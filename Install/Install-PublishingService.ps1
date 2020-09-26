@@ -129,7 +129,7 @@ if($response.status -eq 0)
     if(Test-Path $moduleFilename -PathType leaf)
     {
         $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
-        Install-SitecorePackage -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $moduleFilename
+        Install-SitecorePackageUsingRemoting -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $moduleFilename
         Write-Output "Publishing module installed."
 
         $content = @'
