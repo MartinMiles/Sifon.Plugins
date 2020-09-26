@@ -13,7 +13,6 @@ $horizon1000URL = "https://dev.sitecore.net/~/media/6428CB6CC4F143E9A085AF2C3670
 $horizonFilename = "Sitecore Horizon 10.0.0.zip"
 $packageFullPath = (Get-Location).Path + "\Downloads\$horizonFilename"
 
-
 ### licence
 Add-Type -Language CSharp @"
 using System;
@@ -43,6 +42,7 @@ $form.Button = "OK";
 
 # this is the way of passing delegate into DLL without losing types
 $form.Validation = { [Validation.FilePicker]::IsSitecoreLicense($args[0]) }
+
 
 $result = $form.ShowDialog()
 
@@ -74,7 +74,6 @@ If(!(Test-Path -Path $packageFullPath))
     exit
 }
 
-
 $workingFolder = "c:\Sifon\Cache\Horizon"
 Write-Output "Sifon-MuteErrors"
 Write-Output "Sifon-MuteOutput"
@@ -82,11 +81,10 @@ Write-Output "Sifon-MuteOutput"
     New-Item -ItemType Directory -Path $workingFolder -force
 Write-Output "Sifon-UnmuteOutput"
 Write-Output "Sifon-UnmuteErrors"
+
 Write-Output "Sifon-MuteProgress"
     Expand-Archive -Path $packageFullPath -DestinationPath $workingFolder
 Write-Output "Sifon-UnmuteProgress"
-
-
 
 if ($result -eq [System.Windows.Forms.DialogResult]::OK)
 {
@@ -98,8 +96,7 @@ else {
     exit
 }
 
-
-Write-Output "Installing package into Sitecore."
+Write-Output "Installing Horizon. This may take quite a while, so please be patient."
 
 $baseInstallationFolder = split-path -parent $Webroot
 $horizonFolder = "$baseInstallationFolder\$Prefix.horizon"
@@ -108,11 +105,17 @@ Write-Output "Sifon-MuteOutput"
     New-Item -ItemType Directory -Path $horizonFolder -force
 Write-Output "Sifon-UnmuteOutput"
 
-Write-Output "Sifon-MuteOutput"
-Write-Output "Sifon-MuteProgress"
-& "$workingFolder\InstallHorizon.ps1" -horizonInstanceName "$Prefix.horizon" -horizonPhysicalPath $horizonFolder -sitecoreCmInstanceName $Website -sitecoreCmInstansePath $Webroot -identityServerPoolName "$Prefix.identityserver" -identityServerPhysicalPath "$baseInstallationFolder\$Prefix.identityserver" -licensePath $form.FilePath -topology "XP"
-Write-Output "Sifon-UnmuteProgress"
-Write-Output "Sifon-UnmteOutput"
+Write-Progress -Activity "Installing Horizon" -CurrentOperation "running long batch installation" -PercentComplete 41
+
+$res = [PowerShell]::Create().AddCommand("$workingFolder\InstallHorizon.ps1"). `
+    AddParameter("horizonInstanceName", "$Prefix.horizon"). `
+    AddParameter("horizonPhysicalPath", $horizonFolder). `
+    AddParameter("sitecoreCmInstanceName", $Website). `
+    AddParameter("sitecoreCmInstansePath", $Webroot). `
+    AddParameter("identityServerPoolName", "$Prefix.identityserver"). `
+    AddParameter("identityServerPhysicalPath", "$baseInstallationFolder\$Prefix.identityserver"). `
+    AddParameter("licensePath", $form.FilePath). `
+    AddParameter("topology", "XP").Invoke() 
 
 Remove-Item $workingFolder -Recurse -Force -Confirm:$false
 
