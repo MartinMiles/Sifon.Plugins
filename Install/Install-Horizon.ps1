@@ -5,18 +5,13 @@
 param(
     [string]$Webroot,
     [string]$Website,
+    [string]$Prefix,
     [PSCredential]$PortalCredentials
 )
 
 $horizon1000URL = "https://dev.sitecore.net/~/media/6428CB6CC4F143E9A085AF2C36706E26.ashx"
 $horizonFilename = "Sitecore Horizon 10.0.0.zip"
 $packageFullPath = (Get-Location).Path + "\Downloads\$horizonFilename"
-
-Function Display-Progress($action, $percent)
-{
-    # Write-Progress -Activity "Installing Horizon" -CurrentOperation $action -PercentComplete $percent
-}
-
 
 
 ### licence
@@ -38,8 +33,6 @@ namespace Validation
 }
 "@;
 
-
-
 $form = new-object Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker
 $form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterParent;
 
@@ -53,20 +46,18 @@ $form.Validation = { [Validation.FilePicker]::IsSitecoreLicense($args[0]) }
 
 $result = $form.ShowDialog()
 
-
-
-
-
-
-
-Verify-PortalCredentials -PortalCredentials $PortalCredentials
-
-
+$licenseMessage = "Sitecore license required for Horizon installation"
+if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEmpty($form.FilePath))
+{
+    Write-Warning $licenseMessage
+    exit
+}
 
 If(!(Test-Path -Path $packageFullPath))
 {
+    Verify-PortalCredentials -PortalCredentials $PortalCredentials
+
     Write-Output "Downloading package $horizonFilename from Sitecore Developers Portal..."
-    Display-Progress -action "downloading package  $horizonFilename from Sitecore Developers Portal." -percent 3
 
     Write-Output "Sifon-MuteProgress"
         Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $horizon1000URL -TargertFilename $packageFullPath
@@ -103,27 +94,25 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
 }
 else {
     Write-Warning "You must provide a valid license in order to install horizon."
+    Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
     exit
 }
 
 
-
-
 Write-Output "Installing package into Sitecore."
-Display-Progress -action "installing package into Sitecore." -percent 31
 
-$horizonFolder = "C:\inetpub\wwwroot\$Website.horizon"
+$baseInstallationFolder = split-path -parent $Webroot
+$horizonFolder = "$baseInstallationFolder\$Prefix.horizon"
 Write-Output "Sifon-MuteOutput"
     Remove-Item $horizonFolder -Recurse -Force -Confirm:$false
     New-Item -ItemType Directory -Path $horizonFolder -force
 Write-Output "Sifon-UnmuteOutput"
 
 Write-Output "Sifon-MuteProgress"
-& "$workingFolder\InstallHorizon.ps1" -horizonInstanceName "$Website.horizon" -horizonPhysicalPath $horizonFolder -sitecoreCmInstanceName $Website -sitecoreCmInstansePath $Webroot -identityServerPoolName "$Website.identityserver" -licensePath $form.FilePath -topology "XP"
+& "$workingFolder\InstallHorizon.ps1" -horizonInstanceName "$Prefix.horizon" -horizonPhysicalPath $horizonFolder -sitecoreCmInstanceName $Website -sitecoreCmInstansePath $Webroot -identityServerPoolName "$Prefix.identityserver" -identityServerPhysicalPath "$baseInstallationFolder\$Prefix.identityserver" -licensePath $form.FilePath -topology "XP"
 Write-Output "Sifon-UnmuteProgress"
 
 Remove-Item $workingFolder -Recurse -Force -Confirm:$false
 
 Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
 Write-Output "#COLOR:GREEN# Horizon for Sitecore have been installed."
-Display-Progress -action "operation complete." -percent 100

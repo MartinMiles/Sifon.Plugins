@@ -5,6 +5,7 @@
 param(
     [string]$Webroot,
     [string]$Website,
+    [string]$Prefix,
     [string]$Username,  # SQL server admin username
     [string]$Password,  # SQL server admin password
     [string]$AdminUsername,
@@ -52,7 +53,7 @@ Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
 VerifyOrDownload-File -moduleName $moduleName -moduleResourceUrl "https://dev.sitecore.net/~/media/A06BC5BBBCA84F2F90AC08CB456A3801.ashx" -progress 3
 VerifyOrDownload-File -moduleName $serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip" -moduleResourceUrl "https://dev.sitecore.net/~/media/3BA8C0FD6894405ABF3CD53803007272.ashx" -progress 7
 
-$Hostname = "$Website.publishing"
+$Hostname = "$Prefix.publishing"
 $parentFolder =  Split-Path $Webroot -Parent
 $serviceFolderPath = "$parentFolder\$Hostname"
 if([System.IO.Directory]::Exists($serviceFolderPath))
