@@ -2,6 +2,12 @@
 # In that case, run the following command on THE HOST machine, just outside of VM:
 # Set-VMProcessor -VMName <MACHINE NAME> -ExposeVirtualizationExtensions $true
 
+$UserResponse= [System.Windows.Forms.MessageBox]::Show("This machine will reboot at the end of current operation. Do you want to  continue?" , "Status" , 4)
+if ($UserResponse -ne 'YES') 
+{
+    Write-Output "#COLOR:GREEN# Script finished."
+    exit
+}
 
 
 # 1. Firstly, ensure Hyper-V is ON

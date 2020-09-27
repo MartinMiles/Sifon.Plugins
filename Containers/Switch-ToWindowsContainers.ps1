@@ -1,2 +1,2 @@
-Console-Write "Now switching to Windows Containers"
+Write-Output "Now switching to Windows Containers"
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
