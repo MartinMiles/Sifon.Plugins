@@ -1,5 +1,5 @@
-### Name: A sample Docker script
-### Description: Installs Sitecore 10 in Docker
+### Name: Download and prepare Sitecore 10
+### Description: Downloads and prepares Sitecore 10 for a run in Docker
 ### Compatibility: Sifon 0.98
 
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "Requesting Sitecore license file" -PercentComplete 4
@@ -91,15 +91,15 @@ Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "prepari
 #     AddParameter("SqlSaPassword", $defaultPassword).Invoke() 
 
 
-Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "starting containers" -PercentComplete 34
-$ContainersDirectory
-Start-Process powershell -Wait -WorkingDirectory $ContainersDirectory -ArgumentList '-noexit -command "docker-compose up -d"'
+# # # # # # # Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "starting containers" -PercentComplete 34
+# # # # # # # $ContainersDirectory
+# # # # # # # Start-Process powershell -Wait -WorkingDirectory $ContainersDirectory -ArgumentList '-noexit -command "docker-compose up -d"'
 
-#start powershell { cd "$ContainersDirectory"; docker-compose up -d}
-#invoke-expression 'cmd /c start powershell -Command { cd "$ContainersDirectory"; docker-compose up -d }'
+# # # # # # # #start powershell { cd "$ContainersDirectory"; docker-compose up -d}
+# # # # # # # #invoke-expression 'cmd /c start powershell -Command { cd "$ContainersDirectory"; docker-compose up -d }'
 
 
-start https://xp0cm.localhost/sitecore
+# # # # # # # start https://xp0cm.localhost/sitecore
 
 Pop-Location
 
