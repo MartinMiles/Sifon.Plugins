@@ -2,6 +2,7 @@
 ### Description: Downloads the plugins from Sifon repository (requires git)
 ### Compatibility: Sifon 0.95
 
+Write-output "Pulling scripts from a community repository on GitHub ..."
 Write-output "Sifon-MuteOutput"
 Remove-Item -Path Sifon.Plugins -Recurse -Force -Confirm:$false
 git clone https://github.com/MartinMiles/Sifon.Plugins.git
