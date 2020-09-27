@@ -12,11 +12,7 @@ if ($UserResponse -ne 'YES')
 
 
 cd "Containers"
-# $ContainersDirectory 
 Start-Process powershell -Wait -ArgumentList '-noexit -command "docker-compose up -d"'
-
-#start powershell { cd "$ContainersDirectory"; docker-compose up -d}
-#invoke-expression 'cmd /c start powershell -Command { cd "$ContainersDirectory"; docker-compose up -d }'
 
 
 start https://xp0cm.localhost/sitecore

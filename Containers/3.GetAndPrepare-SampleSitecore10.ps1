@@ -1,4 +1,4 @@
-### Name: Download and prepare Sitecore 10
+### Name: Prerequisites Step 3: download and prepare Sitecore 10
 ### Description: Downloads and prepares Sitecore 10 for a run in Docker
 ### Compatibility: Sifon 0.98
 
