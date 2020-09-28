@@ -2,9 +2,16 @@
 ### Description: Downloads and prepares Sitecore 10 for a run in Docker
 ### Compatibility: Sifon 0.98
 
-Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "Requesting Sitecore license file" -PercentComplete 4
-$defaultPassword = "Password12345"
 
+param(
+    [string]$ProfileName,
+    [string]$Repository,
+    [string]$Folder,
+    [string]$AdminPassword,
+    [string]$SaPassword
+)
+
+Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "Requesting Sitecore license file" -PercentComplete 4
 
 
 ### get licence
@@ -51,11 +58,7 @@ if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEm
 #
 #
 $ContainersDirectory = New-Item -ItemType Directory -Path Containers -force
-
-# If (Test-Path Cache\Sitecore)
-# {
-#     Remove-Item Cache\Sitecore -Recurse -Force -Confirm:$false | Out-Null
-# }
+$ProfileContainersDirectory = New-Item -ItemType Directory -Path "$ContainersDirectory\$ProfileName" -force
 
 $SourcesDirectory = New-Item -ItemType Directory -Path Cache\Sitecore -force
 
@@ -69,37 +72,25 @@ If (!((Test-Path -Path $ContainersDirectory\.env) -and (Test-Path -Path Containe
         git clone https://github.com/Sitecore/docker-examples.git "$SourcesDirectory"
         
         Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "copying the code into a working directory" -PercentComplete 31
-        Copy-Item "$SourcesDirectory\getting-started\*" -Filter *.* -destination $ContainersDirectory  -Recurse -force
+        # TODO: validate "$SourcesDirectory\$Folder exists in the cloned code
+        Copy-Item "$SourcesDirectory\$Folder\*" -Filter *.* -destination $ProfileContainersDirectory  -Recurse -force
 
         Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "removing temp derectory" -PercentComplete 33
         Remove-Item "$BaseDir\Cache\*" -Recurse -Force -Confirm:$false
     Write-Output "Sifon-UnmuteOutput"
 }
 
-cd "$ContainersDirectory"
+cd "$ProfileContainersDirectory"
 
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "preparing environmental configuration file" -PercentComplete 34
 
 
-
-
-& "$ContainersDirectory\init.ps1" -LicenseXmlPath $form.FilePath -SitecoreAdminPassword $defaultPassword -SqlSaPassword $defaultPassword
+& "$ProfileContainersDirectory\init.ps1" -LicenseXmlPath $form.FilePath -SitecoreAdminPassword $AdminPassword -SqlSaPassword $SaPassword
 
 # $res = [PowerShell]::Create().AddCommand("$ContainersDirectory\init.ps1"). `
 #     AddParameter("LicenseXmlPath", $form.FilePath). `
 #     AddParameter("SitecoreAdminPassword", $defaultPassword). `
 #     AddParameter("SqlSaPassword", $defaultPassword).Invoke() 
-
-
-# # # # # # # Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "starting containers" -PercentComplete 34
-# # # # # # # $ContainersDirectory
-# # # # # # # Start-Process powershell -Wait -WorkingDirectory $ContainersDirectory -ArgumentList '-noexit -command "docker-compose up -d"'
-
-# # # # # # # #start powershell { cd "$ContainersDirectory"; docker-compose up -d}
-# # # # # # # #invoke-expression 'cmd /c start powershell -Command { cd "$ContainersDirectory"; docker-compose up -d }'
-
-
-# # # # # # # start https://xp0cm.localhost/sitecore
 
 Pop-Location
 
