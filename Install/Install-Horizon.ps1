@@ -1,12 +1,14 @@
 ### Name: Install Horizon for Sitecore 10.0
 ### Description: Installs Sitecore JSS along with CLI
-### Compatibility: Sifon 0.96
+### Compatibility: Sifon 0.98
+### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sitecore license selector","Select Sitecore license in order to install Horizon:","License files|*.xml","OK")
 
 param(
     [string]$Webroot,
     [string]$Website,
     [string]$Prefix,
-    [PSCredential]$PortalCredentials
+    [PSCredential]$PortalCredentials,
+    $SelectedFile
 )
 
 $horizon1000URL = "https://dev.sitecore.net/~/media/6428CB6CC4F143E9A085AF2C36706E26.ashx"
@@ -14,42 +16,47 @@ $horizonFilename = "Sitecore Horizon 10.0.0.zip"
 $packageFullPath = (Get-Location).Path + "\Downloads\$horizonFilename"
 
 ### licence
-Add-Type -Language CSharp @"
-using System;
-namespace Validation 
+# Add-Type -Language CSharp @"
+# using System;
+# namespace Validation 
+# {
+#     public static class FilePicker
+#     {
+#         public static string IsSitecoreLicense(string licensePath)
+#         {
+#             if (licensePath.EndsWith(".xml"))
+#             {
+#                 return String.Empty;
+#             }
+#             return "The file provided is not a Sitecore license";
+#         }
+#     }
+# }
+# "@;
+
+# $form = new-object Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker
+# $form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterParent;
+
+# $form.Caption = "Sitecore license selector";
+# $form.Filters = "License files|*.xml";
+# $form.Label = "Select Sitecore license in order to install Horizon:";
+# $form.Button = "OK";
+
+# # this is the way of passing delegate into DLL without losing types
+# $form.Validation = { [Validation.FilePicker]::IsSitecoreLicense($args[0]) }
+
+
+#$result = $SelectedFile # $form.ShowDialog()
+
+# $licenseMessage = "Sitecore license required for Horizon installation"
+# if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEmpty($form.FilePath))
+if ([string]::IsNullOrEmpty($SelectedFile))
 {
-    public static class FilePicker
-    {
-        public static string IsSitecoreLicense(string licensePath)
-        {
-            if (licensePath.EndsWith(".xml"))
-            {
-                return String.Empty;
-            }
-            return "The file provided is not a Sitecore license";
-        }
-    }
-}
-"@;
-
-$form = new-object Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker
-$form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterParent;
-
-$form.Caption = "Sitecore license selector";
-$form.Filters = "License files|*.xml";
-$form.Label = "Select Sitecore license in order to install Horizon:";
-$form.Button = "OK";
-
-# this is the way of passing delegate into DLL without losing types
-$form.Validation = { [Validation.FilePicker]::IsSitecoreLicense($args[0]) }
-
-
-$result = $form.ShowDialog()
-
-$licenseMessage = "Sitecore license required for Horizon installation"
-if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEmpty($form.FilePath))
-{
-    Write-Warning $licenseMessage
+    #Write-Warning $licenseMessage
+       
+    Write-Warning "You must provide a valid license in order to install horizon."
+    Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
+    exit
     exit
 }
 
@@ -86,15 +93,17 @@ Write-Output "Sifon-MuteProgress"
     Expand-Archive -Path $packageFullPath -DestinationPath $workingFolder
 Write-Output "Sifon-UnmuteProgress"
 
-if ($result -eq [System.Windows.Forms.DialogResult]::OK)
-{
-    Copy-Item -Path $form.FilePath -Destination $workingFolder
-}
-else {
-    Write-Warning "You must provide a valid license in order to install horizon."
-    Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
-    exit
-}
+Copy-Item -Path $SelectedFile -Destination $workingFolder
+
+#if ($result -eq [System.Windows.Forms.DialogResult]::OK)
+# {
+#     Copy-Item -Path $form.FilePath -Destination $workingFolder
+# }
+# else {
+#     Write-Warning "You must provide a valid license in order to install horizon."
+#     Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
+#     exit
+# }
 
 Write-Output "Installing Horizon. This may take quite a while, so please be patient."
 
@@ -114,7 +123,7 @@ $res = [PowerShell]::Create().AddCommand("$workingFolder\InstallHorizon.ps1"). `
     AddParameter("sitecoreCmInstansePath", $Webroot). `
     AddParameter("identityServerPoolName", "$Prefix.identityserver"). `
     AddParameter("identityServerPhysicalPath", "$baseInstallationFolder\$Prefix.identityserver"). `
-    AddParameter("licensePath", $form.FilePath). `
+    AddParameter("licensePath", $SelectedFile). `
     AddParameter("topology", "XP").Invoke() 
 
 Remove-Item $workingFolder -Recurse -Force -Confirm:$false
