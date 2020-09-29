@@ -1,6 +1,6 @@
 ### Name: Sitecore package installer
 ### Description: Installs Sitecore packages including remote profiles (copes local package to remote and installs there)
-### Compatibility: Sifon 0.95
+### Compatibility: Sifon 0.98
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sifon Package Installer for Sitecore","Pick up the package to install:","Archives|*.zip","Install")
 
 param(
