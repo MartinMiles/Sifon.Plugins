@@ -1,5 +1,5 @@
-### Name: Rebuild indexes
-### Description: Rebild indexes via SPE remoting
+### Name: Rebuild indexes on local machine
+### Description: Rebilds indexes via SPE remoting - due to GUI works on local machines only
 ### Compatibility: Sifon 0.95
 
 param(
