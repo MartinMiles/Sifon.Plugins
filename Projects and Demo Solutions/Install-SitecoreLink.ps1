@@ -1,12 +1,13 @@
 ### Name: Install Sitecore Link
 ### Description: Installs and deploys Sitecore Link on your local development machine (requires JSS module and CLI)
-### Compatibility: Sifon 0.96. Requres Sifon PowerShell module
+### Compatibility: Sifon 0.98. Requres Sifon PowerShell module
+### Dependencies: "Install-SitecoreLink.json","Populate-Schema.json"
 
 param(
 
     [string]$Webroot,
     [string]$Website,
-    [string]$Solr = "https://localhost:8840/solr",
+    [string]$Solr,
     [string]$AdminUsername,
     [string]$AdminPassword
 )
