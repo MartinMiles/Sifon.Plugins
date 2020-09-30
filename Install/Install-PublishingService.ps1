@@ -18,8 +18,6 @@ $serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip"
 $moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
 $serviceFilename = (Get-Location).Path + "\Downloads\" + $serviceName
 
-Verify-PortalCredentials -PortalCredentials $PortalCredentials
-
 Function Replace-WithDatabaseAdmin($ConnectionString, $Username, $Password)
 {
     $ConnectionString = $ConnectionString -replace "User ID=(\w+);", "User ID=$Username;"
@@ -35,8 +33,11 @@ Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
 {
     $fullPath = (Get-Location).Path + "\Downloads\$moduleName"
 
+
     If(!(Test-Path -Path $fullPath))
     {
+        Verify-PortalCredentials -PortalCredentials $PortalCredentials
+
         Write-Output "Downloading $moduleName package from Sitecore Developers Portal..."
         Display-Progress -action "downloading $moduleName package from Sitecore Developers Portal." -percent $progress
     
@@ -130,7 +131,7 @@ if($response.status -eq 0)
     if(Test-Path $moduleFilename -PathType leaf)
     {
         $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
-        Install-SitecorePackageUsingRemoting -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $moduleFilename
+        Install-SitecorePackage -PackageFullPath $moduleFilename -Webroot $Webroot -Hostbase $InstanceUrl
         Write-Output "Publishing module installed."
 
         $content = @'
@@ -148,7 +149,7 @@ if($response.status -eq 0)
         $content = $content.Replace("_HOSTNAME_",$Hostname)
         Set-Content -Path "$Webroot\App_Config\Modules\PublishingService\Sitecore.Publishing.Service.Patched.config" -Value $content
         Write-Output "Publishing Module config patched."
-        Start-Process -FilePath $exe  -NoNewWindow
+        Start-Process -FilePath $exe -NoNewWindow
         Write-Output "#COLOR:GREEN# Publishing Service and Module for Sitecore have been installed."
         Display-Progress -action "publishing service and its module for Sitecore have been installed" -percent 100
     }
