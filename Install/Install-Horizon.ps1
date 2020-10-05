@@ -13,7 +13,8 @@ param(
 
 $horizon1000URL = "https://dev.sitecore.net/~/media/6428CB6CC4F143E9A085AF2C36706E26.ashx"
 $horizonFilename = "Sitecore Horizon 10.0.0.zip"
-$packageFullPath = (Get-Location).Path + "\Downloads\$horizonFilename"
+$downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
+$packageFullPath = "$downloadsFolder\$horizonFilename"
 
 ### licence
 # Add-Type -Language CSharp @"
