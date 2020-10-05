@@ -15,8 +15,9 @@ param(
 
 $moduleName = "Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"
 $serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip"
-$moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
-$serviceFilename = (Get-Location).Path + "\Downloads\" + $serviceName
+$downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
+$moduleFilename = "$downloadsFolder\$moduleName"
+$serviceFilename = "$downloadsFolder\$serviceName"
 
 Function Replace-WithDatabaseAdmin($ConnectionString, $Username, $Password)
 {
