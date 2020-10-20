@@ -1,16 +1,15 @@
 ### Name: Install Publishing Service 4.3.0
 ### Description: Installs Sitecore Publishing Service
-### Compatibility: Sifon 0.96. Requres Sifon PowerShell module
+### Compatibility: Sifon 0.99
 
 param(
     [string]$Webroot,
     [string]$Website,
     [string]$Prefix,
-    [string]$Username,  # SQL server admin username
-    [string]$Password,  # SQL server admin password
     [string]$AdminUsername,
     [string]$AdminPassword,
-    $PortalCredentials
+    [PSCredential]$SqlCredentials,
+    [PSCredential]$PortalCredentials
 )
 
 $moduleName = "Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"
@@ -71,6 +70,9 @@ $psFolder = New-Item -ItemType Directory -Path $serviceFolderPath -force
 Write-Output "Sifon-MuteProgress"
 Expand-Archive -Path $serviceFilename -DestinationPath $serviceFolderPath
 Write-Output "Sifon-UnmuteProgress"
+
+$Username = $SqlCredentials.GetNetworkCredential().username
+$Password = $SqlCredentials.GetNetworkCredential().password
 
 $core = Get-ConnectionString -ConfigPath "$Webroot\App_Config\ConnectionStrings.config" -DbName "core"
 $core = Replace-WithDatabaseAdmin -ConnectionString $core -Username $Username -Password $Password
