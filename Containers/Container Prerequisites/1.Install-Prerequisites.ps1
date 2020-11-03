@@ -7,7 +7,7 @@
 # In that case, run the following command on THE HOST machine, just outside of VM:
 # Set-VMProcessor -VMName <MACHINE NAME> -ExposeVirtualizationExtensions $true
 
-Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName System.Windows.Forms
 $UserResponse= [System.Windows.Forms.MessageBox]::Show("This machine will reboot at the end of current operation. Do you want to  continue?" , "Status" , 4)
 if ($UserResponse -ne 'YES') 
 {
