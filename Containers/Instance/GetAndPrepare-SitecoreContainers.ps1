@@ -33,28 +33,29 @@ namespace Validation
 }
 "@;
 
-$form = new-object Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker
-$form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterParent;
+$licenseSelector = new-object Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker
+$licenseSelector.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterParent;
 
-$form.Caption = "Sitecore license selector";
-$form.Filters = "License files|*.xml";
-$form.Label = "Select Sitecore license in order to run Sitecore in containers:";
-$form.Button = "OK";
+$licenseSelector.Caption = "Sitecore license selector";
+$licenseSelector.Filters = "License files|*.xml";
+$licenseSelector.Label = "Select Sitecore license in order to run Sitecore in containers:";
+$licenseSelector.Button = "OK";
 
 # this is the way of passing delegate into DLL without losing types
-$form.Validation = { [Validation.FilePicker]::IsSitecoreLicense($args[0]) }
-$result = $form.ShowDialog()
+$licenseSelector.Validation = { [Validation.FilePicker]::IsSitecoreLicense($args[0]) }
+$result = $licenseSelector.ShowDialog()
 
 $licenseMessage = "Sitecore license required for running in Docker"
-if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEmpty($form.FilePath))
+if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEmpty($licenseSelector.FilePath))
 {
     Write-Warning $licenseMessage
     exit
 }
 
+# licenseSelector should be used as the parameter passed into Init.ps1
+[string]$licensePath = $licenseSelector.FilePath
 
-#
-#
+
 #
 #
 $ContainersDirectory = New-Item -ItemType Directory -Path Containers -force
@@ -88,6 +89,7 @@ Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "prepari
 $file = "$ProfileContainersDirectory\init.ps1"
 $regex = '(Install-Module\s*SitecoreDockerTools.*)'
 (Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
+
 
 Invoke-Expression "$ProfileContainersDirectory\init.ps1 $InitParams"
 
