@@ -8,11 +8,11 @@ param(
     [string]$Repository,
     [string]$Folder,
     [string]$SitecoreAdminPassword,
-    [string]$SaPassword
+    [string]$SaPassword,
+    [string]$InitParams
 )
 
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "Requesting Sitecore license file" -PercentComplete 4
-
 
 ### get licence
 Add-Type -Language CSharp @"
@@ -89,7 +89,7 @@ $file = "$ProfileContainersDirectory\init.ps1"
 $regex = '(Install-Module\s*SitecoreDockerTools.*)'
 (Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
 
-& "$ProfileContainersDirectory\init.ps1" -LicenseXmlPath $form.FilePath -AdminPassword $SitecoreAdminPassword
+Invoke-Expression "$ProfileContainersDirectory\init.ps1 $InitParams"
 
 Pop-Location
 
