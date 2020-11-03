@@ -1,10 +1,10 @@
 ### Name: Download code and prepare Sitecore 10
 ### Description: Downloads and prepares Sitecore 10 for a run in Docker
-### Compatibility: Sifon 0.98
-
+### Compatibility: Sifon 1.00
+### Local-only
 
 param(
-    [string]$ProfileName,
+    [string]$ContainerProfileName,
     [string]$Repository,
     [string]$Folder,
     [string]$AdminPassword,
@@ -38,7 +38,7 @@ $form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterParent;
 
 $form.Caption = "Sitecore license selector";
 $form.Filters = "License files|*.xml";
-$form.Label = "Select Sitecore license in order to install Horizon:";
+$form.Label = "Select Sitecore license in order to run Sitecore in containers:";
 $form.Button = "OK";
 
 # this is the way of passing delegate into DLL without losing types
@@ -58,7 +58,7 @@ if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEm
 #
 #
 $ContainersDirectory = New-Item -ItemType Directory -Path Containers -force
-$ProfileContainersDirectory = New-Item -ItemType Directory -Path "$ContainersDirectory\$ProfileName" -force
+$ProfileContainersDirectory = New-Item -ItemType Directory -Path "$ContainersDirectory\$ContainerProfileName" -force
 
 $SourcesDirectory = New-Item -ItemType Directory -Path Cache\Sitecore -force
 
@@ -84,6 +84,10 @@ cd "$ProfileContainersDirectory"
 
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "preparing environmental configuration file" -PercentComplete 34
 
+
+$file = "$ProfileContainersDirectory\init.ps1"
+$regex = '(Install-Module\s*SitecoreDockerTools.*)'
+(Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
 
 & "$ProfileContainersDirectory\init.ps1" -LicenseXmlPath $form.FilePath -SitecoreAdminPassword $AdminPassword -SqlSaPassword $SaPassword
 

@@ -1,9 +1,10 @@
 ### Name: Build and run Sitecore
 ### Description: Builds (on a first run) and then runs Sitecore in Docker
-### Compatibility: Sifon 0.98
+### Compatibility: Sifon 1.00
+### Local-only
 
 param(
-    [string]$ProfileName,
+    [string]$ContainerProfileName,
     [string]$Repository,
     [string]$Folder,
     [string]$AdminPassword,
@@ -15,7 +16,7 @@ Write-Warning "Just in case: if getting Traefik errors, please ensure tha standa
 $BaseDir = (Get-Location).Path
 
 $ContainersDirectory = New-Item -ItemType Directory -Path Containers -force
-$ProfileContainersDirectory = "$BaseDir\Containers\$ProfileName"
+$ProfileContainersDirectory = "$BaseDir\Containers\$ContainerProfileName"
 
 
 If (!(Test-Path -Path $ProfileContainersDirectory)){
