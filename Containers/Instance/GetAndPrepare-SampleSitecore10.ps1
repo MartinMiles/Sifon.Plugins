@@ -7,7 +7,7 @@ param(
     [string]$ContainerProfileName,
     [string]$Repository,
     [string]$Folder,
-    [string]$AdminPassword,
+    [string]$SitecoreAdminPassword,
     [string]$SaPassword
 )
 
@@ -69,7 +69,7 @@ If (!((Test-Path -Path $ContainersDirectory\.env) -and (Test-Path -Path Containe
 {
     Write-Output "Sifon-MuteOutput"
         Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "getting the code from GitHub repository" -PercentComplete 18
-        git clone https://github.com/Sitecore/docker-examples.git "$SourcesDirectory"
+	git clone $Repository "$SourcesDirectory"
         
         Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "copying the code into a working directory" -PercentComplete 31
         # TODO: validate "$SourcesDirectory\$Folder exists in the cloned code
@@ -89,12 +89,7 @@ $file = "$ProfileContainersDirectory\init.ps1"
 $regex = '(Install-Module\s*SitecoreDockerTools.*)'
 (Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
 
-& "$ProfileContainersDirectory\init.ps1" -LicenseXmlPath $form.FilePath -SitecoreAdminPassword $AdminPassword -SqlSaPassword $SaPassword
-
-# $res = [PowerShell]::Create().AddCommand("$ContainersDirectory\init.ps1"). `
-#     AddParameter("LicenseXmlPath", $form.FilePath). `
-#     AddParameter("SitecoreAdminPassword", $defaultPassword). `
-#     AddParameter("SqlSaPassword", $defaultPassword).Invoke() 
+& "$ProfileContainersDirectory\init.ps1" -LicenseXmlPath $form.FilePath -AdminPassword $SitecoreAdminPassword
 
 Pop-Location
 
