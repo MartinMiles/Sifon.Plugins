@@ -29,9 +29,9 @@ cd "$ProfileContainersDirectory"
 Start-Process powershell -Wait -ArgumentList '-noexit -command "docker-compose up -d"'
 
 
-$UserResponse= [System.Windows.Forms.MessageBox]::Show("Sitecore in containers is ready. Would you like opening it in a browser?" , "Status" , 4)
-if ($UserResponse -eq 'YES') 
-{
-    start https://xp0cm.localhost/sitecore
-}
+# $UserResponse= [System.Windows.Forms.MessageBox]::Show("Sitecore in containers is ready. Would you like opening it in a browser?" , "Status" , 4)
+# if ($UserResponse -eq 'YES') 
+# {
+#     start https://xp0cm.localhost/sitecore
+# }
 
