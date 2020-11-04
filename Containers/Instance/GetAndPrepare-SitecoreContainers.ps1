@@ -81,19 +81,24 @@ If (!((Test-Path -Path $ContainersDirectory\.env) -and (Test-Path -Path Containe
     Write-Output "Sifon-UnmuteOutput"
 }
 
-cd "$ProfileContainersDirectory"
+Set-Location -Path $ProfileContainersDirectory
 
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "preparing environmental configuration file" -PercentComplete 34
 
-
-$file = "$ProfileContainersDirectory\init.ps1"
+$file = [IO.Path]::Combine($ProfileContainersDirectory, 'init.ps1')
 $regex = '(Install-Module\s*SitecoreDockerTools.*)'
 (Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
 
+$file  = $file -replace ' ', '` '
+try{
+	Invoke-Expression "$file $InitParams"
+	Write-Output "#COLOR:GREEN# Sitecore in containers has been configured."
 
-Invoke-Expression "$ProfileContainersDirectory\init.ps1 $InitParams"
-
-Pop-Location
+}
+catch{
+	Write-Output "#COLOR:RED# Something went wron while running initialization script."
+}
 
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "Complete" -PercentComplete 100
-Write-Output "#COLOR:GREEN# Sitecore in containers has been configured."
+Pop-Location
+
