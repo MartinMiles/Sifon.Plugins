@@ -86,8 +86,13 @@ Set-Location -Path $ProfileContainersDirectory
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "preparing environmental configuration file" -PercentComplete 34
 
 $file = [IO.Path]::Combine($ProfileContainersDirectory, 'init.ps1')
+
 $regex = '(Install-Module\s*SitecoreDockerTools.*)'
 (Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
+
+$regex = '^\s*(Invoke-WebRequest.*)$'
+$nl = [Environment]::NewLine
+(Get-Content $file) -replace $regex, ('$ProgressPreference = ''SilentlyContinue''' + $nl +'$1' + $nl + '$ProgressPreference = ''Continue''') | Set-Content $file
 
 $file  = $file -replace ' ', '` '
 try{
