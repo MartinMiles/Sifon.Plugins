@@ -108,6 +108,22 @@ catch{
     Write-Host $_
 }
 
+$mk = Get-ChildItem -Path \. -Filter mkcert.exe -Recurse -ErrorAction SilentlyContinue -Force
+if($null -ne $mk)
+{
+    $mkcert = $mk.FullName
+
+    Write-Host "Generating self-signed certificate" -fore white
+    Write-Host "Please ignore the red color below, that is NOT an error" -fore white
+
+    & $mkcert -install
+    & $mkcert -cert-file xp0cm.localhost.crt -key-file xp0cm.localhost.key "xp0cm.localhost"
+    & $mkcert -cert-file xp0id.localhost.crt -key-file xp0id.localhost.key "xp0id.localhost"
+}
+
+
+
+
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "Complete" -PercentComplete 100
 Pop-Location
 
