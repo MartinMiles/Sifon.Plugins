@@ -11,7 +11,7 @@ param(
     [string]$SaPassword
 )
 
-Write-Warning "Just in case: if getting Traefik errors, please ensure tha standard ports for HTTPS, Solr, SQL are released, so that they do not conflict with ports exposed by containers."
+Write-Warning "Just in case: if getting Traefik errors, please ensure that standard ports for HTTPS, Solr, SQL are released, so that they do not conflict with ports exposed by containers."
 
 $BaseDir = (Get-Location).Path
 

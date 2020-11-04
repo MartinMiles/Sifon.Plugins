@@ -101,15 +101,17 @@ $file  = $file -replace ' ', '` '
 try{
     Invoke-Expression "$file $InitParams"
     
-    Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "installing self-signed certificates with mkcert.exe" -PercentComplete 34
+    Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "installing self-signed certificates with mkcert.exe" -PercentComplete 98
     $mk = Get-ChildItem -Path \. -Filter mkcert.exe -Recurse -ErrorAction SilentlyContinue -Force
     if($null -ne $mk)
     {
         $mkcert = $mk.FullName
 
         Write-Host "Generating self-signed certificates" -fore white
+        Write-Host "=======================================================" -fore yellow
         Write-Host "Please ignore the RED color below, that is NOT an error" -fore white
-
+        Write-Host "=======================================================" -fore yellow
+        
         & $mkcert -install
         & $mkcert -cert-file xp0cm.localhost.crt -key-file xp0cm.localhost.key "xp0cm.localhost"
         & $mkcert -cert-file xp0id.localhost.crt -key-file xp0id.localhost.key "xp0id.localhost"
