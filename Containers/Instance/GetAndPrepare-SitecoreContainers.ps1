@@ -91,35 +91,38 @@ $regex = '(Install-Module\s*SitecoreDockerTools.*)'
 (Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
 
 # $regex = '^\s*(Invoke-WebRequest.*)$'
-# $nl = [Environment]::NewLine
+$nl = [Environment]::NewLine
 # (Get-Content $file) -replace $regex, ('$ProgressPreference = ''SilentlyContinue''' + $nl +'$1' + $nl + '$ProgressPreference = ''Continue''') | Set-Content $file
 
 $regex = '(&\s*\$mkcert.*)$'
-(Get-Content $file) -replace $regex, '# $1' | Set-Content $file
+(Get-Content $file) -replace $regex, $nl | Set-Content $file
 
 $file  = $file -replace ' ', '` '
 try{
-	Invoke-Expression "$file $InitParams"
-	Write-Output "#COLOR:GREEN# Sitecore in containers has been configured."
+    Invoke-Expression "$file $InitParams"
+    
+    Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "installing self-signed certificates with mkcert.exe" -PercentComplete 34
+    $mk = Get-ChildItem -Path \. -Filter mkcert.exe -Recurse -ErrorAction SilentlyContinue -Force
+    if($null -ne $mk)
+    {
+        $mkcert = $mk.FullName
 
+        Write-Host "Generating self-signed certificates" -fore white
+        Write-Host "Please ignore the RED color below, that is NOT an error" -fore white
+
+        & $mkcert -install
+        & $mkcert -cert-file xp0cm.localhost.crt -key-file xp0cm.localhost.key "xp0cm.localhost"
+        & $mkcert -cert-file xp0id.localhost.crt -key-file xp0id.localhost.key "xp0id.localhost"
+
+        Write-Output "#COLOR:GREEN# Sitecore in containers has been succesfully configured."
+    }
 }
 catch{
 	Write-Output "#COLOR:RED# Something went wrong while running initialization script."
     Write-Host $_
 }
 
-$mk = Get-ChildItem -Path \. -Filter mkcert.exe -Recurse -ErrorAction SilentlyContinue -Force
-if($null -ne $mk)
-{
-    $mkcert = $mk.FullName
 
-    Write-Host "Generating self-signed certificate" -fore white
-    Write-Host "Please ignore the red color below, that is NOT an error" -fore white
-
-    & $mkcert -install
-    & $mkcert -cert-file xp0cm.localhost.crt -key-file xp0cm.localhost.key "xp0cm.localhost"
-    & $mkcert -cert-file xp0id.localhost.crt -key-file xp0id.localhost.key "xp0id.localhost"
-}
 
 
 
