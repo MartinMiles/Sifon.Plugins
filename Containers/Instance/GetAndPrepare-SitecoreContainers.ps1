@@ -90,9 +90,12 @@ $file = [IO.Path]::Combine($ProfileContainersDirectory, 'init.ps1')
 $regex = '(Install-Module\s*SitecoreDockerTools.*)'
 (Get-Content $file) -replace $regex, '$1 -allowClobber -force' | Set-Content $file
 
-$regex = '^\s*(Invoke-WebRequest.*)$'
-$nl = [Environment]::NewLine
-(Get-Content $file) -replace $regex, ('$ProgressPreference = ''SilentlyContinue''' + $nl +'$1' + $nl + '$ProgressPreference = ''Continue''') | Set-Content $file
+# $regex = '^\s*(Invoke-WebRequest.*)$'
+# $nl = [Environment]::NewLine
+# (Get-Content $file) -replace $regex, ('$ProgressPreference = ''SilentlyContinue''' + $nl +'$1' + $nl + '$ProgressPreference = ''Continue''') | Set-Content $file
+
+$regex = '(&\s*\$mkcert.*)$'
+(Get-Content $file) -replace $regex, '# $1' | Set-Content $file
 
 $file  = $file -replace ' ', '` '
 try{
@@ -101,7 +104,8 @@ try{
 
 }
 catch{
-	Write-Output "#COLOR:RED# Something went wron while running initialization script."
+	Write-Output "#COLOR:RED# Something went wrong while running initialization script."
+    Write-Host $_
 }
 
 Write-Progress -Activity "Run Sitecore in containers" -CurrentOperation "Complete" -PercentComplete 100
