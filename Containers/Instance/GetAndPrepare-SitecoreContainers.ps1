@@ -107,11 +107,11 @@ try{
     {
         $mkcert = $mk.FullName
 
-        Write-Host "Generating self-signed certificates" -fore white
-        Write-Host "=======================================================" -fore yellow
-        Write-Host "Please ignore the RED color below, that is NOT an error" -fore white
-        Write-Host "=======================================================" -fore yellow
-        
+        Write-Output "Generating self-signed certificates" -fore white
+        Write-Output "#COLOR:YELLOW#=======================================================" 
+        Write-Output "Please ignore the RED color below, that is NOT an error" 
+        Write-Output "#COLOR:YELLOW#=======================================================" 
+
         & $mkcert -install
         & $mkcert -cert-file xp0cm.localhost.crt -key-file xp0cm.localhost.key "xp0cm.localhost"
         & $mkcert -cert-file xp0id.localhost.crt -key-file xp0id.localhost.key "xp0id.localhost"
