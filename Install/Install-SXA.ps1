@@ -12,14 +12,55 @@ param(
 )
 
 Function Display-Progress($action, $percent){
-    Write-Progress -Activity "Installing Sitecore package" -CurrentOperation $action -PercentComplete $percent
+    Write-Progress -Activity "Installing SXA packages" -CurrentOperation $action -PercentComplete $percent
 }
 
-# [string]$PackageFullPath = $SelectedFile
-# If([string]::IsNullOrEmpty($PackageFullPath))
-# {
-#     Write-Warning "You should provide a path to a package to be installed"
-#     exit
-# }
+Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
+{
+    $fullPath = (Get-Location).Path + "\Downloads\$moduleName"
 
-$Urls
+
+    If(!(Test-Path -Path $fullPath))
+    {
+        Verify-PortalCredentials -PortalCredentials $PortalCredentials
+
+        Write-Output "Downloading $moduleName package from Sitecore Developers Portal..."
+        Display-Progress -action "downloading $moduleName package from Sitecore Developers Portal." -percent $progress
+    
+        Write-Output "Sifon-MuteProgress"
+            Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $moduleResourceUrl -TargertFilename $fullPath
+        Write-Output "Sifon-UnmuteProgress"
+    }
+    else
+    {
+        Write-Output "Found package $moduleName already downloaded within Downloads folder."
+    }
+}
+
+if($unll -eq $Urls){
+
+    Write-Warning "No resources passed for the selected resources"
+    exit
+}
+
+$found = $string -match '\/([0-9a-fA-F]+)\.ashx'
+
+ForEach ($Url in $Urls) 
+{
+    if ($found) {
+
+        $fileName = $matches[1] + ".zip"
+        $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
+        $packageFullPath = "$downloadsFolder\$fileName"
+
+        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress 3
+
+        $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
+        Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
+        
+        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress 30
+    }
+}
+
+Display-Progress -action "done." -percent 100
+
