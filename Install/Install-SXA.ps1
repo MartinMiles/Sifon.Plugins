@@ -5,10 +5,8 @@
 
 param(
     [string]$Webroot,
-    [string]$Website,
-    [string]$Prefix,
     [PSCredential]$PortalCredentials,
-    $Urls
+    [string[]]$Urls
 )
 
 Function Display-Progress($action, $percent){
@@ -37,29 +35,34 @@ Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
     }
 }
 
-if($unll -eq $Urls){
+if($null -eq $Urls){
 
     Write-Warning "No resources passed for the selected resources"
     exit
 }
 
-$found = $string -match '\/([0-9a-fA-F]+)\.ashx'
+
+$CurrentProgress = 10;
 
 ForEach ($Url in $Urls) 
 {
-    if ($found) {
-
+    $found = $Url -match '\/([0-9a-fA-F]+)\.ashx'
+    if ($found) 
+    {
         $fileName = $matches[1] + ".zip"
         $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
         $packageFullPath = "$downloadsFolder\$fileName"
 
-        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress 3
+        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress $CurrentProgress
 
         $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
         Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
         
-        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress 30
+        $CurrentProgress += 20
+        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress $CurrentProgress
     }
+
+    $CurrentProgress+=20
 }
 
 Display-Progress -action "done." -percent 100
