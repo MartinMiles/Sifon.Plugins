@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Sitecore Experience Accelerator 10.0.0",
+        "url": "https://dev.sitecore.net/~/media/42992D85CC134384A0660F6C41479C16.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Extension 6.1.1 for Sitecore",
+                "url": "https://dev.sitecore.net/~/media/E820B0DA62464072891DA92470F93954.ashx",
+            }
+        ]
+    },
+    {
+        "name": "Sitecore Experience Accelerator for 9.3",
+        "url": "https://dev.sitecore.net/~/media/6F15F11E72D942218F2820108533F691.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Extension for Sitecore 9.3",
+                "url": "https://dev.sitecore.net/~/media/30973C391E9148F8B866FE4522E7F260.ashx"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore Experience Accelerator 1.9.0 for 9.2",
+        "url": "https://dev.sitecore.net/~/media/FB62D25D54C945999FE05C0E22B29622.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Extension 5.0 for Sitecore 9.2",
+                "url": "https://dev.sitecore.net/~/media/F02391CD82A144D18021665D3D3F4675.ashx"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore Experience Accelerator 1.9.0 for 9.1",
+        "url": "https://dev.sitecore.net/~/media/26068A02652A4A6C82BBAD08FBA9CFE2.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Extension 5.0 for Sitecore 9.1",
+                "url": "https://dev.sitecore.net/~/media/137A65C231504494A098756BD081514E.ashx"
+            }
+        ]
+    }
+]
+
