@@ -54,15 +54,14 @@ ForEach ($Url in $Urls)
         $packageFullPath = "$downloadsFolder\$fileName"
 
         VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress $CurrentProgress
+        
+        $CurrentProgress += 20
+        Display-Progress -action "installing the downloaded module" -percent $CurrentProgress
 
         $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
         Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
-        
-        $CurrentProgress += 20
-        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress $CurrentProgress
-    }
-
-    $CurrentProgress+=20
+        $CurrentProgress+=20
+    }    
 }
 
 Display-Progress -action "done." -percent 100
