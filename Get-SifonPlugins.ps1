@@ -1,7 +1,21 @@
 ### Name: Get Sifon plugins
 ### Description: Downloads the plugins from Sifon repository (requires git to be installed)
 ### Compatibility: Sifon 1.00
-### Local-only
+### _Display: Local
+### Execution: Local
+
+param([bool]$IsRemote)
+
+if($IsRemote){
+
+    Write-Output "-----------------------------------"
+    Write-Error  "You are running on a remote profile"
+    Write-Output "-----------------------------------"
+    Write-Output "The script requires a local context"
+    Write-Output "enforced in order to run correctly."
+    Write-Warning "Exiting program..."
+    exit    
+}
 
 $hasGitInstalled = Verify-Git
 
