@@ -1,7 +1,6 @@
 ### Name: Get Sifon plugins
 ### Description: Downloads the plugins from Sifon repository (requires git to be installed)
 ### Compatibility: Sifon 1.00
-### _Display: Local
 ### Execution: Local
 
 param([bool]$IsRemote)
