@@ -1,0 +1,79 @@
+### Name: Sync all Unicorn configurations
+### Description: The plugin will sync all Unicorn configurations from serialized items into Sitecore
+### Compatibility: Sifon 1.00
+
+param(
+    [string]$Webroot
+    # [string]$Website,
+    # [string]$Prefix,
+    # [string]$AdminUsername,
+    # [string]$AdminPassword,
+    # [PSCredential]$SqlCredentials,
+    # [PSCredential]$PortalCredentials
+)
+
+$ModuleUrl = 'https://raw.githubusercontent.com/SitecoreUnicorn/Unicorn/master/doc/PowerShell%20Remote%20Scripting/Unicorn.psm1'
+$MicroChapUrl = 'https://github.com/SitecoreUnicorn/Unicorn/raw/master/doc/PowerShell%20Remote%20Scripting/MicroCHAP.dll'
+
+$folder = ".\Downloads\Unicorn"
+
+New-Item -ItemType Directory -Force -Path $folder | Out-Null
+
+$UnicornModule = "$folder\Unicorn.psm1"
+$MicroChap = "$folder\MicroCHAP.dll"
+
+
+$ProgressPreference = "SilentlyContinue"
+if(!(Test-Path $UnicornModule)) {
+    Start-BitsTransfer -Source $ModuleUrl -Destination $UnicornModule
+}
+
+if(!(Test-Path $MicroChap)){
+    Invoke-WebRequest $MicroChapUrl -OutFile $MicroChap
+}
+$ProgressPreference = "Continue"
+
+Import-Module ".\$UnicornModule"
+
+$InstanceUrl = Get-InstanceUrl -Webroot $Webroot
+$syncUnicornUrl = $InstanceUrl + "/unicorn.aspx";
+ 
+$IncludeFolder = "$Webroot\App_Config\Include"
+$ConfigMatchPattern = "<SharedSecret>(.+)<\/SharedSecret>"
+
+
+$files = Get-ChildItem -Path $IncludeFolder -Recurse -Filter "*.config" `
+    | Select-String -Pattern $ConfigMatchPattern `
+    | Select Path `
+    | Select-Xml -XPath "/configuration/sitecore/unicorn/authenticationProvider/SharedSecret" `
+    | Select-Object -ExpandProperty Node
+
+    
+    $SharedSecret = $files.InnerText
+        
+    if($null -eq $SharedSecret){
+
+        Write-Output "==============================================================================================================="
+        Write-Warning "Failed to obtain Unicorn secret from under $IncludeFolder folder."
+        Write-Warning "There isn't any of config files having <SharedSecret> provided. Cannot contunue with sync, terminating"
+        Write-Output "==============================================================================================================="
+        exit
+    }
+
+    if(!($SharedSecret -is [string]))
+    {
+        Write-Output "==============================================================================================================="
+        Write-Warning "Failed to obtain Unicorn secret from under $IncludeFolder folder."
+        Write-Warning "Found too many configuration files having <SharedSecret> node under the above folder. Script requires only one"
+        Write-Output "==============================================================================================================="
+        exit        
+    }
+
+try{
+    Sync-Unicorn -ControlPanelUrl $syncUnicornUrl -SharedSecret $SharedSecret
+}
+catch{ }
+
+if(Test-Path $UnicornModule){
+    Remove-Module Unicorn
+}
