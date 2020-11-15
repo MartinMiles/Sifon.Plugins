@@ -41,6 +41,7 @@ if($null -eq $Urls){
     exit
 }
 
+New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
 $CurrentProgress = 10;
 
@@ -64,5 +65,9 @@ ForEach ($Url in $Urls)
     }    
 }
 
+Write-Output  "==================================================================================================="
+$result =     "Sitecore PowerShell Extensions (SPE) and Sitecore Experience Accellerator (SXA) have been installed"
+Write-Output "#COLOR:GREEN# $result"
+Write-Output  "==================================================================================================="
 Display-Progress -action "done." -percent 100
 

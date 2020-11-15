@@ -1,9 +1,8 @@
 ### Name: Install Sitecore PowerShell with Remoting
 ### Description:  Sitecore PowerShell Extension with Remoting enabled
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.00
 ### Dependencies: "Install-SitecorePowershellWithRemoting.config"
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SPE.json")
-
 
 param(
     [string]$Webroot,
@@ -11,7 +10,7 @@ param(
     $PortalCredentials,
     [string]$AdminUsername,
     [string]$AdminPassword,
-    [string[][]]$Urls
+    [string[]]$Urls
 )
 
 if($null -eq $Urls){
@@ -20,13 +19,14 @@ if($null -eq $Urls){
     exit
 }
 
-$moduleName =  $Urls[1][0]
-$moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName + ".zip"
-$moduleResource = $Urls[1][1]
-$remotingFilename = (Get-Location).Path + "\Downloads\" + $Urls[0][0] + ".zip"
-$remotingResource = $Urls[0][1]
-$remotingModuleFolder = "c:\Program Files\WindowsPowerShell\Modules"
+New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
+$moduleName = "Sitecore.PowerShell.Extensions.zip"
+$moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
+$moduleResource = $Urls[1]
+$remotingFilename = (Get-Location).Path + "\Downloads\SPE.Remoting.zip"
+$remotingResource = $Urls[0]
+$remotingModuleFolder = "c:\Program Files\WindowsPowerShell\Modules"
 
 $config = $aspxFullpath = $PSCommandPath.Replace('.ps1','.config')
 
@@ -39,8 +39,8 @@ Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 If(!(Test-Path -Path $moduleFilename))
 {
-    Write-Output "Downloading package $moduleName from Sitecore Developers Portal..."
-    Display-Progress -action "downloading package  $moduleName from Sitecore Developers Portal." -percent 3
+    Write-Output "Downloading package $moduleName from: $moduleResource"
+    Display-Progress -action "downloading package  $moduleName from from: $moduleResource." -percent 3
 
     Write-Output "Sifon-MuteProgress"
         Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $moduleResource -TargertFilename $moduleFilename
@@ -83,12 +83,44 @@ Copy-Item $config -destination "$Webroot\App_Config\Include\z.Spe" -force
 
 Display-Progress -action "verifying installation by making a remoting request to instance" -percent 77
 Write-Output "Finally, verifying installation by making a remoting request to instance ..."
-Import-Module SPE
+
+if (Get-Module -ListAvailable -Name SPE) {
+    Import-Module SPE
+} 
+else {
+    Write-Output  "================================="
+    Write-Warning "SPE Module does is not installed."
+    Write-Output  "================================="
+    Write-Output "_"
+    Write-Output "Instance URL: $InstanceUrl"
+    exit
+}
+
+
 $session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
-Invoke-RemoteScript -ScriptBlock {
+if($null -eq $session)
+{    
+    Write-Output  "============================="
+    Write-Error "Error: Remote session created"
+    Write-Output  "============================="
+    exit
+}
+
+
+$remoteSessionOutput = Invoke-RemoteScript -ScriptBlock {
     Get-Item -Path "master:\content\Home" | Out-Null
+    "SPE Module is installed and works well"
 } -Session $session
 
-$result = "Sitecore PowerShell Extensions module has been successfully installed and Remoting has been enabled for this instance"
+if($null -ne $remoteSessionOutput)
+{
+    Write-Output "."
+    Write-Warning $remoteSessionOutput
+    Write-Output "."
+    Write-Output  "====================================================================================================================="
+    $result = "Sitecore PowerShell Extensions module has been successfully installed and Remoting has been enabled for this instance"
+    Write-Output "#COLOR:GREEN# $result"
+    Write-Output  "====================================================================================================================="
+}
+
 Display-Progress -action $result -percent 100
-Write-Output "#COLOR:GREEN# $result"
