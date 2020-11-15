@@ -9,15 +9,37 @@ param(
 )
 
 $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
-"Instance URL: $InstanceUrl"
 
-Import-Module SPE
-$session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
-
-if($null -ne $session){
-    "Remote session created"
+if (Get-Module -ListAvailable -Name SPE) {
+    Import-Module SPE
+} 
+else {
+    Write-Output  "================================="
+    Write-Warning "SPE Module does is not installed."
+    Write-Output  "================================="
+    Write-Output "_"
+    Write-Output "Instance URL: $InstanceUrl"
+    exit
 }
 
-Invoke-RemoteScript -ScriptBlock {
-    Get-Item -Path "master:\content\Home" 
+$session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
+if($null -eq $session)
+{    
+    Write-Output  "============================="
+    Write-Error "Error: Remote session created"
+    Write-Output  "============================="
+    exit
+}
+
+$remoteSessionOutput = Invoke-RemoteScript -ScriptBlock {
+    Get-Item -Path "master:\content\Home" | Out-Null
+    "SPE Module is installed and works well"
 } -Session $session
+
+if($null -ne $remoteSessionOutput)
+{
+    Write-Output "."
+    Write-Output  "======================================"
+    Write-Warning $remoteSessionOutput
+    Write-Output  "======================================"
+}
