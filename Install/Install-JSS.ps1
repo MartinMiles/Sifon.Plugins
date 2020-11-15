@@ -14,6 +14,8 @@ Function Display-Progress($action, $percent)
     Write-Progress -Activity "Installing Sitecore JSS" -CurrentOperation $action -PercentComplete $percent
 }
 
+New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
+
 Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 $package = (Get-Location).Path + "\Downloads\Sitecore JavaScript Services Server for Sitecore 10.0.0 XP 14.0.0 rev. 200714.zip"

@@ -41,6 +41,7 @@ if($null -eq $Urls){
     exit
 }
 
+New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
 $CurrentProgress = 10;
 
