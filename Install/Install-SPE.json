@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Sitecore PowerShell Extension 6.0",
+        "url": "https://dev.sitecore.net/~/media/30973C391E9148F8B866FE4522E7F260.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Remoting 6.0",
+                "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.0/SPE.Remoting-6.0.zip"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore PowerShell Extension 6.1.1",
+        "url": "https://dev.sitecore.net/~/media/E820B0DA62464072891DA92470F93954.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Remoting 6.1.1",
+                "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.1.1/SPE.Remoting-6.1.1.zip"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore PowerShell Extension 6.2",
+        "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.2/Sitecore.PowerShell.Extensions-6.2.zip",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Remoting 6.2",
+                "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.2/SPE.Remoting-6.2.zip"
+            }
+        ]
+    }
+]
+
