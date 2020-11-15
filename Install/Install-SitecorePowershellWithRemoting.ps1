@@ -1,6 +1,6 @@
 ### Name: Install Sitecore PowerShell with Remoting
 ### Description:  Sitecore PowerShell Extension with Remoting enabled
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.00
 ### Dependencies: "Install-SitecorePowershellWithRemoting.config"
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SPE.json")
 
@@ -11,7 +11,7 @@ param(
     $PortalCredentials,
     [string]$AdminUsername,
     [string]$AdminPassword,
-    [string[][]]$Urls
+    [string[]]$Urls
 )
 
 if($null -eq $Urls){
@@ -20,15 +20,24 @@ if($null -eq $Urls){
     exit
 }
 
-$moduleName =  $Urls[1][0]
-$moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName + ".zip"
-$moduleResource = $Urls[1][1]
-$remotingFilename = (Get-Location).Path + "\Downloads\" + $Urls[0][0] + ".zip"
-$remotingResource = $Urls[0][1]
+$moduleName = "Sitecore.PowerShell.Extensions.zip"
+$moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
+$moduleResource = $Urls[1]
+$remotingFilename = (Get-Location).Path + "\Downloads\SPE.Remoting.zip"
+$remotingResource = $Urls[0]
 $remotingModuleFolder = "c:\Program Files\WindowsPowerShell\Modules"
+
+# $moduleName = "Sitecore.PowerShell.Extensions-6.1.1.zip"
+# $moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
+# $moduleResource = "https://dev.sitecore.net/~/media/E820B0DA62464072891DA92470F93954.ashx"
+# $remotingFilename = (Get-Location).Path + "\Downloads\SPE.Remoting-6.1.1.zip"
+# $remotingResource = "https://github.com/SitecorePowerShell/Console/releases/download/6.1.1/SPE.Remoting-6.1.1.zip"
+# $remotingModuleFolder = "c:\Program Files\WindowsPowerShell\Modules"
 
 
 $config = $aspxFullpath = $PSCommandPath.Replace('.ps1','.config')
+
+
 
 Function Display-Progress($action, $percent){
 
