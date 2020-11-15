@@ -48,7 +48,7 @@ Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 If(!(Test-Path -Path $moduleFilename))
 {
-    Write-Output "Downloading package $moduleName from Sitecore Developers Portal..."
+    Write-Output "Downloading package $moduleName from Sitecore Developers Portal: $moduleResource"
     Display-Progress -action "downloading package  $moduleName from Sitecore Developers Portal." -percent 3
 
     Write-Output "Sifon-MuteProgress"
