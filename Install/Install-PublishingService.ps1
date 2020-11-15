@@ -1,6 +1,6 @@
 ### Name: Install Publishing Service 4.3.0
 ### Description: Installs Sitecore Publishing Service
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.01
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-PublishingService.json")
 
 param(
@@ -11,7 +11,7 @@ param(
     [string]$AdminPassword,
     [PSCredential]$SqlCredentials,
     [PSCredential]$PortalCredentials,
-    [string[]]$Urls
+    [string[][]]$Urls
 )
 
 if($null -eq $Urls){
@@ -20,11 +20,8 @@ if($null -eq $Urls){
     exit
 }
 
-# $Urls[0] service url
-# $Urls[1] module url
-
-$moduleName = "Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"
-$serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip"
+$moduleName = "${Urls[1][0]}.zip"
+$serviceName = "${Urls[0][0]}.zip"
 $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
 $moduleFilename = "$downloadsFolder\$moduleName"
 $serviceFilename = "$downloadsFolder\$serviceName"
@@ -35,6 +32,7 @@ Function Replace-WithDatabaseAdmin($ConnectionString, $Username, $Password)
     $ConnectionString = $ConnectionString -replace "Password=(\w+)", "Password=$Password"
     return $ConnectionString
 }
+
 Function Display-Progress($action, $percent){
 
     Write-Progress -Activity "Installing Publishing Service" -CurrentOperation $action -PercentComplete $percent
@@ -62,8 +60,8 @@ Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
     }
 }
 
-VerifyOrDownload-File -moduleName $moduleName -moduleResourceUrl $Urls[1] -progress 3
-VerifyOrDownload-File -moduleName $serviceName -moduleResourceUrl $Urls[0] -progress 7
+VerifyOrDownload-File -moduleName $moduleName -moduleResourceUrl $Urls[1][1] -progress 3
+VerifyOrDownload-File -moduleName $serviceName -moduleResourceUrl $Urls[0][1] -progress 7
 
 $Hostname = "$Prefix.publishing"
 $parentFolder =  Split-Path $Webroot -Parent
@@ -115,7 +113,6 @@ Display-Progress -action "setting up site in IIS" -percent 41
 & $exe iis install --hosts --sitename "$Hostname" --force
 
 
-
 $appPoolState = [PowerShell]::Create().AddCommand("Get-WebAppPoolState").AddParameter("Name", $Hostname).Invoke()
 if($appPoolState.Value -ne "Started")
 {
@@ -164,7 +161,8 @@ if($response.status -eq 0)
         Set-Content -Path "$Webroot\App_Config\Modules\PublishingService\Sitecore.Publishing.Service.Patched.config" -Value $content
         Write-Output "Publishing Module config patched."
         Start-Process -FilePath $exe -NoNewWindow
-        Write-Output "#COLOR:GREEN# Publishing Service and Module for Sitecore have been installed."
+
+        Show-Message -Fore "Green" -Back "Yellow" -Text "Publishing Service and Module for Sitecore have been installed"
         Display-Progress -action "publishing service and its module for Sitecore have been installed" -percent 100
     }
 }

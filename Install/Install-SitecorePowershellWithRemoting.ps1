@@ -1,8 +1,8 @@
 ### Name: Install Sitecore PowerShell with Remoting
 ### Description:  Sitecore PowerShell Extension with Remoting enabled
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.01
 ### Dependencies: "Install-SitecorePowershellWithRemoting.config"
-### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SPE.json")
+### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SitecorePowershellWithRemoting.json")
 
 param(
     [string]$Webroot,
@@ -10,7 +10,7 @@ param(
     $PortalCredentials,
     [string]$AdminUsername,
     [string]$AdminPassword,
-    [string[]]$Urls
+    [string[][]]$Urls
 )
 
 if($null -eq $Urls){
@@ -21,11 +21,11 @@ if($null -eq $Urls){
 
 New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
-$moduleName = "Sitecore.PowerShell.Extensions.zip"
+$moduleName = "${Urls[1][0]}.zip"
 $moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
-$moduleResource = $Urls[1]
-$remotingFilename = (Get-Location).Path + "\Downloads\SPE.Remoting.zip"
-$remotingResource = $Urls[0]
+$moduleResource = $Urls[1][1]
+$remotingFilename = (Get-Location).Path + "\Downloads\${Urls[0][0]}.zip"
+$remotingResource = $Urls[0][1]
 $remotingModuleFolder = "c:\Program Files\WindowsPowerShell\Modules"
 
 $config = $aspxFullpath = $PSCommandPath.Replace('.ps1','.config')
@@ -88,10 +88,8 @@ if (Get-Module -ListAvailable -Name SPE) {
     Import-Module SPE
 } 
 else {
-    Write-Output  "================================="
-    Write-Warning "SPE Module does is not installed."
-    Write-Output  "================================="
-    Write-Output "_"
+    Show-Message -Fore "Red" -Back "Yellow" -Text "SPE Module does is not installed."
+    Write-Output "."
     Write-Output "Instance URL: $InstanceUrl"
     exit
 }
@@ -100,9 +98,7 @@ else {
 $session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $InstanceUrl
 if($null -eq $session)
 {    
-    Write-Output  "============================="
-    Write-Error "Error: Remote session created"
-    Write-Output  "============================="
+    Show-Message -Fore "Red" -Back "Yellow" -Text "Error: Remote session created"
     exit
 }
 
@@ -117,10 +113,7 @@ if($null -ne $remoteSessionOutput)
     Write-Output "."
     Write-Warning $remoteSessionOutput
     Write-Output "."
-    Write-Output  "====================================================================================================================="
-    $result = "Sitecore PowerShell Extensions module has been successfully installed and Remoting has been enabled for this instance"
-    Write-Output "#COLOR:GREEN# $result"
-    Write-Output  "====================================================================================================================="
+    Show-Message -Fore "Green" -Back "White" -Text "Sitecore PowerShell Extensions module has been successfully installed and Remoting has been enabled for this instance"
 }
 
 Display-Progress -action $result -percent 100

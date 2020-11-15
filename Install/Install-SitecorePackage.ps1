@@ -1,6 +1,6 @@
 ### Name: Sitecore package installer
 ### Description: Installs Sitecore packages including remote profiles (copes local package to remote and installs there)
-### Compatibility: Sifon 0.98
+### Compatibility: Sifon 1.01
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sifon Package Installer for Sitecore","Pick up the package to install:","Archives|*.zip","Install")
 
 param(
@@ -28,6 +28,7 @@ $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
 Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
 
 Display-Progress -action " Package installation complete" -percent 100
-Write-Output "#COLOR:GREEN# Package installation complete"
+Show-Message -Fore "Green" -Back "White" -Text "Package installation complete"
+
 
 

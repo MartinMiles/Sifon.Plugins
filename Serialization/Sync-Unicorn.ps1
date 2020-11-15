@@ -1,6 +1,6 @@
 ### Name: Sync all Unicorn configurations
 ### Description: The plugin will sync all Unicorn configurations from serialized items into Sitecore
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.01
 
 param(
     [string]$Webroot
@@ -41,38 +41,34 @@ $syncUnicornUrl = $InstanceUrl + "/unicorn.aspx";
 $IncludeFolder = "$Webroot\App_Config\Include"
 $ConfigMatchPattern = "<SharedSecret>(.+)<\/SharedSecret>"
 
-
 $files = Get-ChildItem -Path $IncludeFolder -Recurse -Filter "*.config" `
     | Select-String -Pattern $ConfigMatchPattern `
     | Select Path `
     | Select-Xml -XPath "/configuration/sitecore/unicorn/authenticationProvider/SharedSecret" `
     | Select-Object -ExpandProperty Node
 
-    
+
     $SharedSecret = $files.InnerText
         
-    if($null -eq $SharedSecret){
-
-        Write-Output "==============================================================================================================="
-        Write-Warning "Failed to obtain Unicorn secret from under $IncludeFolder folder."
-        Write-Warning "There isn't any of config files having <SharedSecret> provided. Cannot contunue with sync, terminating"
-        Write-Output "==============================================================================================================="
+    $errorLine1 = "Failed to obtain Unicorn secret from under $IncludeFolder folder."
+    if($null -eq $SharedSecret)
+    {
+        Show-Message -Fore "Red" -Back "Yellow" -Text @($errorLine1,"There isn't any of config files having <SharedSecret> provided. Cannot contunue with sync, terminating")
         exit
     }
 
     if(!($SharedSecret -is [string]))
     {
-        Write-Output "==============================================================================================================="
-        Write-Warning "Failed to obtain Unicorn secret from under $IncludeFolder folder."
-        Write-Warning "Found too many configuration files having <SharedSecret> node under the above folder. Script requires only one"
-        Write-Output "==============================================================================================================="
+        Show-Message -Fore "Red" -Back "Yellow" -Text @($errorLine1,"Found too many configuration files having <SharedSecret> node under the above folder. Script requires only one")
         exit        
     }
 
 try{
     Sync-Unicorn -ControlPanelUrl $syncUnicornUrl -SharedSecret $SharedSecret
 }
-catch{ }
+catch{ 
+    Show-Message -Fore "Red" -Back "Yellow" -Text $Error[0]
+}
 
 if(Test-Path $UnicornModule){
     Remove-Module Unicorn
