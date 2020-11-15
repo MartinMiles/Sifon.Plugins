@@ -3,17 +3,12 @@
 ### Compatibility: Sifon 1.00
 ### $SelectedFolder = new Sifon.Shared.Forms.FolderBrowserDialog.FolderBrowser::GetFolder($Profile, $true)
 
-param(
-        $SelectedFolder
-)
+param($SelectedFolder)
 
 Push-Location
 Set-Location -Path $SelectedFolder
 
 dotnet new tool-manifest
-
 dotnet tool install Sitecore.CLI --add-source https://sitecore.myget.org/F/sc-packages/api/v3/index.json
-
-# https://doc.sitecore.com/developers/100/developer-tools/en/install-sitecore-command-line-interface.html
 
 Pop-Location
