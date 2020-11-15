@@ -1,12 +1,12 @@
 ### Name: Sitecore SXA installer
 ### Description: Installs Sitecore packages including remote profiles (copes local package to remote and installs there)
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.01
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SXA.json")
 
 param(
     [string]$Webroot,
     [PSCredential]$PortalCredentials,
-    [string[]]$Urls
+    [string[][]]$Urls
 )
 
 Function Display-Progress($action, $percent){
@@ -46,14 +46,14 @@ $CurrentProgress = 10;
 
 ForEach ($Url in $Urls) 
 {
-    $found = $Url -match '\/([0-9a-fA-F]+)\.ashx'
+    $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
     if ($found) 
     {
-        $fileName = $matches[1] + ".zip"
+        $fileName = $Url[0].Replace(" ", "_") + ".zip"
         $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
         $packageFullPath = "$downloadsFolder\$fileName"
 
-        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url -progress $CurrentProgress
+        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url[1] -progress $CurrentProgress
         
         $CurrentProgress += 20
         Display-Progress -action "installing the downloaded module" -percent $CurrentProgress
