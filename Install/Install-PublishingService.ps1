@@ -1,6 +1,7 @@
 ### Name: Install Publishing Service 4.3.0
 ### Description: Installs Sitecore Publishing Service
-### Compatibility: Sifon 0.99
+### Compatibility: Sifon 1.00
+### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-PublishingService.json")
 
 param(
     [string]$Webroot,
@@ -9,8 +10,18 @@ param(
     [string]$AdminUsername,
     [string]$AdminPassword,
     [PSCredential]$SqlCredentials,
-    [PSCredential]$PortalCredentials
+    [PSCredential]$PortalCredentials,
+    [string[]]$Urls
 )
+
+if($null -eq $Urls){
+
+    Write-Warning "No resources passed for the selected resources"
+    exit
+}
+
+# $Urls[0] service url
+# $Urls[1] module url
 
 $moduleName = "Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"
 $serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip"
@@ -51,8 +62,8 @@ Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
     }
 }
 
-VerifyOrDownload-File -moduleName $moduleName -moduleResourceUrl "https://dev.sitecore.net/~/media/A06BC5BBBCA84F2F90AC08CB456A3801.ashx" -progress 3
-VerifyOrDownload-File -moduleName $serviceName = "Sitecore Publishing Service 4.3.0-win-x64.zip" -moduleResourceUrl "https://dev.sitecore.net/~/media/3BA8C0FD6894405ABF3CD53803007272.ashx" -progress 7
+VerifyOrDownload-File -moduleName $moduleName -moduleResourceUrl $Urls[1] -progress 3
+VerifyOrDownload-File -moduleName $serviceName -moduleResourceUrl $Urls[0] -progress 7
 
 $Hostname = "$Prefix.publishing"
 $parentFolder =  Split-Path $Webroot -Parent
