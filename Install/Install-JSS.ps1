@@ -1,13 +1,21 @@
 ### Name: Install JSS with CLI
 ### Description: Installs Sitecore JSS along with CLI
-### Compatibility: Sifon 0.96
+### Compatibility: Sifon 1.00
+### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-JSS.json")
 
 param(
     [string]$Webroot,
     [PSCredential]$PortalCredentials,
     [string]$AdminUsername,
-    [string]$AdminPassword
+    [string]$AdminPassword,
+    [string[]]$Urls
 )
+
+if($null -eq $Urls){
+
+    Write-Warning "No resources passed for the selected resources"
+    exit
+}
 
 Function Display-Progress($action, $percent)
 {
@@ -18,14 +26,17 @@ New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
 Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
-$package = (Get-Location).Path + "\Downloads\Sitecore JavaScript Services Server for Sitecore 10.0.0 XP 14.0.0 rev. 200714.zip"
+$FileWithoutExtension = "Sitecore JavaScript Services Server for Sitecore"
+$FileWithoutExtension = $FileWithoutExtension.Replace(" ","_")
+$package = (Get-Location).Path + "\Downloads\$FileWithoutExtension.zip"
+
 If(!(Test-Path -Path $package))
 {
     Write-Output "Downloading package from Sitecore Developers Portal..."
     Display-Progress -action "downloading package from Sitecore Developers Portal." -percent 3
 
     Write-Output "Sifon-MuteProgress"
-        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl "https://dev.sitecore.net/~/media/47F10159903D4D44A3CD66FEBEE6516E.ashx" -TargertFilename $package
+        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $Urls[0] -TargertFilename $package
     Write-Output "Sifon-UnmuteProgress"
 }
 else
@@ -42,7 +53,9 @@ If(!(Test-Path -Path $package))
 Write-Output "Installing package into Sitecore."
 Display-Progress -action "installing package into Sitecore." -percent 31
 $InstanceUrl= InstanceUrl -Webroot $Webroot
-Install-SitecorePackageUsingRemoting -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $package
+#Install-SitecorePackageUsingRemoting -InstanceUrl $InstanceUrl -Username $AdminUsername -Password $AdminPassword -Package $package
+Install-SitecorePackage -PackageFullPath $package -Webroot $Webroot -Hostbase $InstanceUrl
+
 
 Display-Progress -action "installing JSS CLI." -percent 81
 Write-Output "Sifon-MuteOutput"
