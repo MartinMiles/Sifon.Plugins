@@ -27,4 +27,5 @@ Write-Output "Populating managed schema for index: $IndexName ..."
 Write-Output "Sifon-MuteOutput"
     Install-SitecoreConfiguration  @params
 Write-Output "Sifon-UnmuteOutput"
-Write-Output "#COLOR:GREEN# Operation complete."
+
+Show-Message -Fore Green -Back White -Text "Operation complete."

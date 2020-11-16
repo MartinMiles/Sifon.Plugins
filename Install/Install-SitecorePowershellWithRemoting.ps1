@@ -21,10 +21,10 @@ if($null -eq $Urls){
 
 New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
-$moduleName = "${Urls[1][0]}.zip"
+$moduleName = $Urls[1][0].Replace(" ","_") + ".zip"
 $moduleFilename = (Get-Location).Path + "\Downloads\" + $moduleName
 $moduleResource = $Urls[1][1]
-$remotingFilename = (Get-Location).Path + "\Downloads\${Urls[0][0]}.zip"
+$remotingFilename = (Get-Location).Path + "\Downloads\" + $Urls[0][0].Replace(" ","_") + ".zip"
 $remotingResource = $Urls[0][1]
 $remotingModuleFolder = "c:\Program Files\WindowsPowerShell\Modules"
 
@@ -105,7 +105,7 @@ if($null -eq $session)
 
 $remoteSessionOutput = Invoke-RemoteScript -ScriptBlock {
     Get-Item -Path "master:\content\Home" | Out-Null
-    "SPE Module is installed and works well"
+    "SPE remoting works well or the Sitecore instance"
 } -Session $session
 
 if($null -ne $remoteSessionOutput)
