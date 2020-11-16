@@ -1,6 +1,6 @@
 ### Name: Populates Managed Schema
 ### Description: Populates Managed Schema for a specifix index or all of them
-### Compatibility: Sifon 0.98, SIF
+### Compatibility: Sifon 1.01
 ### Dependencies: "Populate-Schema.json"
 
 param(
