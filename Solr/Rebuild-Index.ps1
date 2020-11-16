@@ -11,15 +11,7 @@ param(
     [string[]]$Indexes
 )
 
-function Show-Progress
-(
-    [int]$Percent,
-    [string]$Activity = '',
-    [string]$Status = ''
-)
-{
-    Write-Progress -Activity $Activity -Status $Status -PercentComplete $Percent
-}
+
 
 if($Indexes.Length -le 0){
     Show-Message -Fore Yellow -Back White -Text "No index to rebuild as user cancelled operation."
