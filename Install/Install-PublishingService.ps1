@@ -20,8 +20,8 @@ if($null -eq $Urls){
     exit
 }
 
-$moduleName = "${Urls[1][0]}.zip"
-$serviceName = "${Urls[0][0]}.zip"
+$moduleName = $Urls[1][0].Replace(" ", "_") + ".zip"
+$serviceName = $Urls[0][0].Replace(" ", "_") + ".zip"
 $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
 $moduleFilename = "$downloadsFolder\$moduleName"
 $serviceFilename = "$downloadsFolder\$serviceName"
