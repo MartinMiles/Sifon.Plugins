@@ -24,7 +24,8 @@ $hasGitInstalled = Verify-Git
             Write-Output "You can install it eitherfrom under Settings menu or manually"
             exit
     }
-
+    
+Write-output "."
 Write-output "Pulling scripts from a community repository on GitHub ..."
 Write-output "Sifon-MuteOutput"
 
@@ -34,4 +35,5 @@ Remove-Item -Path $pluginsFolder -Recurse -Force -Confirm:$false -ErrorAction Si
 git clone https://github.com/MartinMiles/Sifon.Plugins.git
 
 Write-output "Sifon-UnmuteOutput"
-Show-Message -Fore Green -Back Yellow -Text "Scripts were installed under Plugins menu."
+Write-output "."
+Show-Message -Fore White -Back Yellow -Text "Scripts were installed under Plugins menu."
