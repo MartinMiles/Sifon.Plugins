@@ -5,6 +5,12 @@
 
 param($SelectedFolder)
 
+if(!(Verify-NetCore -Type 'SDK'))
+{
+    Show-Message -Fore "Red" -Back "Yellow" -Text @("Cannot install Sitecore CLI as it required .NET Core SDK to be installed","You can install it as a prerequisite from under Settings menu")
+    exit
+}
+
 if($null -ne $SelectedFolder)
 {
     Show-Message -Fore "White" -Back "Yellow" -Text @("The folder you have selected:", $SelectedFolder)

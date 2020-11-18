@@ -11,7 +11,11 @@ param(
     [string[]]$Indexes
 )
 
-
+if($null -eq $Indexes)
+{
+    Show-Message -Fore Red -Back Yellow -Test "Sitecore PowerShell Remoting required for running this script is not installed"
+    exit
+}
 
 if($Indexes.Length -le 0){
     Show-Message -Fore Yellow -Back White -Text "No index to rebuild as user cancelled operation."
