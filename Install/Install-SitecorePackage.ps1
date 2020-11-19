@@ -4,7 +4,7 @@
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sifon Package Installer for Sitecore","Pick up the package to install:","Archives|*.zip","Install")
 
 param(
-	[string]$Webroot,
+    [string]$Webroot,
     [string]$AdminUsername,
     [string]$AdminPassword,
     [string]$SelectedFile
@@ -17,7 +17,7 @@ Function Display-Progress($action, $percent){
 [string]$PackageFullPath = $SelectedFile
 If([string]::IsNullOrEmpty($PackageFullPath))
 {
-    Write-Warning "You should provide a path to a package to be installed"
+    Show-Message -Fore Yellow -Back White -Text  "You should provide a path to a package to be installed"
     exit
 }
 
