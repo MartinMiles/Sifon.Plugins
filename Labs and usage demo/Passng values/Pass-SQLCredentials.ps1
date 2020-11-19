@@ -1,10 +1,13 @@
 ### Name: Pass SQL credentials
-### Description: Pass SQL credentials
-### Compatibility: Sifon 0.99
+### Description: Output decrypted SQL erver credentials
+### Compatibility: Sifon 1.01
 
 param(
     [PSCredential]$SqlCredentials
 )
 
-$SqlCredentials.GetNetworkCredential().username
-$SqlCredentials.GetNetworkCredential().password
+"."
+Show-Message -Fore "Yellow" -Back "White" -Text "Decrypred SQL Server credentials from the current profile"
+"."
+"Username = " + $SqlCredentials.GetNetworkCredential().username
+"Password = " + $SqlCredentials.GetNetworkCredential().password

@@ -1,6 +1,6 @@
 ### Name: Install Horizon for Sitecore 10.0
 ### Description: Installs Sitecore JSS along with CLI
-### Compatibility: Sifon 0.98
+### Compatibility: Sifon 1.01
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sitecore license selector","Select Sitecore license in order to install Horizon:","License files|*.xml","OK")
 
 param(
@@ -13,7 +13,7 @@ param(
 
 $horizon1000URL = "https://dev.sitecore.net/~/media/6428CB6CC4F143E9A085AF2C36706E26.ashx"
 $horizonFilename = "Sitecore Horizon 10.0.0.zip"
-$downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
+$downloadsFolder = New-Item -ItemType Directory -Path "$((Get-Location).Path)\Downloads" -force
 $packageFullPath = "$downloadsFolder\$horizonFilename"
 
 ### licence
@@ -53,11 +53,8 @@ $packageFullPath = "$downloadsFolder\$horizonFilename"
 # if ($result -ne [System.Windows.Forms.DialogResult]::OK -or [string]::IsNullOrEmpty($form.FilePath))
 if ([string]::IsNullOrEmpty($SelectedFile))
 {
-    #Write-Warning $licenseMessage
-       
-    Write-Warning "You must provide a valid license in order to install horizon."
+    Show-Message -Fore "White" -Back "Yellow" -Text "You must provide a valid license in order to install horizon."
     Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
-    exit
     exit
 }
 
@@ -78,7 +75,7 @@ else
 
 If(!(Test-Path -Path $packageFullPath))
 {
-    Write-Error "Failed to download the package."
+    Show-Message -Fore "Red" -Back "Yellow" -Text "Failed to download the package."
     exit
 }
 
@@ -95,16 +92,6 @@ Write-Output "Sifon-MuteProgress"
 Write-Output "Sifon-UnmuteProgress"
 
 Copy-Item -Path $SelectedFile -Destination $workingFolder
-
-#if ($result -eq [System.Windows.Forms.DialogResult]::OK)
-# {
-#     Copy-Item -Path $form.FilePath -Destination $workingFolder
-# }
-# else {
-#     Write-Warning "You must provide a valid license in order to install horizon."
-#     Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
-#     exit
-# }
 
 Write-Output "Installing Horizon. This may take quite a while, so please be patient."
 
@@ -130,4 +117,4 @@ $res = [PowerShell]::Create().AddCommand("$workingFolder\InstallHorizon.ps1"). `
 Remove-Item $workingFolder -Recurse -Force -Confirm:$false
 
 Write-Progress -Activity "Installing Horizon" -CurrentOperation "Complete" -PercentComplete 100
-Write-Output "#COLOR:GREEN# Horizon for Sitecore have been installed."
+Show-Message -Fore "Green" -Back "White" -Text "Horizon for Sitecore have been installed."

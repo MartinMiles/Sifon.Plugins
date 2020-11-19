@@ -1,10 +1,8 @@
 ### Name: Folder selector
 ### Description: Works on both remote and local
-### Compatibility: Sifon 0.99
+### Compatibility: Sifon 1.01
 ### $SelectedFolder = new Sifon.Shared.Forms.FolderBrowserDialog.FolderBrowser::GetFolder($Profile, $true)
 
-param(
-        $SelectedFolder
-)
+param($SelectedFolder)
 
-$SelectedFolder
+Show-Message -Fore "White" -Back "Yellow" -Text @('The folder you have selected:', $SelectedFolder)

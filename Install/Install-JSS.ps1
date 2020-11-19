@@ -1,6 +1,6 @@
 ### Name: Install JSS with CLI
 ### Description: Installs Sitecore JSS along with CLI
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.01
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-JSS.json")
 
 param(
@@ -8,7 +8,7 @@ param(
     [PSCredential]$PortalCredentials,
     [string]$AdminUsername,
     [string]$AdminPassword,
-    [string[]]$Urls
+    [string[][]]$Urls
 )
 
 if($null -eq $Urls){
@@ -26,8 +26,7 @@ New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
 Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
-$FileWithoutExtension = "Sitecore JavaScript Services Server for Sitecore"
-$FileWithoutExtension = $FileWithoutExtension.Replace(" ","_")
+$FileWithoutExtension = $Urls[0][0].Replace(" ","_")
 $package = (Get-Location).Path + "\Downloads\$FileWithoutExtension.zip"
 
 If(!(Test-Path -Path $package))
@@ -36,7 +35,7 @@ If(!(Test-Path -Path $package))
     Display-Progress -action "downloading package from Sitecore Developers Portal." -percent 3
 
     Write-Output "Sifon-MuteProgress"
-        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $Urls[0] -TargertFilename $package
+        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $Urls[0][1] -TargertFilename $package
     Write-Output "Sifon-UnmuteProgress"
 }
 else
@@ -62,6 +61,5 @@ Write-Output "Sifon-MuteOutput"
     npm install -g @sitecore-jss/sitecore-jss-cli
 Write-Output "Sifon-UnmuteOutput"    
 
-
-Write-Output "#COLOR:GREEN# Operation complete."
+Show-Message -Fore "Green" -Back "Yellow" -Text "JSS and CLI have been successfully installed"
 Display-Progress -action "operation complete." -percent 100
