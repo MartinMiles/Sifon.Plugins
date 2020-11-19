@@ -64,10 +64,7 @@ ForEach ($Url in $Urls)
         $CurrentProgress+=20
     }    
 }
-
-Write-Output  "==================================================================================================="
-$result =     "Sitecore PowerShell Extensions (SPE) and Sitecore Experience Accellerator (SXA) have been installed"
-Write-Output "#COLOR:GREEN# $result"
-Write-Output  "==================================================================================================="
+Write-Output '.'
+Show-Message -Fore Green -Back White -Text "Sitecore PowerShell Extensions (SPE) and Sitecore Experience Accellerator (SXA) have been installed"
 Display-Progress -action "done." -percent 100
 
