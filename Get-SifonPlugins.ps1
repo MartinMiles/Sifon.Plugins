@@ -3,7 +3,10 @@
 ### Compatibility: Sifon 1.01
 ### Execution: Local
 
-param([bool]$IsRemote)
+param(
+    [bool]$IsRemote,
+    [string]$PluginsRepository
+)
 
 if($IsRemote)
 {
@@ -26,13 +29,13 @@ $hasGitInstalled = Verify-Git
     }
     
 Write-output "."
-Write-output "Pulling scripts from a community repository on GitHub ..."
+Write-output "Pulling scripts from a GitHub repository [$PluginsRepository] ..."
 Write-output "Sifon-MuteOutput"
 
 $pluginsFolder = Join-Path (Get-Location) -ChildPath "Sifon.Plugins"
 
 Remove-Item -Path $pluginsFolder -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue
-git clone https://github.com/MartinMiles/Sifon.Plugins.git
+git clone $PluginsRepository Sifon.Plugins
 
 Write-output "Sifon-UnmuteOutput"
 Write-output "."
