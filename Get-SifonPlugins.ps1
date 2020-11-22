@@ -5,7 +5,8 @@
 
 param(
     [bool]$IsRemote,
-    [string]$PluginsRepository
+    [string]$PluginsRepository,
+    [string]$VersionBranch
 )
 
 if($IsRemote)
@@ -21,21 +22,24 @@ $hasGitInstalled = Verify-Git
 
     if(!($hasGitInstalled))
     {
-            Show-Message -Fore Red -Back White -Text "Git is not installed on this machine"
-            Write-Output "This plugin requires git in order to progress."
-            Write-Output "Cancelling, as you don't have it installed locally."
-            Write-Output "You can install it eitherfrom under Settings menu or manually"
-            exit
+        Show-Message -Fore Red -Back White -Text "Git is not installed on this machine"
+        Write-Output "This plugin requires git in order to progress."
+        Write-Output "Cancelling, as you don't have it installed locally."
+        Write-Output "You can install it eitherfrom under Settings menu or manually"
+        exit
     }
     
 Write-output "."
-Write-output "Pulling scripts from a GitHub repository [$PluginsRepository] ..."
+Write-output "Pulling scripts from a GitHub repository ..."
+Write-output "Repository URL: $PluginsRepository"
+Write-output "Branch: $VersionBranch"
+
 Write-output "Sifon-MuteOutput"
 
 $pluginsFolder = Join-Path (Get-Location) -ChildPath "Sifon.Plugins"
 
 Remove-Item -Path $pluginsFolder -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue
-git clone $PluginsRepository Sifon.Plugins
+git clone --single-branch --branch $VersionBranch $PluginsRepository Sifon.Plugins
 
 Write-output "Sifon-UnmuteOutput"
 Write-output "."
