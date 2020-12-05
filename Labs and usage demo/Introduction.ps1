@@ -1,6 +1,6 @@
 ### Name: Introduction to 'Labs and Demos'
 ### Description: A brief overview of what you find under this folder and its purpose - run me first!
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### Execution: Local
 
 Write-Output "."

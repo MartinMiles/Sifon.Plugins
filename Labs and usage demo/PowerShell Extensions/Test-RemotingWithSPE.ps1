@@ -1,6 +1,6 @@
 ### Name: Test if SPE Remoting is enabled
 ### Description: Test if SPE Remoting is enabled on a selected profile instance
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 
 param(
     [string]$Webroot,

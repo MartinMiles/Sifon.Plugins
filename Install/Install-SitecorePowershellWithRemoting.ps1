@@ -1,6 +1,6 @@
 ### Name: Install Sitecore PowerShell with Remoting
 ### Description:  Sitecore PowerShell Extension with Remoting enabled
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### Dependencies: "Install-SitecorePowershellWithRemoting.config"
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SitecorePowershellWithRemoting.json")
 

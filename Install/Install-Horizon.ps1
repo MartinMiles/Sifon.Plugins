@@ -1,6 +1,6 @@
 ### Name: Install Horizon for Sitecore 10.0
 ### Description: Installs Sitecore JSS along with CLI
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sitecore license selector","Select Sitecore license in order to install Horizon:","License files|*.xml","OK")
 
 param(

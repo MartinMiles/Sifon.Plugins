@@ -1,6 +1,6 @@
 ### Name: Install Sitecore CLI
 ### Description: Instlls Sitecore CLI used for content serialization into a folder of choice
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.0.0
 ### $SelectedFolder = new Sifon.Shared.Forms.FolderBrowserDialog.FolderBrowser::GetFolder($Profile, $true)
 
 param($SelectedFolder)

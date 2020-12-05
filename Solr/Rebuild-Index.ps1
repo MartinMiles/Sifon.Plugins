@@ -1,6 +1,6 @@
 ### Name: Rebuild indexes
 ### Description: Rebilds indexes via SPE remoting
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### Display: (Non)Local
 ### $Indexes = new Sifon.Shared.Forms.IndexSelectorDialog.IndexSelector::GetIndex($Profile)
 

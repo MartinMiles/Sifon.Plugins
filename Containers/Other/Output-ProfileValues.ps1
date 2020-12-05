@@ -1,6 +1,6 @@
 ### Name: Output selected profile parameters
 ### Description: Outputs container profile variables - shows you all the parameters options to use with containers
-### Compatibility: Sifon 0.98
+### Compatibility: Sifon 0.9.8
 
 param(
     [string]$ProfileName,

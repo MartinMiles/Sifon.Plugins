@@ -1,6 +1,6 @@
 ### Name: Reset Sitecore admin password
 ### Description: This script resets currect 'admin' user's password to a broadly known 'b'
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 
 param(
     [string]$Prefix,

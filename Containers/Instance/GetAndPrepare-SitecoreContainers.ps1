@@ -1,6 +1,6 @@
 ### Name: Download code and prepare Sitecore 10
 ### Description: Downloads and prepares Sitecore 10 for a run in Docker
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.0.0
 ### Local-only
 
 param(

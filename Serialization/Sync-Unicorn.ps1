@@ -1,6 +1,6 @@
 ### Name: Sync all Unicorn configurations
 ### Description: The plugin will sync all Unicorn configurations from serialized items into Sitecore
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 
 param(
     [string]$Webroot

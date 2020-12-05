@@ -1,6 +1,6 @@
 ### Name: Get Sifon plugins
 ### Description: Downloads the plugins from Sifon repository (requires git to be installed)
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### Execution: Local
 
 param(

@@ -1,6 +1,6 @@
 ### Name: Install Publishing Service 4.3.0
 ### Description: Installs Sitecore Publishing Service
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-PublishingService.json")
 
 param(

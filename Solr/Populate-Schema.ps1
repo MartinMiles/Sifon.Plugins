@@ -1,6 +1,6 @@
 ### Name: Populates Managed Schema
 ### Description: Populates Managed Schema for a specifix index or all of them
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### Dependencies: "Populate-Schema.json"
 ### $Indexes = new Sifon.Shared.Forms.IndexSelectorDialog.IndexSelector::GetIndex($Profile)
 

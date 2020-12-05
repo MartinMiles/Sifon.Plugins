@@ -1,6 +1,6 @@
 ### Name: Add Unicorn icon to Launchpad
 ### Description: Adds nice looking icon taking to Unicorn control panel, visible to admin users only
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 
 
 param([string]$Webroot)
