@@ -16,7 +16,8 @@ if($null -eq $Selection){
     exit
 }
 
-Verify-PortalCredentials -PortalCredentials $PortalCredentials
+# The below no longer needed: https://tinyurl.com/yysw5sag
+# Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 Function Display-Progress($action, $percent){
     Write-Progress -Activity "Downloading Sitecore resources" -CurrentOperation $action -PercentComplete $percent
