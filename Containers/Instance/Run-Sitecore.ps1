@@ -1,6 +1,6 @@
 ### Name: Build and run Sitecore
 ### Description: Builds (on a first run) and then runs Sitecore in Docker
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.0.0
 ### Local-only
 
 param(

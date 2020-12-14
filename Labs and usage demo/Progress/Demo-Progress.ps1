@@ -1,6 +1,6 @@
 ### Name: Returning progress
 ### Description: Demonstrates who to create responsive sripts that return current activity name and status and update progress bar
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 
 Write-Output "."
 Show-Message -Fore White -Back Yellow -Text "There are two ways of reporting activity and percentage status to Sifon to show a progress bar:"

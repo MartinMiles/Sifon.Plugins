@@ -1,6 +1,6 @@
 ### Name: Sitecore SXA installer
 ### Description: Installs Sitecore packages including remote profiles (copes local package to remote and installs there)
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 ### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SXA.json")
 
 param(

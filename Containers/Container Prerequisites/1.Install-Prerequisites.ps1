@@ -1,6 +1,6 @@
 ### Name: Prerequisites Step 1: enable Hyper-V, containers and WSL2
 ### Description: Enable Hyper-V and containers, install Chocolatey and Docker Desktop and reboot
-### Compatibility: Sifon 1.00
+### Compatibility: Sifon 1.0.0
 ### Local-only
 
 # First of all ensure Hyper-V is enabled at your machine, if may be greyed out when running within a VM

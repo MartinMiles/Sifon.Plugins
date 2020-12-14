@@ -1,6 +1,6 @@
 ### Name: Pass SQL credentials
 ### Description: Output decrypted SQL erver credentials
-### Compatibility: Sifon 1.01
+### Compatibility: Sifon 1.0.1
 
 param(
     [PSCredential]$SqlCredentials

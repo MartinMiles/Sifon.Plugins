@@ -1,6 +1,6 @@
 ### Name: Roadmap for containers in Sifon
 ### Description: Just a basic overview of further plans and thoughts
-### Compatibility: Sifon 0.98
+### Compatibility: Sifon 0.9.8
 
 Write-output "_"
 Write-Warning "_    Sifon and containers support"
