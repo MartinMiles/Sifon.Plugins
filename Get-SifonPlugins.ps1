@@ -6,8 +6,22 @@
 param(
     [bool]$IsRemote,
     [string]$PluginsRepository,
-    [string]$VersionBranch
+    [string]$VersionBranch,
+    [string]$Website, 
+    [string]$Solr,
+    [string]$ServerInstance
 )
+
+if (!($Website -and $Solr -and $ServerInstance))
+{
+    "."
+    Show-Message -Fore orange -Back White -Text @("PLEASE NOTE",`
+     "you may see some menu items disabled until you set rest of the required settings:",`
+      "1) select Website root folder - either auto-found or enter manually",`
+      "2) create and select SQL Server connectivity",`
+      "3) auto-select or manually provide URL for a Solr endpoint")
+    "."
+}
 
 if($IsRemote)
 {
