@@ -4,10 +4,6 @@
 ### $Content = new Sifon.Shared.Forms.TextEditorDialog.TextEditor::Read($Profile, "c:\Windows\System32\drivers\etc\hosts")
 
 param(
-    # [string]$Webroot,
-    # [string]$Website,
-    # [string]$Prefix,
-    # [PSCredential]$PortalCredentials,
     $Content
 )
 
