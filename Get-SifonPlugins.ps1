@@ -20,7 +20,6 @@ if (!($Website -and $Solr -and $ServerInstance))
       "1) select Website root folder - either auto-found or enter manually",`
       "2) create and select SQL Server connectivity",`
       "3) auto-select or manually provide URL for a Solr endpoint")
-    "."
 }
 
 if($IsRemote)
@@ -38,6 +37,7 @@ $hasGitInstalled = Verify-Git
     {
         Show-Message -Fore Red -Back White -Text "Git is not installed on this machine"
         Write-Output "This plugin requires git in order to progress."
+        "."
         Write-Output "Cancelling, as you don't have it installed locally."
         Write-Output "You can install it eitherfrom under Settings menu or manually"
         exit
