@@ -16,7 +16,6 @@ if($null -eq $Selection){
     exit
 }
 
-# Verify-PortalCredentials -PortalCredentials $PortalCredentials
 $OldFormat = "https://dev.sitecore.net/~/media/URL.ashx"
 $NewFormat = "https://sitecoredev.azureedge.net/~/media/URL.ashx"
 
@@ -65,10 +64,9 @@ Foreach ($i in $Selection)
         $fileChecked = Check-File -FullPath $FullPath -Size $i.size
         if(!($fileChecked))
         {
-            # Write-Output "Downloading: $Filename"
+            Write-Output "Downloading: $Filename"
 
             $ResourceUrl = If ($UseDownloadCDN) {$NewFormat} Else {$OldFormat}
-            Write-Output "Downloading: " + $ResourceUrl.Replace("URL",$i.url)
             Write-Output "Sifon-MuteProgress"
                 Invoke-WebRequest -Uri $ResourceUrl.Replace("URL",$i.url) -OutFile $FullPath
                 # Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $i.url -TargertFilename $FullPath
