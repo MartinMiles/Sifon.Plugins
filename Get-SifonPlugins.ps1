@@ -12,6 +12,22 @@ param(
     [string]$ServerInstance
 )
 
+
+(get-childitem -Path ".\Sifon.Plugins" | where-object { $_.PSIsContainer }).Count
+
+$folders = (get-childitem -Path ".\Sifon.Plugins" | where-object { $_.PSIsContainer }).Count
+$scripts = (get-childitem -Path ".\Sifon.Plugins\*.ps1").Count
+
+if($folders -ne 0 -or $scripts -ne 1)
+{
+    $result = [System.Windows.Forms.MessageBox]::Show("This operation with re-populate Sifon.Plugins folder deleting it firstly. Do you want to update the pligins from a public plugins repository? " , "Update the plugins?" , 4)
+    if ($result -ne 'Yes') {
+        "."
+        Show-Message -Fore White -Back Yellow -Text "Operation terminated by user."
+        exit
+    }
+}
+
 if (!($Website -and $Solr -and $ServerInstance))
 {
     "."
