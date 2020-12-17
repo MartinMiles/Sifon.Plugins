@@ -24,7 +24,7 @@ Function Display-Progress($action, $percent)
 
 New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
-Verify-PortalCredentials -PortalCredentials $PortalCredentials
+# Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 $FileWithoutExtension = $Urls[0][0].Replace(" ","_")
 $package = (Get-Location).Path + "\Downloads\$FileWithoutExtension.zip"

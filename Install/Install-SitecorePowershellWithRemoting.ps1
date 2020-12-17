@@ -35,7 +35,7 @@ Function Display-Progress($action, $percent){
     Write-Progress -Activity "Installing Sitecore PowerShell Extentions" -CurrentOperation $action -PercentComplete $percent
 }
 
-Verify-PortalCredentials -PortalCredentials $PortalCredentials
+# Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
 If(!(Test-Path -Path $moduleFilename))
 {

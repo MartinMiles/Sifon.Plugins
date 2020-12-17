@@ -20,7 +20,7 @@ Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
 
     If(!(Test-Path -Path $fullPath))
     {
-        Verify-PortalCredentials -PortalCredentials $PortalCredentials
+        # Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
         Write-Output "Downloading $moduleName package from Sitecore Developers Portal..."
         Display-Progress -action "downloading $moduleName package from Sitecore Developers Portal." -percent $progress
