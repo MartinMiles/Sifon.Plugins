@@ -26,6 +26,7 @@ if($null -ne $folder)
     Show-Message -fore White -back yellow -text "The data has been deleted for Solr cores prefixed with: $Prefix"
 }
 else{
+    "."
     Show-Message -fore Red -back White -text "Failed to identfy running Solr for: $Solr"
 }
 
