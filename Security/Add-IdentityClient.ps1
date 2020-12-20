@@ -1,4 +1,4 @@
-### Name: Add Sifon client to Identity Server
+### Name: Add SifonClient to Identity Server
 ### Description: This script adds client to identity server so that Sifon is able to get access token
 ### Compatibility: Sifon 1.2.3
 
@@ -8,14 +8,12 @@ $idsBase = Get-SiteFolder -Name $Prefix -type IdentityServer
 $identityServerName = "$Prefix.identityserver"
 $configFile = "$idsBase\Config\production\Sitecore.IdentityServer.Host.xml"
 
-$identityServerName
-$configFile
-
 [xml]$config = Get-Content -Path $configFile
 $sifonClient = $config.Settings.Sitecore.IdentityServer.Clients.SifonClient
 
 if($null -eq $sifonClient)
 {
+    Write-Output "Sifon-MuteOutput"
     $child = $config.CreateElement("SifonClient")
     
     $id = $config.CreateElement("ClientId")
@@ -91,12 +89,12 @@ if($null -eq $sifonClient)
     $config.Save($configFile)
 
     Restart-WebAppPool $identityServerName
-
+    Write-Output "Sifon-UnmuteOutput"
     "."
-    Show-Message -Fore white -Back Yellow -Text @("Added SifonClient. Now you can obtain ID token, similar to below:"," ","Get-IdentityToken -identityserverUrl https://site.identityserver")
+    Show-Message -Fore white -Back Yellow -Text @("Added SifonClient. Now you can obtain ID token, similar to below:"," ","Get-IdentityToken -identityserverUrl https://$Prefix.identityserver -username sitecore\admin -password b")
 }
 else
 {
     "."
-    Show-Message -Fore white -Back Yellow -Text @("SifonClient already installed for Identity Server"," ", "Config path: $configFile")
+    Show-Message -Fore white -Back Yellow -Text @("SifonClient already installed for Identity Server"," ", "Config path: $configFile"," ", "You can obtain access token by using:"," Get-IdentityToken -identityserverUrl https://$Prefix.identityserver -username sitecore\admin -password b")
 }
