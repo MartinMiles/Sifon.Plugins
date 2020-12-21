@@ -64,13 +64,22 @@ Write-output "Pulling scripts from a GitHub repository ..."
 Write-output "Repository URL: $PluginsRepository"
 Write-output "Branch: $VersionBranch"
 
-Write-output "Sifon-MuteOutput"
-
 $pluginsFolder = Join-Path (Get-Location) -ChildPath "Sifon.Plugins"
 
-Remove-Item -Path $pluginsFolder -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue
-git clone --single-branch --branch $VersionBranch $PluginsRepository Sifon.Plugins
+$tryBranch = (git ls-remote --heads $PluginsRepository $VersionBranch)
+if($null -ne $tryBranch)
+{
+    Write-output "Sifon-MuteOutput"
+        Remove-Item -Path $pluginsFolder -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue
+        git clone --single-branch --branch $VersionBranch $PluginsRepository Sifon.Plugins
+    Write-output "Sifon-UnmuteOutput"
 
-Write-output "Sifon-UnmuteOutput"
-Write-output "."
-Show-Message -Fore White -Back Yellow -Text "Scripts were installed under Plugins menu."
+    Write-output "."
+    Show-Message -Fore White -Back Yellow -Text "Scripts were installed under Plugins menu."
+}
+else 
+{
+    Write-output "."
+    Show-Message -Fore red -Back Yellow -Text "Cancelling: branch $VersionBranch does not exist at remote $PluginsRepository"
+}
+

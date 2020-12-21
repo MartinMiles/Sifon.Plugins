@@ -5,7 +5,7 @@
 
 param(
     [string]$Webroot,
-    [PSCredential]$PortalCredentials,
+    $UseDownloadCDN,
     $Selection
 )
 
@@ -16,10 +16,26 @@ if($null -eq $Selection){
     exit
 }
 
-Verify-PortalCredentials -PortalCredentials $PortalCredentials
+$OldFormat = "https://dev.sitecore.net/~/media/URL.ashx"
+$NewFormat = "https://sitecoredev.azureedge.net/~/media/URL.ashx"
 
-Function Display-Progress($action, $percent){
-    Write-Progress -Activity "Downloading Sitecore resources" -CurrentOperation $action -PercentComplete $percent
+function Check-File
+(
+    [string]$FullPath,
+    [long]$Size
+)
+{
+    if(Test-Path -Path $FullPath)
+    {
+        $downloadedSize = ((Get-Item $FullPath).length)
+        if($downloadedSize -eq $Size)
+        {
+            return $true
+        }
+
+        Write-Warning "Size mismatch for $Filename : expected $Size, received $downloadedSize"        
+    }
+    return $false
 }
 
 [long]$TotalSize = 0
@@ -42,17 +58,25 @@ Foreach ($i in $Selection)
     if($Filename.Length -lt 260)
     {
         New-Item -ItemType Directory -Force -Path $Directory | Out-Null
-        Display-Progress -action "downloading $Filename." -percent ($CurrentSize / $TotalSize * 100)
-        Write-Output "Downloading: $Filename"
+        Write-Progress -Activity "Downloading Sitecore resources" -CurrentOperation "downloading $Filename." -PercentComplete ($CurrentSize / $TotalSize * 100)
+        
 
-        Write-Output "Sifon-MuteProgress"
-            Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $i.url -TargertFilename $FullPath
-        Write-Output "Sifon-UnmuteProgress"
-
-        $downloadedSize = ((Get-Item $FullPath).length)
-        if($downloadedSize -ne $i.size)
+        $fileChecked = Check-File -FullPath $FullPath -Size $i.size
+        if(!($fileChecked))
         {
-            Write-Warning "Size mismatch for $Filename : expected $i.size, received $downloadedSize"
+            Write-Output "Downloading: $Filename"
+
+            $ResourceUrl = If ($UseDownloadCDN) {$NewFormat} Else {$OldFormat}
+            Write-Output "Sifon-MuteProgress"
+                Invoke-WebRequest -Uri $ResourceUrl.Replace("URL",$i.url) -OutFile $FullPath
+                # Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $i.url -TargertFilename $FullPath
+            Write-Output "Sifon-UnmuteProgress"
+    
+            $fileChecked = Check-File -FullPath $FullPath -Size $i.size
+        }
+        else
+        {
+            "Skipping successfully downloaded: $Filename"
         }
     }
     else
@@ -63,7 +87,7 @@ Foreach ($i in $Selection)
     $CurrentSize += $i.size
 }
 
- Display-Progress -action "done." -percent 100
+ Write-Progress -Activity "Downloading Sitecore resources" -CurrentOperation "done." -PercentComplete 100
 
 Write-Output '.'
 Show-Message -Fore ForestGreen -Back White -Text "Downloading Sitecore resources completed successfully"

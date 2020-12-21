@@ -60,7 +60,7 @@ if ([string]::IsNullOrEmpty($SelectedFile))
 
 If(!(Test-Path -Path $packageFullPath))
 {
-    Verify-PortalCredentials -PortalCredentials $PortalCredentials
+    # Verify-PortalCredentials -PortalCredentials $PortalCredentials
 
     Write-Output "Downloading package $horizonFilename from Sitecore Developers Portal..."
 

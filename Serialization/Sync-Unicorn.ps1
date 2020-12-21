@@ -53,6 +53,7 @@ $files = Get-ChildItem -Path $IncludeFolder -Recurse -Filter "*.config" `
     $errorLine1 = "Failed to obtain Unicorn secret from under $IncludeFolder folder."
     if($null -eq $SharedSecret)
     {
+        "."
         Show-Message -Fore "Red" -Back "Yellow" -Text @($errorLine1,"There isn't any of config files having <SharedSecret> provided. Cannot contunue with sync, terminating")
         exit
     }
