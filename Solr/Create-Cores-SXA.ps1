@@ -66,7 +66,7 @@ if($null -ne $folder)
         Write-Output "Sifon-UnmuteProgress"        
         Write-Output "Sifon-UnmuteOutput"
 
-        Show-Message -fore white -back yellow -Text "SXA Solr Cores have been added into $folder"
+        Show-Message -fore white -back yellow -Text @("SXA Solr Cores have been added into the folder: $folder", "Now you can rebuild new indexes: 'sitecore_sxa_master_index' and 'sitecore_sxa_web_index'")
         "."
     }
 }
