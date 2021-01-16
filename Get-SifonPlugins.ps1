@@ -52,9 +52,9 @@ $hasGitInstalled = Verify-Git
     if(!($hasGitInstalled))
     {
         Show-Message -Fore Red -Back White -Text "Git is not installed on this machine"
-        Write-Output "This plugin requires git in order to progress."
+        Write-Output "This plugin requires git installed locally to progress."
         "."
-        Write-Output "Cancelling, as you don't have it installed locally."
+        Write-Output "Terminating, as you don't have it locally installed."
         Write-Output "You can install it eitherfrom under Settings menu or manually"
         exit
     }
