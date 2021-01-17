@@ -1,5 +1,5 @@
 ### Name: Add SifonClient to Identity Server
-### Description: This script adds client to identity server so that Sifon is able to get access token
+### Description: This script adds client to identity server so that Sifon can get access token
 ### Compatibility: Sifon 1.2.3
 
 param([string]$Prefix)
