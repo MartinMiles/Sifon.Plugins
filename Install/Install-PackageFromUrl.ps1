@@ -1,6 +1,6 @@
 ### Name: Install package by URL
 ### Description: Downloads and installs a Sitecore packages from its URL (for example from dev.sitecore.net or GitHub)
-### Compatibility: Sifon 1.0.1
+### Compatibility: Sifon 1.2.4
 ### $Url = new Sifon.Shared.Forms.UrlPickerDialog.UrlPicker::GetUrl("Sifon Package Downloader and Installer","Please select a downloadable URL for a package zip file:","Download", $true, $false)
 
 param(
