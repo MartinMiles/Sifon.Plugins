@@ -52,6 +52,7 @@ if($FullPath)
     Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
 
     Display-Progress -action " Package installation complete" -percent 100
+    "."
     Show-Message -Fore "Green" -Back "White" -Text "Package installation complete"
 }
 else
