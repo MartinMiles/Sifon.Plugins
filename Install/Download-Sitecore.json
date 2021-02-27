@@ -2083,15 +2083,15 @@
 
             {
                 "code": "ProdOnPrem",
-                "url": "F348FF71C86D4F7096C2B929E0DA2F49",
+                "url": "A76121649BE84CAD8DECAD641D307C32",
                 "path": "On Premises deployment\\Sitecore 10.1.0 rev. 005207 (Setup XP0 Developer Workstation rev. 1.2.2-r1).zip",
-                "size": 315463510
+                "size": 301645797
             },
             {
                 "code": "ProdOnPrem",
-                "url": "0E7739CA4CCD4EA58A585ABECCCFB221",
+                "url": "D50743DD48384EDEA92DBFE40B9F176D",
                 "path": "On Premises deployment\\Sitecore 10.1.0 rev. 005207 (Setup XM1 Developer Workstation rev. 1.2.2-r1).zip",
-                "size": 413906171
+                "size": 404949748
             },
             {
                 "code": "ProdOnPrem",
