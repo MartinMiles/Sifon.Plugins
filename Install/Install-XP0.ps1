@@ -37,6 +37,7 @@ if(!(Test-Path -Path $FullPath))
 {
     "."
     Show-Message -Fore red -Back yellow -Text @("XP0 installer not downloaded.","File missing at: $FullPath")    
+
     exit
 }
 
@@ -58,6 +59,7 @@ Write-Output "Sifon-MuteProgress"
     Expand-Archive -Path "$folder\$conf" -DestinationPath $folder
 Write-Output "Sifon-UnmuteProgress"
 
+
 if($Params.InstallPrerequisites)
 {
     Show-Progress -Percent 21  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
@@ -65,8 +67,6 @@ if($Params.InstallPrerequisites)
         Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
     Write-Output "Sifon-UnmuteProgress"        
 }
-
-
 
 # Install XP0 via combined partials file.
 $singleDeveloperParams = @{
