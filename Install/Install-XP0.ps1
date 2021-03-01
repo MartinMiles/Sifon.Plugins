@@ -53,6 +53,12 @@ else
     "Found file: $FullPath"
 }
 
+if(!(Test-Path -Path $FullPath))
+{
+    "XP0 installer not downloaded. File missing at: $FullPath"
+    exit
+}
+
 $folder = (Get-Location).Path + "\Downloads\Install"
 Write-Output "Sifon-MuteErrors"
     if(Test-Path -Path $folder)
@@ -80,7 +86,7 @@ $content = $content -replace 'SitePhysicalRoot = ""',"SitePhysicalRoot = ""$($Pa
 
 $content = $content -replace 'XConnectSiteName = "\$prefix.xconnect"',"XConnectSiteName = ""$($Params.XConnectSiteName)"""
 $content = $content -replace 'SitecoreSiteName = "\$prefix.sc"',"SitecoreSiteName = ""$($Params.SitecoreSiteName)"""
-$content = $content -replace 'IdentityServerSiteName = "\$prefix.IdentityServerSiteName"',"SitePhysicalRoot = ""$($Params.IdentityServerSiteName)"""
+$content = $content -replace 'IdentityServerSiteName = "\$prefix.identityserver"',"IdentityServerSiteName = ""$($Params.IdentityServerSiteName)"""
 
 $content = $content -replace 'LicenseFile = "\$SCInstallRoot\\license\.xml"',"LicenseFile = ""$($Params.LicenseFile)"""
 
@@ -96,10 +102,13 @@ $content | Out-File $script
 
 if($Params.InstallPrerequisites)
 {
-    Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
+    Show-Progress -Percent 21  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
+    Write-Output "Sifon-MuteProgress"
+        Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
+    Write-Output "Sifon-UnmuteProgress"        
 }
 
-` "$folder\XP0-SingleDeveloper.ps1"
+& "$folder\XP0-SingleDeveloper.ps1"
 
 Show-Progress -Percent 100  -Activity "Done"  -Status "Done"
 
