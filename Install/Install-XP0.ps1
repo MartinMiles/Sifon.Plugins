@@ -12,33 +12,13 @@ param(
 $Params.DownloadFile
 $Url = "https://sitecoredev.azureedge.net/~/media/" + $Params.DownloadHash + ".ashx"
 
-$Params.RemotingEnabled
-$Params.RemotingHost
-$Params.RemotingUsername
-$Params.RemotingPassword
-
-$Params.SitePhysicalRoot
-$Params.LicenseFile
-$Params.SitecoreAdminPassword
-
-$Params.SqlServer
-$Params.SqlAdminUser
-$Params.SqlAdminPassword
-
-$Params.Prefix
-$Params.SitecoreSiteName
-$Params.XConnectSiteName
-$Params.IdentityServerSiteName
-
-$Params.SolrUrl
-$Params.SolrService
-$Params.SolrRoot
-
 "InstallPrerequisites = $($Params.InstallPrerequisites)"
 "CreateProfile = $($Params.CreateProfile)"
 "."
 
 # todo copy license to destination (on remote)
+
+New-Item -ItemType Directory -Force -Path ((Get-Location).Path + "\Downloads\") | Out-Null
 
 [string]$FullPath = (Get-Location).Path + "\Downloads\" + $Params.DownloadFile
 if(!(Test-Path -Path $FullPath))
@@ -53,6 +33,13 @@ else
     "Found file: $FullPath"
 }
 
+if(!(Test-Path -Path $FullPath))
+{
+    "."
+    Show-Message -Fore red -Back yellow -Text @("XP0 installer not downloaded.","File missing at: $FullPath")    
+    exit
+}
+
 $folder = (Get-Location).Path + "\Downloads\Install"
 Write-Output "Sifon-MuteErrors"
     if(Test-Path -Path $folder)
@@ -65,41 +52,53 @@ New-Item -ItemType Directory -Force -Path $folder | Out-Null
 Show-Progress -Percent 15  -Activity "Extracting $($Params.DownloadFile) ..."  -Status "Extracting Sitecore"
 Write-Output "Sifon-MuteProgress"
     Expand-Archive -Path $FullPath -DestinationPath $folder
-    # "Expanding [$folder\$($Params.DownloadFile)]"
+    
     $conf = Get-ChildItem -Path $folder -Filter "XP0 Configuration files*.zip"
-    "== $folder\$conf =="
+    
     Expand-Archive -Path "$folder\$conf" -DestinationPath $folder
 Write-Output "Sifon-UnmuteProgress"
 
-$script = "$folder\XP0-SingleDeveloper.ps1"
-$content = Get-Content -Raw $script -Encoding UTF8
-$content = $content -replace 'Prefix = "XP0"',"Prefix = ""$($Params.Prefix)"""
-$content = $content -replace 'SitecoreAdminPassword = ""',"SitecoreAdminPassword = ""$($Params.SitecoreAdminPassword)"""
-$content = $content -replace 'SCInstallRoot = "C:\\ResourceFiles"',"SCInstallRoot = ""$folder"""
-$content = $content -replace 'SitePhysicalRoot = ""',"SitePhysicalRoot = ""$($Params.SitePhysicalRoot)"""
-
-$content = $content -replace 'XConnectSiteName = "\$prefix.xconnect"',"XConnectSiteName = ""$($Params.XConnectSiteName)"""
-$content = $content -replace 'SitecoreSiteName = "\$prefix.sc"',"SitecoreSiteName = ""$($Params.SitecoreSiteName)"""
-$content = $content -replace 'IdentityServerSiteName = "\$prefix.IdentityServerSiteName"',"SitePhysicalRoot = ""$($Params.IdentityServerSiteName)"""
-
-$content = $content -replace 'LicenseFile = "\$SCInstallRoot\\license\.xml"',"LicenseFile = ""$($Params.LicenseFile)"""
-
-$content = $content -replace 'SolrUrl = "https://localhost:8983/solr"',"SolrUrl = ""$($Params.SolrUrl)"""
-$content = $content -replace 'SolrRoot = "C:\\Solr-8\.4\.0"',"SolrRoot = ""$($Params.SolrRoot)"""
-$content = $content -replace 'SolrService = "Solr-8\.4\.0"',"SolrService = ""$($Params.SolrService)"""
-
-$content = $content -replace 'SqlServer = "localhost"',"SqlServer = ""$($Params.SqlServer)"""
-$content = $content -replace 'SqlAdminUser = "sa"',"SqlAdminUser = ""$($Params.SqlAdminUser)"""
-$content = $content -replace 'SqlAdminPassword = "12345"',"SqlAdminPassword = ""$($Params.SqlAdminPassword)"""
-
-$content | Out-File $script
-
 if($Params.InstallPrerequisites)
 {
-    Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
+    Show-Progress -Percent 21  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
+    Write-Output "Sifon-MuteProgress"
+        Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
+    Write-Output "Sifon-UnmuteProgress"        
 }
 
-` "$folder\XP0-SingleDeveloper.ps1"
+
+
+# Install XP0 via combined partials file.
+$singleDeveloperParams = @{
+    Path = "$folder\XP0-SingleDeveloper.json"
+    SqlServer = $Params.SqlServer
+    SqlAdminUser = $Params.SqlAdminUser
+    SqlAdminPassword = $Params.SqlAdminPassword
+    SitecoreAdminPassword = $Params.SqlAdminPassword
+    SolrUrl = $Params.SolrUrl
+    SolrRoot = $Params.SolrRoot
+    SolrService = $Params.SolrService
+    Prefix = $Params.Prefix
+    XConnectCertificateName = $Params.XConnectSiteName
+    IdentityServerCertificateName = $Params.IdentityServerSiteName
+    IdentityServerSiteName = $Params.IdentityServerSiteName
+    LicenseFile = $Params.LicenseFile
+        XConnectPackage = (Get-ChildItem "$folder\Sitecore * rev. * (OnPrem)_xp0xconnect.scwdp.zip").FullName
+        SitecorePackage = (Get-ChildItem "$folder\Sitecore * rev. * (OnPrem)_single.scwdp.zip").FullName
+        IdentityServerPackage = (Get-ChildItem "$folder\Sitecore.IdentityServer * rev. * (OnPrem)_identityserver.scwdp.zip").FullName
+    XConnectSiteName = $Params.XConnectSiteName
+    SitecoreSitename = $Params.SitecoreSiteName
+        PasswordRecoveryUrl = "https://$($Params.SitecoreSiteName)"
+        SitecoreIdentityAuthority = "https://$($Params.IdentityServerSiteName)"
+        XConnectCollectionService = "https://$($Params.XConnectSiteName)"
+        ClientSecret = "SIF-Default"
+        AllowedCorsOrigins = "https://$($Params.SitecoreSiteName)"
+        SitePhysicalRoot = $Params.SitePhysicalRoot
+}
+
+Push-Location $folder
+Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$folder\XP0-SingleDeveloper.log"
+Pop-Location
 
 Show-Progress -Percent 100  -Activity "Done"  -Status "Done"
 
