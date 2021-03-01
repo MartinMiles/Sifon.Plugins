@@ -99,7 +99,7 @@ if($Params.InstallPrerequisites)
     Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
 }
 
-` XP0-SingleDeveloper.ps1
+` "$folder\XP0-SingleDeveloper.ps1"
 
 Show-Progress -Percent 100  -Activity "Done"  -Status "Done"
 
