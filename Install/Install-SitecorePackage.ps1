@@ -17,6 +17,7 @@ Function Display-Progress($action, $percent){
 [string]$PackageFullPath = $SelectedFile
 If([string]::IsNullOrEmpty($PackageFullPath))
 {
+    "."
     Show-Message -Fore Yellow -Back White -Text  "You should provide a path to a package to be installed"
     exit
 }
