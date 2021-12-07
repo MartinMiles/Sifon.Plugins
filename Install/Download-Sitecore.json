@@ -1325,7 +1325,6 @@
         "name": "Sitecore XP 10.0 Update 1",
         "folder": "Sitecore Experience Platform 10.0.1",
         "resources": [
-
             {
                 "code": "ProdContainers",
                 "url": "5C0F3F35FBD3426F987A66077BB37592",
@@ -1467,7 +1466,7 @@
                 "code": "ProdReleaseInfo",
                 "url": "A649A27C07654DA197D51469A6627E03",
                 "path": "Release information\\Installation_Guide_for_the_XP_Scaled_topology-10.0.1.pdf",
-                "size": 914577
+                "size": 878218
             },
             {
                 "code": "ProdReleaseInfo",
@@ -1904,7 +1903,7 @@
                 "code": "ModIdentity",
                 "url": "C6592CA9CB9D45EE9D67C5C3DC0946F5",
                 "path": "Modules\\Sitecore Identity 5.0.1\\Sitecore.IdentityServer.5.0.1-r00280.scwdp.zip",
-                "size": 14219248
+                "size": 14219388
             },
             {
                 "code": "ModIdentity",
