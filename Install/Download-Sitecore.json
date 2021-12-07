@@ -121,31 +121,31 @@
                 "code": "ProdReleaseInfo",
                 "url": "0A682D43EFC44AF796AA59354740CA7E",
                 "path": "Release information\\Installation_Guide_for_the_XM_Scaled_topology_9.3.0.pdf",
-                "size": 828512
+                "size": 862176
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "1FF739F5D18F4CC298AB22AE8B8DB26E",
                 "path": "Release information\\Installation_Guide_for_the_XP_Scaled_topology_9.3.0.pdf",
-                "size": 894575
+                "size": 894607
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "C2C348391D94410F8BF4A0286A859F23",
                 "path": "Release information\\Quick_Installation_Guide_for_a_Developer_Workstation_9.3.0.pdf",
-                "size": 736821
+                "size": 732630
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "E0D23BC279B24363860AD8314A8FD12B",
                 "path": "Release information\\Upgrade_Guide_Sitecore_9.3.0_from_8.1.0-9.0.1.pdf",
-                "size": 1361975
+                "size": 1359297
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "E41E93BF069242BEABC7F2669C7EFB1E",
                 "path": "Release information\\Upgrade_Guide_Sitecore_9.3.0_from_9.0.2_or_later.pdf",
-                "size": 832507
+                "size": 829759
             },
             {
                 "code": "ProdReleaseInfo",
@@ -525,13 +525,6 @@
                 "path": "Modules\\Sitecore Publishing\\Service 4.3\\Sitecore Publishing Service 4.3.0-win-x64.zip",
                 "size": 17629633
             },
-            {
-                "code": "ModPublishing",
-                "url": "2FD91B72A21747C883410BB65A566B75",
-                "path": "Modules\\Sitecore Publishing\\Service 4.3\\PublishingService-Installation-and-Configuration-Guide-4.3.pdf",
-                "size": 1174928
-            },
-
 
             {
                 "code": "ModMigrationXDB",
@@ -603,15 +596,15 @@
             },
             {
                 "code": "ProdContainers",
-                "url": "184E63BB1E0547C682C9170FEE95BA29",
+                "url": "E00A3757A1F54425909B150EF476C4E9",
                 "path": "Container deployments\\Installation_Guide_for_a_Developer_Workstation_with_Containers_XP10.0.0.pdf",
-                "size": 328783
+                "size": 494943
             },
             {
                 "code": "ProdContainers",
-                "url": "D6D6C46E2A89478D92CA10BCDD19BBEF",
-                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes_XP10.0.0.pdf",
-                "size": 517800
+                "url": "CC312D5D57C24D5D86137D35655F6F34",
+                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes_10_0-en.pdf",
+                "size": 554268
             },
 
 
@@ -653,10 +646,6 @@
             },
 
 
-
-
-
-
             {
                 "code": "ProdOnPrem",
                 "url": "A74E47524738460B83332BAE82F123D1",
@@ -687,8 +676,6 @@
                 "path": "On Premises deployment\\Sitecore 10.0.0 rev. 004346 (WDP XM1 packages).zip",
                 "size": 390812992
             },
-
-
 
 
 
@@ -745,33 +732,33 @@
             },
             {
                 "code": "ProdReleaseInfo",
-                "url": "D8D3ED83109D46FCB83160E90FAE615F",
+                "url": "001767D17218438799E5C26EFA4D3565",
                 "path": "Release information\\Installation_Guide_for_the_XM_Scaled_topology-10.0.0.pdf",
-                "size": 808393
+                "size": 806716
             },
             {
                 "code": "ProdReleaseInfo",
-                "url": "78DD9F3A351E4D54AFC607FBDAC4FD4F",
+                "url": "DEE5EE8C69E14AE39406641152412614",
                 "path": "Release information\\Installation_Guide_for_the_XP_Scaled_topology-10.0.0.pdf",
-                "size": 907523
+                "size": 877558
             },
             {
                 "code": "ProdReleaseInfo",
-                "url": "4E099BD974894F10B69D931C42F74E71",
+                "url": "DF68D195EFC04C6F9E1853DF68932415",
                 "path": "Release information\\Quick_Installation_Guide_for_a_Developer_Workstation-10.0.0.pdf",
-                "size": 725205
+                "size": 733937
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "7096C102E774454CAFC4BA5F39AB5A9F",
                 "path": "Release information\\Upgrade_Guide_Sitecore_10.0.0_from_8.1.0-9.0.1.pdf",
-                "size": 1520540
+                "size": 1315418
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "DB507076AD764C6DACBB01859F17CC21",
                 "path": "Release information\\Upgrade_Guide_Sitecore_10.0.0_from_9.0.2_or_later.pdf",
-                "size": 1031004
+                "size": 999001
             },
             {
                 "code": "ProdReleaseInfo",
@@ -1172,14 +1159,14 @@
             {
                 "code": "ModHorizon",
                 "url": "66757DB3C5C84AC08CB5CF397B447CCF",
-                "path": "Modules\\Sitecore Horizon 10.0.0\\Documentation\\Azure deployment Guide - Horizon 10_0.pdf",
-                "size": 241879
+                "path": "Modules\\Sitecore Horizon 10.0.0\\Documentation\\Azure Deployment Guide - Horizon 10_0.pdf",
+                "size": 221590
             },
             {
                 "code": "ModHorizon",
                 "url": "E2280E4610B44DED913670E5638BCE3D",
                 "path": "Modules\\Sitecore Horizon 10.0.0\\Documentation\\On-premise Installation Guide - Horizon 10_0.pdf",
-                "size": 216269
+                "size": 198225
             },
             {
                 "code": "ModHorizon",
@@ -1204,15 +1191,15 @@
             },
             {
                 "code": "ModIdentity",
-                "url": "D8D3ED83109D46FCB83160E90FAE615F",
+                "url": "001767D17218438799E5C26EFA4D3565",
                 "path": "Modules\\Sitecore Identity 5.0.0\\Release information\\Installation_Guide_for_the_XM_Scaled_topology-10.0.0.pdf",
-                "size": 808393
+                "size": 806716
             },
             {
                 "code": "ModIdentity",
-                "url": "78DD9F3A351E4D54AFC607FBDAC4FD4F",
+                "url": "DEE5EE8C69E14AE39406641152412614",
                 "path": "Modules\\Sitecore Identity 5.0.0\\Release information\\Installation_Guide_for_the_XP_Scaled_topology-10.0.0.pdf",
-                "size": 907523
+                "size": 877558
             },
 
 
@@ -1341,17 +1328,16 @@
 
             {
                 "code": "ProdContainers",
-                "url": "26D26751543C448A968E2BDB2BD16D60",
-                "path": "Container deployments\\Installation_Guide_for_a_Developer_Workstation_with_Containers_XP10.0.1.pdf",
-                "size": 329649
+                "url": "5C0F3F35FBD3426F987A66077BB37592",
+                "path": "Container deployments\\Installation_Guide_for_a_Developer_Workstation_with_Containers-SC-XP-10.0.1-en.pdf",
+                "size": 494528
             },
             {
                 "code": "ProdContainers",
-                "url": "D96AA9C8F67043288662B76050D98073",
-                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes_XP10.0.1.pdf",
-                "size": 539021
+                "url": "39022C869FFE44ADA5A5F1B9034C1A04",
+                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes_10_0_1-en.pdf",
+                "size": 524434
             },          
-
 
             {
                 "code": "ProdSIF",
@@ -1475,7 +1461,7 @@
                 "code": "ProdReleaseInfo",
                 "url": "756539AB29044B409CE892FE8B4D5879",
                 "path": "Release information\\Installation_Guide_for_the_XM_Scaled_topology-10.0.1.pdf",
-                "size": 836306
+                "size": 807530
             },
             {
                 "code": "ProdReleaseInfo",
@@ -1487,7 +1473,7 @@
                 "code": "ProdReleaseInfo",
                 "url": "A64A0D6A79084F1CBC0CDE17094AC23A",
                 "path": "Release information\\Quick_Installation_Guide_for_a_Developer_Workstation-10.0.1.pdf",
-                "size": 739287
+                "size": 733930
             },
 
             {
@@ -1502,13 +1488,13 @@
                 "code": "ProdReleaseInfo",
                 "url": "DC023867E93440E899579C3C4BA8F7BD",
                 "path": "Release information\\Upgrade_Guide_Sitecore_10.0.1_from _8.1.0-9.0.1.pdf",
-                "size": 1515287
+                "size": 1324019
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "2D5F9BD0D0EB4DDC9E7CD1D835BAE2D5",
                 "path": "Release information\\Upgrade_Guide_Sitecore_10.0.1_from_9.0.2_or_later.pdf",
-                "size": 1046142
+                "size": 1015273
             },
             {
                 "code": "ProdReleaseInfo",
@@ -1896,15 +1882,15 @@
             },
             {
                 "code": "ModHorizon",
-                "url": "3FD808AD09D74EB4893D9BB761F8F81D",
+                "url": "12133A443FE3469A85CFB14D3CFDCFCB",
                 "path": "Modules\\Sitecore Horizon 10.0.0\\Documentation\\Azure Deployment Guide - Horizon 10_0_1.pdf",
-                "size": 222404
+                "size": 222125
             },
             {
                 "code": "ModHorizon",
-                "url": "12D7D28D3456456BA9E2993D87208DE8",
+                "url": "BD603D7F36D34CC99696A2A7F96F085E",
                 "path": "Modules\\Sitecore Horizon 10.0.0\\Documentation\\On-premise Installation Guide - Horizon 10_0_1.pdf",
-                "size": 200859
+                "size": 198607
             },
             {
                 "code": "ModHorizon",
@@ -1916,27 +1902,27 @@
 
             {
                 "code": "ModIdentity",
-                "url": "2D1DC7FAB6C8425F8BE0F3DD3D02EBD8",
-                "path": "Modules\\Sitecore Identity 5.0.0\\Sitecore.IdentityServer.5.0.0-r00277.scwdp.zip",
+                "url": "C6592CA9CB9D45EE9D67C5C3DC0946F5",
+                "path": "Modules\\Sitecore Identity 5.0.1\\Sitecore.IdentityServer.5.0.1-r00280.scwdp.zip",
                 "size": 14219248
             },
             {
                 "code": "ModIdentity",
-                "url": "C1DC3531CB8F4966AFF0035446064506",
-                "path": "Modules\\Sitecore Identity 5.0.0\\IdentityServer Deployment Configuration 5.0.0.zip",
-                "size": 10083
+                "url": "43C8A14FD5D349FAAFA4365D922FCA86",
+                "path": "Modules\\Sitecore Identity 5.0.1\\IdentityServer Deployment Configuration 5.0.1.zip",
+                "size": 10040
             },
             {
                 "code": "ModIdentity",
-                "url": "D8D3ED83109D46FCB83160E90FAE615F",
-                "path": "Modules\\Sitecore Identity 5.0.0\\Release information\\Installation_Guide_for_the_XM_Scaled_topology-10.0.0.pdf",
-                "size": 808393
+                "url": "A649A27C07654DA197D51469A6627E03",
+                "path": "Modules\\Sitecore Identity 5.0.1\\Release information\\Installation_Guide_for_the_XM_Scaled_topology-10.0.1.pdf",
+                "size": 878218
             },
             {
                 "code": "ModIdentity",
-                "url": "78DD9F3A351E4D54AFC607FBDAC4FD4F",
-                "path": "Modules\\Sitecore Identity 5.0.0\\Release information\\Installation_Guide_for_the_XP_Scaled_topology-10.0.0.pdf",
-                "size": 907523
+                "url": "756539AB29044B409CE892FE8B4D5879",
+                "path": "Modules\\Sitecore Identity 5.0.1\\Release information\\Installation_Guide_for_the_XP_Scaled_topology-10.0.1.pdf",
+                "size": 878218
             },
 
            
