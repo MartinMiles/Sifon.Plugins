@@ -629,9 +629,21 @@
             },
             {
                 "code": "ProdSIF",
-                "url": "747325D36858427C9D61964941AF3D59",
-                "path": "Download options\\Divide Core db into coresecurity v03.zip",
-                "size": 23915
+                "url": "452BC7C6D9004CDEB51886DEA92E7E7B",
+                "path": "Download options\\Divide Core db into core security v0.4.zip",
+                "size": 53874
+            },
+            {
+                "code": "ProdSIF",
+                "url": "D6D2A649CDAC46DB912B25187175E857",
+                "path": "Download options\\Divide Core db into core security v0.3.1.zip",
+                "size": 23952
+            },
+            {
+                "code": "ProdSIF",
+                "url": "E53E9677321F4B79B70BD3C2ACB4253A",
+                "path": "Download options\\Divide Core db into core+security v0.2.zip",
+                "size": 23369
             },
             {
                 "code": "ProdSIF",
@@ -1355,9 +1367,21 @@
             },
             {
                 "code": "ProdSIF",
-                "url": "747325D36858427C9D61964941AF3D59",
-                "path": "Download options\\Divide Core db into coresecurity v03.zip",
-                "size": 23915
+                "url": "452BC7C6D9004CDEB51886DEA92E7E7B",
+                "path": "Download options\\Divide Core db into core security v0.4.zip",
+                "size": 53874
+            },
+            {
+                "code": "ProdSIF",
+                "url": "D6D2A649CDAC46DB912B25187175E857",
+                "path": "Download options\\Divide Core db into core security v0.3.1.zip",
+                "size": 23952
+            },
+            {
+                "code": "ProdSIF",
+                "url": "E53E9677321F4B79B70BD3C2ACB4253A",
+                "path": "Download options\\Divide Core db into core+security v0.2.zip",
+                "size": 23369
             },
             {
                 "code": "ProdSIF",
@@ -2036,15 +2060,15 @@
         "resources": [
             {
                 "code": "ProdContainers",
-                "url": "F53BECFEBDC64C8695EDF60D4E435AEA",
-                "path": "Container deployments\\Installation_Guide_for_a_Developer_Workstation_with_Containers-SC-XP-10.1.0.pdf",
-                "size": 269021
+                "url": "5063B525E0AA46C6885C4EA211467C08",
+                "path": "Container deployments\\InstallaInstallation_Guide_for_a_Developer_Workstation_with_Containers_10_1-en.pdf",
+                "size": 499856
             },
             {
                 "code": "ProdContainers",
-                "url": "9A846FD4265846F9BBB98281A0E6763C",
-                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes-SC-XP-10.1.0.pdf",
-                "size": 436553
+                "url": "86C808537BEE4607B020BB71DA2F3AFF",
+                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes_SC_XP-10.1-en.pdf",
+                "size": 535166
             },
 
             {
@@ -2061,9 +2085,21 @@
             },
             {
                 "code": "ProdSIF",
-                "url": "747325D36858427C9D61964941AF3D59",
-                "path": "Download options\\Divide Core db into coresecurity v03.zip",
-                "size": 23915
+                "url": "452BC7C6D9004CDEB51886DEA92E7E7B",
+                "path": "Download options\\Divide Core db into core security v0.4.zip",
+                "size": 53874
+            },
+            {
+                "code": "ProdSIF",
+                "url": "D6D2A649CDAC46DB912B25187175E857",
+                "path": "Download options\\Divide Core db into core security v0.3.1.zip",
+                "size": 23952
+            },
+            {
+                "code": "ProdSIF",
+                "url": "E53E9677321F4B79B70BD3C2ACB4253A",
+                "path": "Download options\\Divide Core db into core+security v0.2.zip",
+                "size": 23369
             },
             {
                 "code": "ProdSIF",
@@ -2158,32 +2194,32 @@
                 "code": "ProdReleaseInfo",
                 "url": "43033F758E2F4B859349073DA5E18EA3",
                 "path": "Release information\\Installation_Guide_for_the_XM_Scaled_topology-10.1.0.pdf",
-                "size": 835792
+                "size": 807281
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "49922A46270B4C7BB6EA833F6957597A",
                 "path": "Release information\\Installation_Guide_for_the_XP_Scaled_topology-10.1.0.pdf",
-                "size": 893736
+                "size": 859274
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "3EAB338431A14882A24B95CD231280D4",
                 "path": "Release information\\Quick_Installation_Guide_for_a_Developer_Workstation-10.0.1.pdf",
-                "size": 749518
+                "size": 733648
             },
 
             {
                 "code": "ProdReleaseInfo",
                 "url": "ACC354B0434B4452A32E3CBB03BC54D1",
                 "path": "Release information\\Sitecore_Container_Upgrade_Deployment_Guide-SC-10.1.0.pdf",
-                "size": 289877
+                "size": 288941
             },
             {
                 "code": "ProdReleaseInfo",
                 "url": "185FB45E3F1E49AD8B7F5263FBEE46FA",
                 "path": "Release information\\Upgrade_Guide_Sitecore_XP-10.1.0.pdf",
-                "size": 803135
+                "size": 732732
             },            
             {
                 "code": "ProdReleaseInfo",
@@ -2195,9 +2231,9 @@
 
             {
                 "code": "ModCLI",
-                "url": "21B25A99180B4147B85E3214029C5DDB",
-                "path": "Modules\\Sitecore CLI 3.0.0\\Sitecore.ManagementServices.Deploy.3.0.0-r00263.1.zip",
-                "size": 2479
+                "url": "ADC0F6777DEE4626BB6A2CA32F40FA37",
+                "path": "Modules\\Sitecore CLI 3.0.0\\Sitecore ManagementServices 3.0.0-r00263.1.zip",
+                "size": 1213312
             },
             {
                 "code": "ModCLI",
@@ -2574,15 +2610,15 @@
             },
             {
                 "code": "ModHorizon",
-                "url": "475D0638D66947C2943DC842465C1C2B",
-                "path": "Modules\\Sitecore Horizon 10.1.0\\Documentation\\Azure_Deployment_Guide-Horizon_10.1.0.pdf",
-                "size": 266200
+                "url": "DD004714454E446B8A48F61014D4B5DD",
+                "path": "Modules\\Sitecore Horizon 10.1.0\\Documentation\\Azure_Deployment_Guide-Horizon_10.1.pdf",
+                "size": 323724
             },
             {
                 "code": "ModHorizon",
-                "url": "DCAEE583541A4248836BF79D9CB268E1",
-                "path": "Modules\\Sitecore Horizon 10.1.0\\Documentation\\On-prem_Installation_Guide-Horizon_10.1.0.pdf",
-                "size": 241569
+                "url": "840DBBD280104DD3812C98FEACA21E6C",
+                "path": "Modules\\Sitecore Horizon 10.1.0\\Documentation\\On-prem Installation Guide - Horizon 10_1.pdf",
+                "size": 293478
             },
             {
                 "code": "ModHorizon",
@@ -2608,13 +2644,13 @@
                 "code": "ModIdentity",
                 "url": "43033F758E2F4B859349073DA5E18EA3",
                 "path": "Modules\\Sitecore Identity 5.1.0\\Release information\\Installation_Guide_for_the_XM_Scaled_topology-10.1.0.pdf",
-                "size": 835792
+                "size": 807281
             },
             {
                 "code": "ModIdentity",
                 "url": "49922A46270B4C7BB6EA833F6957597A",
                 "path": "Modules\\Sitecore Identity 5.1.0\\Release information\\Installation_Guide_for_the_XP_Scaled_topology-10.1.0.pdf",
-                "size": 893736
+                "size": 859274
             },
 
             {
@@ -2852,9 +2888,21 @@
             },
             {
                 "code": "ProdSIF",
-                "url": "747325D36858427C9D61964941AF3D59",
-                "path": "Download options\\Divide Core db into coresecurity v03.zip",
-                "size": 23915
+                "url": "452BC7C6D9004CDEB51886DEA92E7E7B",
+                "path": "Download options\\Divide Core db into core security v0.4.zip",
+                "size": 53874
+            },
+            {
+                "code": "ProdSIF",
+                "url": "D6D2A649CDAC46DB912B25187175E857",
+                "path": "Download options\\Divide Core db into core security v0.3.1.zip",
+                "size": 23952
+            },
+            {
+                "code": "ProdSIF",
+                "url": "E53E9677321F4B79B70BD3C2ACB4253A",
+                "path": "Download options\\Divide Core db into core+security v0.2.zip",
+                "size": 23369
             },
             {
                 "code": "ProdSIF",
@@ -3100,13 +3148,13 @@
                 "code": "ModSalesforceCloud",
                 "url": "6A5B9A308BE34B6488C5E9F5B32F920C",
                 "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 6.0\\Behavioral Data Exchange\\Activity_for_Marketing_Automation_Installatio-en.pdf",
-                "size": 391618
+                "size": 389724
             },
             {
                 "code": "ModSalesforceCloud",
                 "url": "5184E20AA3014F1EAF1A54E392A4FC94",
                 "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 6.0\\Behavioral Data Exchange\\Behavioral_Data_Exchange_Installation_Guide-en.pdf",
-                "size": 389724
+                "size": 929216
             },
             {
                 "code": "ModSalesforceCloud",
