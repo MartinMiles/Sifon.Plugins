@@ -1,7 +1,7 @@
 [
     {
         "name": "Sitecore XP 9.3",
-        "folder": "Sitecore Experience Platform 9.3",
+        "folder": "9.3.0",
         "resources": [
             {
                 "code": "ProdSIF",
@@ -586,7 +586,7 @@
 
     {
         "name": "Sitecore XP 10.0",
-        "folder": "Sitecore Experience Platform 10.0",
+        "folder": "10.0.0",
         "resources": [
             {
                 "code": "ProdContainers",
@@ -1323,7 +1323,7 @@
 
     {
         "name": "Sitecore XP 10.0 Update 1",
-        "folder": "Sitecore Experience Platform 10.0.1",
+        "folder": "10.0.1",
         "resources": [
             {
                 "code": "ProdContainers",
@@ -2040,7 +2040,7 @@
     
     {
         "name": "Sitecore XP 10.1",
-        "folder": "Sitecore Experience Platform 10.1",
+        "folder": "10.1.0",
         "resources": [
             {
                 "code": "ProdContainers",
@@ -2843,7 +2843,7 @@
     
     {
         "name": "Sitecore XP 10.1 Update 1",
-        "folder": "Sitecore Experience Platform 10.1.1",
+        "folder": "10.1.1",
         "resources": [
             {
                 "code": "ProdContainers",
@@ -3672,7 +3672,7 @@
     
     {
         "name": "Sitecore XP 10.2",
-        "folder": "Sitecore Experience Platform 10.2",
+        "folder": "10.2.0",
         "resources": [
             {
                 "code": "ProdContainers",
