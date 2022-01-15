@@ -2,15 +2,23 @@
 ### Description: Installs Sitecore Horizon
 ### Compatibility: Sifon 1.2.5
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sitecore license selector","Select Sitecore license in order to install Horizon:","License files|*.xml","OK")
+### $SelectedVersion = new Sifon.Shared.Forms.SitecoreVersionSelectorDialog.SitecoreVersionSelector::GetVersion("$Webroot\bin\Sitecore.Kernel.dll", "Sitecore version selector", "Please select Sitecore version:", "OK", $Profile)
 
 param(
-    [string]$Webroot,
-    [string]$Website,
-    [string]$Prefix,
-    [PSCredential]$PortalCredentials,
-    $SelectedFile
+    [string]$Webroot = 'c:\inetpub\wwwroot',
+    [string]$Website = 'xp.local',
+    [string]$Prefix = 'xp',
+    [PSCredential]$PortalCredentials = $null,
+    $SelectedFile = 'c:\license.xml',
+    $SelectedVersion = $null
 )
 
+if($null -ne $SelectedVersion)
+{    
+    Show-Message -Fore "White" -Back "Yellow" -Text @('The version you have selected:', $SelectedVersion.Product)
+}
+
+exit
 $horizon1000URL = "https://sitecoredev.azureedge.net/~/media/7BE931D47A4F4B43887F78F8BA80630E.ashx"
 $horizonFilename = "Sitecore Horizon 10.2.0 rev. 05608.zip"
 $downloadsFolder = New-Item -ItemType Directory -Path "$((Get-Location).Path)\Downloads" -force
@@ -79,7 +87,8 @@ If(!(Test-Path -Path $packageFullPath))
     exit
 }
 
-$workingFolder = "c:\Sifon\Cache\Horizon"
+$localtion = Get-Location
+$workingFolder = "$localtion\Cache\Horizon"
 Write-Output "Sifon-MuteErrors"
 Write-Output "Sifon-MuteOutput"
     Remove-Item $workingFolder -Recurse -Force -Confirm:$false
@@ -98,7 +107,7 @@ Write-Output "Installing Horizon. This may take quite a while, so please be pati
 #$baseInstallationFolder = split-path -parent $Webroot
 # the above commented due to incorrect path level. TODo: investigate the cause of it
 $baseInstallationFolder = $Webroot
-$horizonFolder = "$baseInstallationFolder\$Prefix.horizon"
+$horizonFolder = "$baseInstallationFolder\horizon.$Prefix.local"
 
 "Webroot = $Webroot"
 "baseInstallationFolder = $baseInstallationFolder"
@@ -112,13 +121,26 @@ Write-Output "Sifon-UnmuteOutput"
 
 Write-Progress -Activity "Installing Horizon" -CurrentOperation "running long batch installation" -PercentComplete 41
 
+
+"============================================"
+"$workingFolder\InstallHorizon.ps1"
+"horizonInstanceName="+"horizon.$Prefix.local"
+"horizonPhysicalPath=" + $horizonFolder
+"sitecoreCmInstanceName=" + $Website
+"sitecoreCmInstansePath=" + $Webroot
+"identityServerPoolName="+"identityserver.$Prefix.local"
+"identityServerPhysicalPath="+"$baseInstallationFolder\identityserver.$Prefix.local"
+"licensePath="+$SelectedFile
+"============================================"
+
 $res = [PowerShell]::Create().AddCommand("$workingFolder\InstallHorizon.ps1"). `
-    AddParameter("horizonInstanceName", "$Prefix.horizon"). `
-    AddParameter("horizonPhysicalPath", $horizonFolder). `
+    AddParameter("horizonInstanceName", "horizon.$Prefix.local"). `
+    #AddParameter("horizonPhysicalPath", $horizonFolder). `
     AddParameter("sitecoreCmInstanceName", $Website). `
-    AddParameter("sitecoreCmInstansePath", $Webroot). `
-    AddParameter("identityServerPoolName", "$Prefix.identityserver"). `
-    AddParameter("identityServerPhysicalPath", "$baseInstallationFolder\$Prefix.identityserver"). `
+    #AddParameter("sitecoreCmInstansePath", $Webroot). `
+    AddParameter("identityServerPoolName", "identityserver.$Prefix.local"). ` 
+    AddParameter("identityServerPhysicalPath", "$baseInstallationFolder\identityserver.$Prefix.local"). `
+    AddParameter("sitecoreAdminPassword", "b"). `
     AddParameter("licensePath", $SelectedFile). `
     AddParameter("topology", "XP").Invoke() 
 
