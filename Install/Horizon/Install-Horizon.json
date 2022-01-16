@@ -17,6 +17,10 @@
     },
     {
         "name": "Sitecore Horizon 10.0.0.zip",
-        "url": "https://dev.sitecore.net/~/media/6428CB6CC4F143E9A085AF2C36706E26.ashx"
+        "url": "https://sitecoredev.azureedge.net/~/media/6428CB6CC4F143E9A085AF2C36706E26.ashx"
+    },
+    {
+        "name": "Sitecore Horizon 9.3.0.zip",
+        "url": "https://sitecoredev.azureedge.net/~/media/BB3D610664694BB58B068ADB348CAF06.ashx"
     }
 ]

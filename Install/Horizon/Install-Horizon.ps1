@@ -1,4 +1,4 @@
-### Name: Install Horizon for Sitecore 10.2
+### Name: Install Horizon for Sitecore
 ### Description: Installs Sitecore Horizon
 ### Compatibility: Sifon 1.2.5
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sitecore license selector","Select Sitecore license in order to install Horizon:","License files|*.xml","OK")
