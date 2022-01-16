@@ -2,25 +2,21 @@
 ### Description: Installs Sitecore Horizon
 ### Compatibility: Sifon 1.2.5
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sitecore license selector","Select Sitecore license in order to install Horizon:","License files|*.xml","OK")
-### $SelectedVersion = new Sifon.Shared.Forms.SitecoreVersionSelectorDialog.SitecoreVersionSelector::GetVersion("$Webroot\bin\Sitecore.Kernel.dll", "Sitecore version selector", "Please select Sitecore version:", "OK", $Profile)
+### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-Horizon.json")
 
 param(
-    [string]$Webroot = 'c:\inetpub\wwwroot',
-    [string]$Website = 'xp.local',
-    [string]$Prefix = 'xp',
+    [string]$Webroot,
+    [string]$Website,
+    [string]$Prefix,
+    [string]$AdminPassword,
     [PSCredential]$PortalCredentials = $null,
-    $SelectedFile = 'c:\license.xml',
-    $SelectedVersion = $null
+    [string]$SelectedFile,
+    [string[][]]$Urls
 )
 
-if($null -ne $SelectedVersion)
-{    
-    Show-Message -Fore "White" -Back "Yellow" -Text @('The version you have selected:', $SelectedVersion.Product)
-}
 
-exit
-$horizon1000URL = "https://sitecoredev.azureedge.net/~/media/7BE931D47A4F4B43887F78F8BA80630E.ashx"
-$horizonFilename = "Sitecore Horizon 10.2.0 rev. 05608.zip"
+$horizonURL = $Urls[0][1]
+$horizonFilename = $Urls[0][0]
 $downloadsFolder = New-Item -ItemType Directory -Path "$((Get-Location).Path)\Downloads" -force
 $packageFullPath = "$downloadsFolder\$horizonFilename"
 
@@ -73,7 +69,7 @@ If(!(Test-Path -Path $packageFullPath))
     Write-Output "Downloading package $horizonFilename from Sitecore Developers Portal..."
 
     Write-Output "Sifon-MuteProgress"
-        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $horizon1000URL -TargertFilename $packageFullPath
+        Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $horizonURL -TargertFilename $packageFullPath
     Write-Output "Sifon-UnmuteProgress"
 }
 else
