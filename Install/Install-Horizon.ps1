@@ -2,7 +2,7 @@
 ### Description: Installs Sitecore Horizon
 ### Compatibility: Sifon 1.2.5
 ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sitecore license selector","Select Sitecore license in order to install Horizon:","License files|*.xml","OK")
-### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-Horizon.json")
+### $Version = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-Horizon.json")
 
 param(
     [string]$Webroot,
@@ -11,12 +11,25 @@ param(
     [string]$AdminPassword,
     [PSCredential]$PortalCredentials = $null,
     [string]$SelectedFile,
-    [string[][]]$Urls
+    [string[][]]$Version
 )
 
+if($SelectedFile -eq "" -or $Version.Length -eq 0){
 
-$horizonURL = $Urls[0][1]
-$horizonFilename = $Urls[0][0]
+    "."
+    Show-Message -Fore "Red" -Back "Yellow" -Text "License file or version have not been provided"
+    exit
+}
+
+if(-not(Test-Path -Path $SelectedFile)){
+
+    "."
+    Show-Message -Fore "Red" -Back "Yellow" -Text "License file does not exist at: $SelectedFile"
+    exit
+}
+
+$horizonURL = $Version[0][1]
+$horizonFilename = $Version[0][0]
 $downloadsFolder = New-Item -ItemType Directory -Path "$((Get-Location).Path)\Downloads" -force
 $packageFullPath = "$downloadsFolder\$horizonFilename"
 
