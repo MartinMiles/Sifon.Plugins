@@ -113,15 +113,15 @@ Copy-Item -Path $SelectedFile -Destination $workingFolder
 
 Write-Output "Installing Horizon. This may take quite a while, so please be patient."
 
-#$baseInstallationFolder = split-path -parent $Webroot
-# the above commented due to incorrect path level. TODo: investigate the cause of it
-$baseInstallationFolder = $Webroot
+$baseInstallationFolder = split-path -parent $Webroot
 $horizonFolder = "$baseInstallationFolder\horizon.$Prefix.local"
 
-"Webroot = $Webroot"
-"baseInstallationFolder = $baseInstallationFolder"
-"horizonFolder = $horizonFolder"
+# the above commented due to incorrect path level. TODo: investigate the cause of it
+#$baseInstallationFolder = $Webroot
 
+# "Webroot = $Webroot"
+# "baseInstallationFolder = $baseInstallationFolder"
+# "horizonFolder = $horizonFolder"
 
 Write-Output "Sifon-MuteOutput"
     Remove-Item $horizonFolder -Recurse -Force -Confirm:$false
