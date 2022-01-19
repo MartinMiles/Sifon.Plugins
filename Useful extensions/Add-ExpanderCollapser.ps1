@@ -1,4 +1,4 @@
-### Name: Add Expand and Collapse button to EE
+### Name: Add Expand and Collapse button to Content Editor
 ### Description: Expand and Collapse buttons help navigating multiple sections quicker, especially valuable for SXA sites
 ### Compatibility: Sifon 1.0.1
 
