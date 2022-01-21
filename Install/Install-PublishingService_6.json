@@ -8,5 +8,15 @@
                 "url": "https://sitecoredev.azureedge.net/~/media/D52C0CD8668742A58B019EA16EC1AEF7.ashx"
             }
         ]
+    },
+    {
+        "name": "Sitecore Publishing Module 10.1.0",
+        "url": "https://sitecoredev.azureedge.net/~/media/E48498FDA7B643079A19FB0F3C19ADC5.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore Publishing Service 6.0.0-netcoreapp3.1",
+                "url": "https://sitecoredev.azureedge.net/~/media/D52C0CD8668742A58B019EA16EC1AEF7.ashx"
+            }
+        ]
     }
 ]
