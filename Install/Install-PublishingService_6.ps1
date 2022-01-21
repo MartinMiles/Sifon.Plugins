@@ -207,6 +207,7 @@ if($response.status -eq 0)
         Write-Output "Publishing Module config patched."
         Start-Process -FilePath $exe -NoNewWindow
 
+        "."
         Show-Message -Fore "Green" -Back "Yellow" -Text "Publishing Service and Module for Sitecore have been installed"
         Display-Progress -action "publishing service and its module for Sitecore have been installed" -percent 100
     }
