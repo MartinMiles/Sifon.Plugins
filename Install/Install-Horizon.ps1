@@ -11,7 +11,8 @@ param(
     [string]$AdminPassword,
     [PSCredential]$PortalCredentials = $null,
     [string]$SelectedFile,
-    [string[][]]$Version
+    [string[][]]$Version,
+    [switch]$Debug = $false
 )
 
 if($SelectedFile -eq "" -or $Version.Length -eq 0){
@@ -130,17 +131,18 @@ Write-Output "Sifon-UnmuteOutput"
 
 Write-Progress -Activity "Installing Horizon" -CurrentOperation "running long batch installation" -PercentComplete 41
 
-
-"============================================"
-"$workingFolder\InstallHorizon.ps1"
-"horizonInstanceName="+"horizon.$Prefix.local"
-"horizonPhysicalPath=" + $horizonFolder
-"sitecoreCmInstanceName=" + $Website
-"sitecoreCmInstansePath=" + $Webroot
-"identityServerPoolName="+"identityserver.$Prefix.local"
-"identityServerPhysicalPath="+"$baseInstallationFolder\identityserver.$Prefix.local"
-"licensePath="+$SelectedFile
-"============================================"
+if($Debug){
+    "============================================"
+    "$workingFolder\InstallHorizon.ps1"
+    "horizonInstanceName="+"horizon.$Prefix.local"
+    "horizonPhysicalPath=" + $horizonFolder
+    "sitecoreCmInstanceName=" + $Website
+    "sitecoreCmInstansePath=" + $Webroot
+    "identityServerPoolName="+"identityserver.$Prefix.local"
+    "identityServerPhysicalPath="+"$baseInstallationFolder\identityserver.$Prefix.local"
+    "licensePath="+$SelectedFile
+    "============================================"
+}
 
 $res = [PowerShell]::Create().AddCommand("$workingFolder\InstallHorizon.ps1"). `
     AddParameter("horizonInstanceName", "horizon.$Prefix.local"). `
