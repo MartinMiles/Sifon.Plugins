@@ -117,13 +117,6 @@ Write-Output "Installing Horizon. This may take quite a while, so please be pati
 $baseInstallationFolder = split-path -parent $Webroot
 $horizonFolder = "$baseInstallationFolder\horizon.$Prefix.local"
 
-# the above commented due to incorrect path level. TODo: investigate the cause of it
-#$baseInstallationFolder = $Webroot
-
-# "Webroot = $Webroot"
-# "baseInstallationFolder = $baseInstallationFolder"
-# "horizonFolder = $horizonFolder"
-
 Write-Output "Sifon-MuteOutput"
     Remove-Item $horizonFolder -Recurse -Force -Confirm:$false
     New-Item -ItemType Directory -Path $horizonFolder -force
@@ -144,7 +137,7 @@ if($Debug){
     "============================================"
 }
 
-$res = [PowerShell]::Create().AddCommand("$workingFolder\InstallHorizon.ps1"). `
+[PowerShell]::Create().AddCommand("$workingFolder\InstallHorizon.ps1"). `
     AddParameter("horizonInstanceName", "horizon.$Prefix.local"). `
     #AddParameter("horizonPhysicalPath", $horizonFolder). `
     AddParameter("sitecoreCmInstanceName", $Website). `
