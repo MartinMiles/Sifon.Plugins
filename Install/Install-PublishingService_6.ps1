@@ -11,7 +11,8 @@ param(
     [string]$AdminPassword,
     [PSCredential]$SqlCredentials,
     [PSCredential]$PortalCredentials,
-    [string[][]]$Urls
+    [string[][]]$Urls,
+    [switch]$Debug = $false
 )
 
 if($null -eq $Urls){
@@ -19,6 +20,25 @@ if($null -eq $Urls){
     "."
     Show-Message -Fore "Red" -Back "Yellow" -Text "No resources passed for the selected resources"
     exit
+}
+
+
+if(-not (Verify-NetCoreHosting -MinimumVersion "3.1.17")){
+
+        $ErrorMessage  = @(
+            "Installation terminated!",
+            "",
+            "",
+            "Sitecore Publishing Service 6.* requires .NET core hosting bundle version 3.1.17 or higher"
+            "",
+            "Please select and right-click the link below to download it in a browser and then install.",
+            "(it is located under 'ASP.NET Core Runtime' section, named as Hosting Bundle (for Windows).",
+            "",
+            "https://dotnet.microsoft.com/en-us/download/dotnet/3.1"
+            );
+    "."
+    Show-Message -Fore white -Back yellow -Text $ErrorMessage
+    exit    
 }
 
 $moduleName = $Urls[1][0].Replace(" ", "_") + ".zip"
@@ -69,10 +89,11 @@ $parentFolder =  Split-Path $Webroot -Parent
 $serviceFolderPath = "$parentFolder\$Hostname"
 if([System.IO.Directory]::Exists($serviceFolderPath))
 {
-    Write-Warning "Folder $serviceFolderPath already exists."
-    Write-Warning "Sifon removes it prior installing Publishing Service."
-    Remove-Item -LiteralPath $serviceFolderPath -Force -Recurse
-    #Write-Output "#COLOR:GREEN# Script operation complete."
+    "."
+    Show-Message -Fore "Red" -Back "Yellow" -Text @("Folder $serviceFolderPath already exists.","","Please remove existing Publishing Service and try again")
+    "."
+    Write-Output "#COLOR:GREEN# Script operation complete."
+    exit
 }
 
 Display-Progress -action "extracting Publishing Service files" -percent 10
@@ -94,21 +115,21 @@ $master = Replace-WithDatabaseAdmin -ConnectionString $master -Username $Usernam
 $web = Get-ConnectionString -ConfigPath "$Webroot\App_Config\ConnectionStrings.config" -DbName "web"
 $web = Replace-WithDatabaseAdmin -ConnectionString $web -Username $Username -Password $Password
 
+if($Debug){
+    "moduleName = $moduleName"
+    "serviceName = $serviceName"
+    "downloadsFolder = $downloadsFolder"
+    "moduleFilename = $moduleFilename"
+    "serviceFilename = $serviceFilename"
+    "Hostname = $Hostname"
+    "parentFolder =  $parentFolder"
+    "serviceFolderPath = $serviceFolderPath"
+    "psFolder = $psFolder"
 
-
-"moduleName = $moduleName"
-"serviceName = $serviceName"
-"downloadsFolder = $downloadsFolder"
-"moduleFilename = $moduleFilename"
-"serviceFilename = $serviceFilename"
-"Hostname = $Hostname"
-"parentFolder =  $parentFolder"
-"serviceFolderPath = $serviceFolderPath"
-"psFolder = $psFolder"
-
-"core = $core"
-"master = $master"
-"web = $web"
+    "core = $core"
+    "master = $master"
+    "web = $web"
+}
 
 $sitecoreruntime = New-Item -Path "$serviceFolderPath" -Name "sitecoreruntime" -ItemType "directory"
 Copy-Item -Path "$Webroot\App_Data\license.xml" -Destination $sitecoreruntime
@@ -153,7 +174,6 @@ if($siteState.State -ne "Started")
     Display-Progress -action "Starting website" -percent 48
     [PowerShell]::Create().AddCommand("Start-Website").AddParameter("Name", $Hostname).Invoke()
 }
-
 
 [string]$endpointUri ="http://$Hostname/api/publishing/operations/status"
 Display-Progress -action "validating installation status at $endpointUri" -percent 52
