@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Sitecore Publishing Module 10.2.0",
+        "url": "https://sitecoredev.azureedge.net/~/media/71A849A5575048528C5904A862ACD30F.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore Publishing Service 6.0.0-netcoreapp3.1",
+                "url": "https://sitecoredev.azureedge.net/~/media/D52C0CD8668742A58B019EA16EC1AEF7.ashx"
+            }
+        ]
+    }
+]
