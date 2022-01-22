@@ -3,7 +3,6 @@
 ### Compatibility: Sifon 1.2.5       
        
 "."
-"."
 $Message  = @(
     "In order to return a navigable link that user could navigate by a mouse double click or from a dropdown context menu",
     "simply return this links as part of a new line. Please make sure there is nothing else on that line apart from URL itself",
