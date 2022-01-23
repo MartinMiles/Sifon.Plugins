@@ -2,6 +2,7 @@
 ### Description: This plugin uses meta-syntax to enforce its presence only for the local profiles
 ### Compatibility: Sifon 1.0.1
 ### Display: Local
+### Requires Profile: false
 
 Write-Output "."
 Show-Message -Fore White -Back Yellow -Text "There are two options one may consider while creating locally running scripts:"

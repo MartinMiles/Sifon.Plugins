@@ -2,6 +2,7 @@
 ### Description: A brief overview of what you find under this folder and its purpose - run me first!
 ### Compatibility: Sifon 1.0.1
 ### Execution: Local
+### Requires Profile: false
 
 Write-Output "."
 Show-Message -Fore Yellow -Back White -Text 'Welcome to "Labs and Demos" section'

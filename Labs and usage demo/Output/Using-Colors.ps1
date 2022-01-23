@@ -1,7 +1,7 @@
 ### Name: Color palette for your plugins
 ### Description: All the possible color codes you can use used with Sifon
 ### Compatibility: Sifon 1.0.1
-
+### Requires Profile: false
 
 Add-Type -AssemblyName System.Drawing
 $Colors = [Enum]::GetNames([System.Drawing.KnownColor])

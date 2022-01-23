@@ -2,6 +2,7 @@
 ### Description: Downloads the plugins from Sifon repository (requires git to be installed)
 ### Compatibility: Sifon 1.0.1
 ### Execution: Local
+### Requires Profile: false
 
 param(
     [bool]$IsRemote,

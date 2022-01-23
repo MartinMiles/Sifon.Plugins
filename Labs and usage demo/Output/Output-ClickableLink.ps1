@@ -1,7 +1,8 @@
 ### Name: Output a clickable link
 ### Description: Demonstrates how one could output a link, navigable by a mouse double click or from a context menu
 ### Compatibility: Sifon 1.2.5       
-       
+## Requires Profile: false
+
 "."
 $Message  = @(
     "In order to return a navigable link that user could navigate by a mouse double click or from a dropdown context menu",

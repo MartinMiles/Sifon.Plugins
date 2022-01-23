@@ -1,6 +1,7 @@
 ### Name: Compatibility tables
 ### Description: This info helps you decide what modules are suitable for your Sitecore instance
 ### Compatibility: Sifon 1.2.5       
+### Requires Profile: false
        
 "."
 "Sitecore compatibility tables"
