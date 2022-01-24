@@ -17,6 +17,15 @@ if($null -eq $Urls){
     exit
 }
 
+try{
+    npm -v | Out-null
+}
+catch{
+    "."
+    Show-Message -Fore "Red" -Back "Yellow" -Text "This script requires NPM for installing CLI which is missing at this machine"
+    exit
+}
+
 Function Display-Progress($action, $percent)
 {
     Write-Progress -Activity "Installing Sitecore JSS" -CurrentOperation $action -PercentComplete $percent
@@ -57,9 +66,9 @@ Install-SitecorePackage -PackageFullPath $package -Webroot $Webroot -Hostbase $I
 
 
 Display-Progress -action "installing JSS CLI." -percent 81
-Write-Output "Sifon-MuteOutput"
+#Write-Output "Sifon-MuteOutput"
     npm install -g @sitecore-jss/sitecore-jss-cli
-Write-Output "Sifon-UnmuteOutput"    
+#Write-Output "Sifon-UnmuteOutput"    
 
 Show-Message -Fore "Green" -Back "Yellow" -Text "JSS and CLI have been successfully installed"
 Display-Progress -action "operation complete." -percent 100

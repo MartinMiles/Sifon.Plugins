@@ -1,11 +1,31 @@
 [
     {
+        "name": "Sitecore Experience Accelerator 10.2.0 rev. 04247",
+        "url": "https://sitecoredev.azureedge.net/~/media/D0263710FE3442B1AD2D8B0F8D447A45.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore.PowerShell.Extensions-6.3 - IAR",
+                "url": "https://sitecoredev.azureedge.net/~/media/5414B1A50E7642D08276BD9BD1BA00C7.ashx"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore Experience Accelerator 10.1.0.3751",
+        "url": "https://sitecoredev.azureedge.net/~/media/5E606B33CDBC4531828C40282ED22735.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore.PowerShell.Extensions-6.2",
+                "url": "https://sitecoredev.azureedge.net/~/media/ACDD73FBA94A4363ADCDC4A1EF9B1572.ashx"
+            }
+        ]
+    },
+    {
         "name": "Sitecore Experience Accelerator 10.0.0",
         "url": "https://dev.sitecore.net/~/media/42992D85CC134384A0660F6C41479C16.ashx",
         "dependencies": [
             {
                 "name": "Sitecore PowerShell Extension 6.1.1 for Sitecore",
-                "url": "https://dev.sitecore.net/~/media/E820B0DA62464072891DA92470F93954.ashx",
+                "url": "https://dev.sitecore.net/~/media/E820B0DA62464072891DA92470F93954.ashx"
             }
         ]
     },

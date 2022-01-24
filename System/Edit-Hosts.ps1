@@ -2,6 +2,7 @@
 ### Description: Edit Windows hosts file on the selected profile machine
 ### Compatibility: Sifon 1.0.1
 ### $Content = new Sifon.Shared.Forms.TextEditorDialog.TextEditor::Read($Profile, "c:\Windows\System32\drivers\etc\hosts")
+### Requires Profile: false
 
 param(
     $Content
