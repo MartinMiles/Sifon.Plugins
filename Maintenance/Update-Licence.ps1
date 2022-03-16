@@ -24,15 +24,12 @@ try
     Show-Message -Fore yellow -Back white -Text "Replacing Sitecore license(s) for $Website instance"
     "."
 
-    $XConnect = Get-SiteFolder -name $Website -type 'XConnect'
-    $IdentityServer = Get-SiteFolder -name $Website -type 'IdentityServer'
-    $Horizon = Get-SiteFolder -name $Website -type 'Horizon'
-
     $scLicense = "$Webroot\App_Data\license.xml"
     Copy-Item $SelectedFile $scLicense -force | Out-Null
     "Successfully replaced license for Sitecore at: $scLicense"
     "."
 
+    $XConnect = Get-SiteFolder -name $Website -type 'XConnect'
     $xcLicense = "$XConnect\App_Data\license.xml"
     if(($null -ne $XConnect) -and (Test-Path $xcLicense))
     {
@@ -41,6 +38,7 @@ try
         "."
     }
 
+    $IdentityServer = Get-SiteFolder -name $Website -type 'IdentityServer'
     $isLicense = "$IdentityServer\sitecoreruntime\license.xml"
     if(($null -ne $IdentityServer) -and (Test-Path $isLicense))
     {
@@ -49,6 +47,7 @@ try
         "."
     }
 
+    $Horizon = Get-SiteFolder -name $Website -type 'Horizon'
     $hoLicense = "$Horizon\sitecoreruntime\license.xml"
     if(($null -ne $Horizon) -and (Test-Path $hoLicense))
     {
