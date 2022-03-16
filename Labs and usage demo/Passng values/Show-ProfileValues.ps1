@@ -4,8 +4,10 @@
 
 param($Profile)
 
+ $SitecoreVersion = Get-SitecoreVersion -Webroot $Profile.Webroot -ToString
+
 Write-Output "."
-Show-Message -Fore "Yellow" -Back "White" -Text "Parameters passed into this script with `$Profile and their values"
+Show-Message -Fore "Yellow" -Back "White" -Text @("Sitecore platform version: $SitecoreVersion","Parameters passed into this script with `$Profile and their values")
 Write-Output "."
 
 $Profile.PSObject.Properties | % {$_.Name + " = " + $_.Value}

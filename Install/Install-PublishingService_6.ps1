@@ -23,16 +23,16 @@ if($null -eq $Urls){
 }
 
 
-if(-not (Verify-NetCoreHosting -MinimumVersion "3.1.17")){
+if(-not (Verify-NetCoreHosting -MinimumVersion "3.1.16")){
 
         $ErrorMessage  = @(
             "Installation terminated!",
             "",
             "",
-            "Sitecore Publishing Service 6.* requires .NET core hosting bundle version 3.1.17 or higher"
+            "Publishing Service 6 requires '.NET Core Hosting' bundle version 3.1.17 or higher"
             "",
-            "Please select and right-click the link below to download it in a browser and then install.",
-            "(it is located under 'ASP.NET Core Runtime' section, named as Hosting Bundle (for Windows).",
+            "Please double click the link below to download it in a browser and then install.",
+            "(located under 'ASP.NET Core Runtime' section as 'Hosting Bundle' (for Windows).",
             "",
             "https://dotnet.microsoft.com/en-us/download/dotnet/3.1"
             );

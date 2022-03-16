@@ -1,6 +1,7 @@
 ### Name: Kill local process
 ### Description: Shows a grid with all processes running on a host with an option to terminate them.
 ### Display: Local
+### Requires Profile: false
 
 #Get-Service | select Name, DisplayName, Status | Out-GridView -Title 'Which process do you want to kill?' -OutputMode Single | Stop-Process -WhatIf
 $process = Get-Process |

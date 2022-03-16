@@ -2,9 +2,9 @@
 ### Description: This plugin allows downloading all Sitecore resources from dev.sitecore.net in just one click
 ### Compatibility: Sifon 1.2.1
 ### $Selection = new Sifon.Shared.Forms.DownloaderDialog.Downloader::SelectProducts($Profile, "$PSScriptRoot\Download-Sitecore.json")
+### Requires Profile: false
 
 param(
-    [string]$Webroot,
     $UseDownloadCDN,
     $Selection
 )
