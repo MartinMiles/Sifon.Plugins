@@ -1327,15 +1327,15 @@
         "resources": [
             {
                 "code": "ProdContainers",
-                "url": "5C0F3F35FBD3426F987A66077BB37592",
-                "path": "Container deployments\\Installation_Guide_for_a_Developer_Workstation_with_Containers-SC-XP-10.0.1-en.pdf",
-                "size": 494528
+                "url": "ECC91044E0D84FC58B56CC0CADFDB393",
+                "path": "Container deployments\\Sitecore_XP_10_0_1_Developer_Workstation_Deployment_With_Docker-en.pdf",
+                "size": 504427
             },
             {
                 "code": "ProdContainers",
-                "url": "39022C869FFE44ADA5A5F1B9034C1A04",
-                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes_10_0_1-en.pdf",
-                "size": 524434
+                "url": "E610E14ACBDD4230870EBD63AB44A708",
+                "path": "Container deployments\\Sitecore_XP_10_0_1_Production_Deployment_With_Kubernetes-en.pdf",
+                "size": 539631
             },          
 
             {
@@ -2044,15 +2044,15 @@
         "resources": [
             {
                 "code": "ProdContainers",
-                "url": "5063B525E0AA46C6885C4EA211467C08",
-                "path": "Container deployments\\InstallaInstallation_Guide_for_a_Developer_Workstation_with_Containers_10_1-en.pdf",
-                "size": 499856
+                "url": "2D14E3F181094A529592AF0B4AC1479E",
+                "path": "Container deployments\\Sitecore_XP_10_1_0_Developer_Workstation_Deployment_With_Docker-en.pdf",
+                "size": 508878
             },
             {
                 "code": "ProdContainers",
-                "url": "86C808537BEE4607B020BB71DA2F3AFF",
-                "path": "Container deployments\\Installation_Guide_for_Production_Deployments_with_Kubernetes_SC_XP-10.1-en.pdf",
-                "size": 535166
+                "url": "CB0A9376B42C45D6B5C178E8E4BBBEDD",
+                "path": "Container deployments\\Sitecore_XP_10_1_0_Production_Deployment_With_Kubernetes-en.pdf",
+                "size": 550961
             },
 
             {
@@ -2203,7 +2203,7 @@
                 "code": "ProdReleaseInfo",
                 "url": "185FB45E3F1E49AD8B7F5263FBEE46FA",
                 "path": "Release information\\Upgrade_Guide_Sitecore_XP-10.1.0.pdf",
-                "size": 732732
+                "size": 760049
             },            
             {
                 "code": "ProdReleaseInfo",
@@ -2602,7 +2602,7 @@
                 "code": "ModHorizon",
                 "url": "840DBBD280104DD3812C98FEACA21E6C",
                 "path": "Modules\\Sitecore Horizon 10.1.0\\Documentation\\On-prem Installation Guide - Horizon 10_1.pdf",
-                "size": 293478
+                "size": 225554
             },
             {
                 "code": "ModHorizon",
@@ -2847,15 +2847,15 @@
         "resources": [
             {
                 "code": "ProdContainers",
-                "url": "9D2DD443B1B0472FB60FA28AE7DD31D8",
-                "path": "Container deployments\\Installation_Guide_for_a_Sitecore_XP_10_1_1_Developer_Workstation_with_Cont-en.pdf",
-                "size": 499391
+                "url": "2566EB99641B4E12949F3D6BAB12FF86",
+                "path": "Container deployments\\Sitecore_XP_10_1_1_Developer_Workstation_Deployment_With_Docker-en.pdf",
+                "size": 508852
             },
             {
                 "code": "ProdContainers",
-                "url": "AF34449136CD4AA79921EB6F7BEEFFF7",
+                "url": "8131805424F94D609C5D42F657C25080",
                 "path": "Container deployments\\Installation_Guide_for_a_Sitecore_10_1_1_Production_Deployment_with_Kuberne-en.pdf",
-                "size": 534980
+                "size": 550993
             },
 
             {
@@ -3006,7 +3006,7 @@
                 "code": "ProdReleaseInfo",
                 "url": "4F6A089B8A574C82A3CE107C0BE8A311",
                 "path": "Release information\\Update_Guide-for_Sitecore-XP-10.1.X.pdf",
-                "size": 150125
+                "size": 186557
             },            
             {
                 "code": "ProdReleaseInfo",
@@ -3277,9 +3277,9 @@
             },
             {
                 "code": "ModDEF",
-                "url": "8A3F6C7378164ABCAD43B85F5B8B4856",
+                "url": "70760E9F37174339B549B4636D374223",
                 "path": "Modules\\Data Exchange Framework 6.0.0\\Release Information\\Tenant_Web_Service_Installation_Guide-en.pdf",
-                "size": 398229
+                "size": 401925
             },
             {
                 "code": "ModDEF",
@@ -3432,7 +3432,7 @@
                 "code": "ModHorizon",
                 "url": "F3E00E9792DF4F389E42FEBC6CE8B758",
                 "path": "Modules\\Sitecore Horizon 10.1.1\\Documentation\\On-prem Installation Guide.pdf",
-                "size": 292851
+                "size": 225640
             },
             {
                 "code": "ModHorizon",
@@ -3442,15 +3442,15 @@
             },
             {
                 "code": "ModHorizon",
-                "url": "B3D459AE241C4BDBB018DE7BA348E14D",
-                "path": "Modules\\Sitecore Horizon 10.1.1\\Documentation\\Docker_deployment_guide_for_Sitecore_Horizon_10.1.1-en.pdf",
-                "size": 395079
+                "url": "1A2805313D864D64A4730FF90AEC93F0",
+                "path": "Modules\\Sitecore Horizon 10.1.1\\Documentation\\Docker_deployment_guide_for_Sitecore_Horizon_10_1_1-en.pdf",
+                "size": 396912
             },
             {
                 "code": "ModHorizon",
-                "url": "59DF50DEDB0340AE891D9D63E7250542",
-                "path": "Modules\\Sitecore Horizon 10.1.1\\Documentation\\Kubernetes_deployment_guide_for_Sitecore_Horizon_10.1.1.pdf",
-                "size": 421613
+                "url": "1BB541E172E34A7FB6073D8539CD5AE2.ashx",
+                "path": "Modules\\Sitecore Horizon 10.1.1\\Documentation\\Kubernetes_deployment_guide_for_Sitecore_Horizon_10_1_1-en.pdf",
+                "size": 423256
             },
 
 
