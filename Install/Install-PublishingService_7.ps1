@@ -22,8 +22,8 @@ if($null -eq $Urls){
     exit
 }
 
-if(-not (Verify-NetCoreHosting -MinimumVersion "6.0.406")){
-
+if(-not (Verify-NetCoreHosting -MinimumVersion "6.0.0"))
+{
         $ErrorMessage  = @(
             "Installation terminated!",
             "",
