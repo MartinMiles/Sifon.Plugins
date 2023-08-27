@@ -1,6 +1,6 @@
 [
     {
-        "name": "Sitecore Experience Accelerator 10.3.0 rev. 00074",
+        "name": "Sitecore Experience Accelerator 10.3.* rev. 00074",
         "url": "https://sitecoredev.azureedge.net/~/media/8B8E134C7FD446999F5831A5EE7197C1.ashx",
         "dependencies": [
             {
