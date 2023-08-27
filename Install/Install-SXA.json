@@ -1,11 +1,11 @@
 [
     {
-        "name": "Sitecore Experience Accelerator 10.3.* rev. 00074",
+        "name": "Sitecore Experience Accelerator 10.3.0 rev. 00074",
         "url": "https://sitecoredev.azureedge.net/~/media/8B8E134C7FD446999F5831A5EE7197C1.ashx",
         "dependencies": [
             {
                 "name": "Sitecore.PowerShell.Extensions-6.4",
-                "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.4/Sitecore.PowerShell.Extensions-6.4.zip"
+                "url": "https://sitecoredev.azureedge.net/~/media/CC53B0F6C87D4FFFA8F72199B85278F0.ashx"
             }
         ]
     },
