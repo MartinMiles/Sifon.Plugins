@@ -31,7 +31,7 @@ try
     "Successfully replaced license for CM Server at: $scLicense"
     "."
 
-    if($null -ne $WebrootCD){
+    if($WebrootCD){
         $cdLicense = "$WebrootCD\App_Data\license.xml"
         if(($null -ne $WebsiteCD) -and (Test-Path $cdLicense))
         {
