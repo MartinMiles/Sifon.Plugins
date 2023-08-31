@@ -5,9 +5,9 @@
 
 param(
     [string]$Webroot,
-    [string]$WebrootCD=$null, #'c:\inetpub\wwwroot\cm.xm.local',
+    [string]$WebrootCD=$null, #'c:\inetpub\wwwroot\cd.xm.local',
     [string]$Website,
-    [string]$WebsiteCD=$null, #='cm.xm.local',
+    [string]$WebsiteCD=$null, #='cd.xm.local',
     [string]$Prefix,
     [PSCredential]$PortalCredentials,
     $SelectedFile
