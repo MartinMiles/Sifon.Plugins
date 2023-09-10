@@ -5,7 +5,9 @@
 
 param(
     [string]$Webroot,
+    [string]$WebrootCD=$null, #'c:\inetpub\wwwroot\cd.xm.local',
     [string]$Website,
+    [string]$WebsiteCD=$null, #='cd.xm.local',
     [string]$Prefix,
     [PSCredential]$PortalCredentials,
     $SelectedFile
@@ -21,21 +23,32 @@ if ([string]::IsNullOrEmpty($SelectedFile))
 try
 {
     "."
-    Show-Message -Fore yellow -Back white -Text "Replacing Sitecore license(s) for $Website instance"
+    Show-Message -Fore yellow -Back white -Text "Replacing Sitecore license(s) for selected instance"
     "."
 
     $scLicense = "$Webroot\App_Data\license.xml"
     Copy-Item $SelectedFile $scLicense -force | Out-Null
-    "Successfully replaced license for Sitecore at: $scLicense"
+    "Successfully replaced license for CM Server at: $scLicense"
     "."
 
-    $XConnect = Get-SiteFolder -name $Website -type 'XConnect'
-    $xcLicense = "$XConnect\App_Data\license.xml"
-    if(($null -ne $XConnect) -and (Test-Path $xcLicense))
-    {
-        Copy-Item $SelectedFile $xcLicense -force | Out-Null
-        "Successfully replaced license for XConnect at: $xcLicense"
-        "."
+    if($WebrootCD){
+        $cdLicense = "$WebrootCD\App_Data\license.xml"
+        if(($null -ne $WebsiteCD) -and (Test-Path $cdLicense))
+        {
+            Copy-Item $SelectedFile $cdLicense -force | Out-Null
+            "Successfully replaced license for CD Server at: $cdLicense"
+            "."
+        }  
+    }
+    else {
+        $XConnect = Get-SiteFolder -name $Website -type 'XConnect'
+        $xcLicense = "$XConnect\App_Data\license.xml"
+        if(($null -ne $XConnect) -and (Test-Path $xcLicense))
+        {
+            Copy-Item $SelectedFile $xcLicense -force | Out-Null
+            "Successfully replaced license for XConnect at: $xcLicense"
+            "."
+        }
     }
 
     $IdentityServer = Get-SiteFolder -name $Website -type 'IdentityServer'
@@ -62,6 +75,6 @@ try
 }
 catch
 {
-    Show-Message -Fore "Red" -Back "Yellow" -Text "Something went wrong, failed to replace all the licenses for $Website instance"
+    Show-Message -Fore "Red" -Back "Yellow" -Text "Something went wrong, failed to replace all the licenses for selected instance"
 }
 
