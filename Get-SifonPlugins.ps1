@@ -3,7 +3,7 @@
 ### Compatibility: Sifon 1.0.1
 ### Execution: Local
 ### Requires Profile: false
-
+### Comment: Sifon will pull plugins from the branch matching its version, ex: Sifon 1.3.5 will clone `v1.3.5` branch of Sifon.Plugins
 param(
     [bool]$IsRemote,
     [string]$PluginsRepository,
