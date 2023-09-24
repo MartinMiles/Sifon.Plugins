@@ -11,14 +11,13 @@ param(
     $Profile
 )
 
-$hostname = $Profile.CDSiteName
 $SitecoreVersion = Get-SitecoreVersion -Webroot $Profile.Webroot -ToString
 $topology = if ($Profile.IsXM) { "XM" } else { "XP" }
 
 Write-Output "."
 Show-Message -Fore "Yellow" -Back "White" -Text @("Sitecore $topology platform version: $SitecoreVersion")
 Write-Output "."
-"Opening CM website at: https://$hostname/sitecore"
+"Opening CM website at: https://$Website/sitecore"
 
 Start-Process "https://$Website/sitecore/shell/default.aspx"
 
