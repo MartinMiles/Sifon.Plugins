@@ -9,6 +9,16 @@
             }
         ]
     },
+    {
+        "name": "Sitecore Experience Accelerator 10.3.0 rev. 00074 CD",
+        "url": "https://sitecoredev.azureedge.net/~/media/9F5EF1A0BEDE4F0E8EC324A234B5B017.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore.PowerShell.Extensions-6.4",
+                "url": "https://sitecoredev.azureedge.net/~/media/CC53B0F6C87D4FFFA8F72199B85278F0.ashx"
+            }
+        ]
+    },
     
     {
         "name": "Sitecore Experience Accelerator 10.2.0 rev. 04247",
