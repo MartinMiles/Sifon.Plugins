@@ -59,9 +59,9 @@ $CurrentProgress = 10;
 
 ForEach ($Url in $Urls) 
 {
-    $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
-    if ($found) 
-    {
+    # $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
+    # if ($found) 
+    # {
         $fileName = $Url[0].Replace(" ", "_")
         $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
         $packageFullPath = "$downloadsFolder\$fileName"
@@ -74,7 +74,7 @@ ForEach ($Url in $Urls)
         $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
         Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
         $CurrentProgress+=20
-    }    
+    # }    
 }
 Write-Output '.'
 Show-Message -Fore Green -Back White -Text "Sitecore Headless Rendering have been installed"
