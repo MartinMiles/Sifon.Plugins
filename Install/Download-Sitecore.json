@@ -5405,7 +5405,6 @@
         ]
     },
 
-
     {
         "name": "Sitecore XP 10.3.1",
         "folder": "10.3.1",
@@ -6485,6 +6484,1038 @@
                 "url": "79A5992E6F524F79AAEF9B292BCF1079",
                 "path": "Client translations\\Sitecore 10.3.1 rev. 009452 (da-DK).zip",
                 "size": 1313532
+            }
+        ]
+    },
+
+    {
+        "name": "Sitecore XP 10.4.0",
+        "folder": "10.4.0",
+        "resources": [
+            {
+                "code": "ProdContainers",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Developer_Workstation_Deployment_with_Docker_10_4_0.pdf",
+                "path": "Container deployments\\Developer_Workstation_Deployment_with_Docker_10_4_0.pdf",
+                "size": 498540
+            },
+            {
+                "code": "ProdContainers",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Production_Environment_Deployment_with_Kubernetes_10_0_4.pdf",
+                "path": "Container deployments\\Production_Environment_Deployment_with_Kubernetes_10_0_4.pdf",
+                "size": 649928
+            },
+            {
+                "code": "ProdContainers",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Upgrade_Container_Deployment_Guide_10_4_0.pdf",
+                "path": "Container deployments\\Upgrade_Container_Deployment_Guide_10_4_0.pdf",
+                "size": 701212
+            },
+
+            {
+                "code": "ProdSIF",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Installation%20Framework/2x/Sitecore%20Installation%20Framework%20240/Secure/SitecoreInstallFramework%202.4.0%20rev.%20240301.zip",
+                "path": "Download options\\SitecoreInstallFramework 2.4.0 rev. 240301.zip",
+                "size": 1014042
+            },
+            {
+                "code": "ProdSIF",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Installation%20Framework/2x/Sitecore%20Installation%20Framework%20240/Secure/Sitecore_Installation_Framework_Configuration_Guide-2.4.0.pdf",
+                "path": "Download options\\Sitecore_Installation_Framework_Configuration_Guide-2.4.0.pdf",
+                "size": 805545
+            },
+
+            {
+                "code": "ProdSIF",
+                "url": "https://scdp.blob.core.windows.net/downloads/Scripts%20for%20Sitecore%20Security%20database/0x/Scripts%20for%20Sitecore%20Security%20database%2006/Divide%20Core%20db%20into%20core%20security%20v0.6.zip",
+                "path": "Download options\\Divide Core db into core security v0.6.zip",
+                "size": 54995
+            },            
+       
+            {
+                "code": "ProdSIF",
+                "url": "7255CF98254347108E085DFBB6687E02",
+                "path": "Download options\\Sitecore remote distributed installation templates.zip",
+                "size": 12181
+            },
+
+
+            {
+                "code": "ProdOnPrem",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(Setup%20XP0%20Developer%20Workstation%20rev.%201.6.0-r4).zip",
+                "path": "On Premises deployment\\Sitecore 10.4.0 rev. 010422 (Setup XP0 Developer Workstation rev. 1.6.0-r4).zip",
+                "size": 312782881
+            },
+            {
+                "code": "ProdOnPrem",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(Setup%20XM1%20Developer%20Workstation%20rev.%201.6.0-r4).zip",
+                "path": "On Premises deployment\\Sitecore 10.4.0 rev. 010422 (Setup XM1 Developer Workstation rev. 1.6.0-r4).zip",
+                "size": 459557263
+            },
+            {
+                "code": "ProdOnPrem",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XP0%20packages).zip",
+                "path": "On Premises deployment\\Sitecore 10.4.0 rev. 010422 (WDP XP0 packages).zip",
+                "size": 284300325
+            },
+            {
+                "code": "ProdOnPrem",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XP1%20packages).zip",
+                "path": "On Premises deployment\\Sitecore 10.4.0 rev. 010422 (WDP XP1 packages).zip",
+                "size": 1036574380
+            },
+            {
+                "code": "ProdOnPrem",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XM1%20packages).zip",
+                "path": "On Premises deployment\\Sitecore 10.4.0 rev. 010422 (WDP XM1 packages).zip",
+                "size": 416760682
+            },
+
+            {
+                "code": "ProdAzure",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XPSingle%20packages).zip",
+                "path": "Azure AppService\\Sitecore 10.4.0 rev. 010422 (WDP XPSingle packages).zip",
+                "size": 308671618
+            },
+            {
+                "code": "ProdAzure",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XPScaled%20packages).zip",
+                "path": "Azure AppService\\Sitecore 10.4.0 rev. 010422 (WDP XPScaled packages).zip",
+                "size": 1038398325
+            },
+            {
+                "code": "ProdAzure",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XMSingle%20packages).zip",
+                "path": "Azure AppService\\Sitecore 10.4.0 rev. 010422 (WDP XMSingle packages).zip",
+                "size": 199634756
+            },
+            {
+                "code": "ProdAzure",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XMScaled%20packages).zip",
+                "path": "Azure AppService\\Sitecore 10.4.0 rev. 010422 (WDP XMScaled packages).zip",
+                "size": 399226158
+            },
+            {
+                "code": "ProdAzure",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%20Azure%20Toolkit%20Resources%2010.4.0%20rev.%20010422.zip",
+                "path": "Azure AppService\\Sitecore Azure Toolkit Resources 10.4.0 rev. 010422.zip",
+                "size": 2223100
+            },
+
+
+            {
+                "code": "ProdBlobAndCDN",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Azure%20Blob%20Storage/1x/Sitecore%20Azure%20Blob%20Storage%20600/Sitecore.BlobStorageProvider%206.0.0%20rev.%2000913.scwdp.zip",
+                "path": "Blob Storage\\Sitecore.BlobStorageProvider 6.0.0 rev. 00913.scwdp.zip",
+                "size": 485531
+            },
+
+            {
+                "code": "ProdReleaseInfo",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/SIF_Configuration_Guide_2_4.pdf",
+                "path": "Release information\\SIF_Configuration_Guide_2_4.pdf",
+                "size": 805545
+            },
+            {
+                "code": "ProdReleaseInfo",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Installation_Guide_for_XM_Scaled_Topology_10_4_0.pdf",
+                "path": "Release information\\Installation_Guide_for_XM_Scaled_Topology_10_4_0.pdf",
+                "size": 803317
+            },
+            {
+                "code": "ProdReleaseInfo",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Installation_Guide_for_XP_Scaled_Topology_10_4_0.pdf",
+                "path": "Release information\\Installation_Guide_for_XP_Scaled_Topology_10_4_0.pdf",
+                "size": 860969
+            },
+            {
+                "code": "ProdReleaseInfo",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Quick_Install_Guide_for_XP_Developer_Workstation_10_4_0.pdf",
+                "path": "Release information\\Quick_Install_Guide_for_XP_Developer_Workstation_10_4_0.pdf",
+                "size": 726160
+            },
+            {
+                "code": "ProdReleaseInfo",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Upgrade_Installation_Guide_for_Sitecore_Experience_Platform_10_4_0.pdf",
+                "path": "Release information\\Upgrade_Installation_Guide_for_Sitecore_Experience_Platform_10_4_0.pdf",
+                "size": 1770709
+            },            
+            {
+                "code": "ProdReleaseInfo",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore.Platform.Assemblies%2010.4.0%20rev.%20010422.zip",
+                "path": "Release information\\Sitecore.Platform.Assemblies 10.4.0 rev. 010422.zip",
+                "size": 24242
+            },
+         
+            {
+                "code": "UniTracker",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Universal%20Tracker/8x/Sitecore%20Universal%20Tracker%20800/Sitecore%20Universal%20Tracker%208.0.0.zip",
+                "path": "Modules\\itecore Universal Tracker 8.0.0\\Sitecore Universal Tracker 8.0.0.zip",
+                "size": 14011868
+            },
+            {
+                "code": "UniTracker",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Universal%20Tracker/8x/Sitecore%20Universal%20Tracker%20800/Universal_Tracker_Installation_Guide_8_0.pdf",
+                "path": "Modules\\itecore Universal Tracker 8.0.0\\Universal_Tracker_Installation_Guide_8_0.pdf",
+                "size": 514159
+            },
+
+
+
+            {
+                "code": "ModDynamics",
+                "url": "https://scdp.blob.core.windows.net/downloads/Dynamics%20CRM%20Connect/8x/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20800/Secure/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%208.0.1521%20rev.%2001521.zip",
+                "path": "Modules\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.0\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.1521 rev. 01521.zip",
+                "size": 746163
+            },
+            {
+                "code": "ModDynamics",
+                "url": "https://scdp.blob.core.windows.net/downloads/Dynamics%20CRM%20Connect/8x/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20800/Secure/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20Plugin%20for%20Tenant%20Service%208.0.1521%20rev.%2001521.scwdp.zip",
+                "path": "Modules\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.0\\Sitecore Connect for Microsoft Dynamics 365 for Sales Plugin for Tenant Service 8.0.1521 rev. 01521.scwdp.zip",
+                "size": 51020
+            },
+            {
+                "code": "ModDynamics",
+                "url": "https://scdp.blob.core.windows.net/downloads/Dynamics%20CRM%20Connect/8x/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20800/Secure/Sitecore.DataExchange.Staging.dacpac",
+                "path": "Modules\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.0\\Sitecore.DataExchange.Staging.dacpac",
+                "size": 5290
+            },
+            {
+                "code": "ModDynamics",
+                "url": "https://scdp.blob.core.windows.net/downloads/Dynamics%20CRM%20Connect/8x/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20800/Secure/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%208.0.1521%20rev.%2001521%20(da-DK).zip",
+                "path": "Modules\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.0\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.1521 rev. 01521 (da-DK).zip",
+                "size": 45454
+            },
+            {
+                "code": "ModDynamics",
+                "url": "https://scdp.blob.core.windows.net/downloads/Dynamics%20CRM%20Connect/8x/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20800/Secure/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%208.0.1521%20rev.%2001521%20(de-DE).zip",
+                "path": "Modules\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.0\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.1521 rev. 01521 (de-DE).zip",
+                "size": 46645
+            },
+            {
+                "code": "ModDynamics",
+                "url": "https://scdp.blob.core.windows.net/downloads/Dynamics%20CRM%20Connect/8x/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20800/Secure/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%208.0.1521%20rev.%2001521%20(ja-JP).zip",
+                "path": "Modules\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.0\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.1521 rev. 01521 (ja-JP).zip",
+                "size": 48729
+            },
+            {
+                "code": "ModDynamics",
+                "url": "https://scdp.blob.core.windows.net/downloads/Dynamics%20CRM%20Connect/8x/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%20800/Secure/Sitecore%20Connect%20for%20Microsoft%20Dynamics%20365%20for%20Sales%208.0.1521%20rev.%2001521%20(zh-CN).zip",
+                "path": "Modules\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.0\\Sitecore Connect for Microsoft Dynamics 365 for Sales 8.0.1521 rev. 01521 (zh-CN).zip",
+                "size": 45666
+            },
+            
+
+
+
+
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/SXA%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\SXA Upgrade resources 1.0.0.zip",
+                "size": 280590764
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "E8EE04A03741425595A10718Chttps://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/SPE%20Upgrade%20resources%201.0.0.zip75F0E1F",
+                "path": "Moodule Resource Files For Databases Upgrade\\SPE Upgrade resources 1.0.0.zip",
+                "size": 5879238
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Sitecore%20Headless%20Services%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Sitecore Headless Services Upgrade resources 1.0.0.zip",
+                "size": 296602
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Sitecore%20Connect%20for%20Sitecore%20DAM%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Sitecore Connect for Sitecore DAM Upgrade resources 1.0.0.zip",
+                "size": 12987
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Sitecore%20Connect%20for%20Sitecore%20CMP%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Sitecore Connect for Sitecore CMP Upgrade resources 1.0.0.zip",
+                "size": 54680
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Sitecore%20Connect%20for%20Content%20Hub%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Sitecore Connect for Content Hub Upgrade resources 1.0.0.zip",
+                "size": 104131
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/SFMC%20-%20Content%20Exchange%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\SFMC - Content Exchange Upgrade resources 1.0.0.zip",
+                "size": 113101
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/SFMC%20-%20Content%20Exchange%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\SFMC - BDE Upgrade resources 1.0.0.zip",
+                "size": 2810981
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Salesforce%20CRM%20Connect%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Salesforce CRM Connect Upgrade resources 1.0.0.zip",
+                "size": 2141044
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Publishing%20Service%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Publishing Service Upgrade resources 1.0.0.zip",
+                "size": 1003264
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Horizon%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Horizon Upgrade resources 1.0.0.zip",
+                "size": 18558
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Dynamics%20CRM%20Connect%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Dynamics CRM Connect Upgrade resources 1.0.0.zip",
+                "size": 2666070
+            },
+            {
+                "code": "DatabaseUpgradeResources",
+                "url": "https://scdp.blob.core.windows.net/downloads/Resource%20files%20for%20Modules/1x/Resource%20files%20for%20Modules%20100/Secure/Data%20Exchange%20Framework%20Upgrade%20resources%201.0.0.zip",
+                "path": "Moodule Resource Files For Databases Upgrade\\Data Exchange Framework Upgrade resources 1.0.0.zip",
+                "size": 8040000
+            },
+ 
+            {
+                "code": "ModSalesforce",
+                "url": "https://scdp.blob.core.windows.net/downloads/Salesforce%20Connect/8x/Sitecore%20Connect%20for%20Salesforce%20CRM%20800/Secure/Sitecore%20Connect%20for%20Salesforce%20CRM%208.0.1498%20rev.%2001498.zip",
+                "path": "Modules\\Sitecore Connect for Salesforce CRM 8.0.0\\Sitecore Connect for Salesforce CRM 8.0.1498 rev. 01498.zip",
+                "size": 338534
+            },
+            {
+                "code": "ModSalesforce",
+                "url": "https://scdp.blob.core.windows.net/downloads/Salesforce%20Connect/8x/Sitecore%20Connect%20for%20Salesforce%20CRM%20800/Secure/Sitecore%20Connect%20for%20Salesforce%20CRM%20Plugin%20for%20Tenant%20Service%208.0.1498%20rev.%2001498.scwdp.zip",
+                "path": "Modules\\Sitecore Connect for Salesforce CRM 8.0.0\\Sitecore Connect for Salesforce CRM Plugin for Tenant Service 8.0.1498 rev. 01498.scwdp.zip",
+                "size": 52854
+            },
+            {
+                "code": "ModSalesforce",
+                "url": "https://scdp.blob.core.windows.net/downloads/Salesforce%20Connect/8x/Sitecore%20Connect%20for%20Salesforce%20CRM%20800/Secure/Sitecore%20Connect%20for%20Salesforce%20CRM%208.0.1498%20rev.%2001498%20(da-DK).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce CRM 8.0.0\\Sitecore Connect for Salesforce CRM 8.0.1498 rev. 01498 (da-DK).zip",
+                "size": 40851
+            },
+            {
+                "code": "ModSalesforce",
+                "url": "https://scdp.blob.core.windows.net/downloads/Salesforce%20Connect/8x/Sitecore%20Connect%20for%20Salesforce%20CRM%20800/Secure/Sitecore%20Connect%20for%20Salesforce%20CRM%208.0.1498%20rev.%2001498%20(de-DE).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce CRM 8.0.0\\Sitecore Connect for Salesforce CRM 8.0.1498 rev. 01498 (de-DE).zip",
+                "size": 41913
+            },
+            {
+                "code": "ModSalesforce",
+                "url": "https://scdp.blob.core.windows.net/downloads/Salesforce%20Connect/8x/Sitecore%20Connect%20for%20Salesforce%20CRM%20800/Secure/Sitecore%20Connect%20for%20Salesforce%20CRM%208.0.1498%20rev.%2001498%20(ja-JP).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce CRM 8.0.0\\Sitecore Connect for Salesforce CRM 8.0.1498 rev. 01498 (ja-JP).zip",
+                "size": 42371
+            },
+            {
+                "code": "ModSalesforce",
+                "url": "https://scdp.blob.core.windows.net/downloads/Salesforce%20Connect/8x/Sitecore%20Connect%20for%20Salesforce%20CRM%20800/Secure/Sitecore%20Connect%20for%20Salesforce%20CRM%208.0.1498%20rev.%2001498%20(zh-CN).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce CRM 8.0.0\\Sitecore Connect for Salesforce CRM 8.0.1498 rev. 01498 (zh-CN).zip",
+                "size": 40272
+            },
+
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20Behavioral%20Data%20Exchange%208.0.437%20rev.%2000437.zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Behavioral Data Exchange\\Behavioral Data Exchange 8.0.437 rev. 00437.zip",
+                "size": 612384
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20Behavioral%20Data%20Exchange%20Marketing%20Automation%208.0.437%20rev.%2000437.scwdp.zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Behavioral Data Exchange\\Behavioral Data Exchange Marketing Automation 8.0.437 rev. 00437.scwdp.zip",
+                "size": 36965
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20BDE%20Plugin%20for%20Tenant%20Service%208.0.437%20rev.%2000437.scwdp.zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\BDE Plugin for Tenant Service 8.0.437 rev. 00437.scwdp.zip",
+                "size": 1062847
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20Behavioral%20Data%20Exchange%208.0.437%20rev.%2000437%20(da-DK).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Behavioral Data Exchange\\Behavioral Data Exchange 8.0.437 rev. 00437 (da-DK).zip",
+                "size": 82935
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20Behavioral%20Data%20Exchange%208.0.437%20rev.%2000437%20(de-DE).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Behavioral Data Exchange\\ehavioral Data Exchange 8.0.437 rev. 00437 (de-DE).zip",
+                "size": 85679
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20Behavioral%20Data%20Exchange%208.0.437%20rev.%2000437%20(ja-JP).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Behavioral Data Exchange\\Behavioral Data Exchange 8.0.437 rev. 00437 (ja-JP).zip",
+                "size": 85672
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20Behavioral%20Data%20Exchange%208.0.437%20rev.%2000437%20(zh-CN).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Behavioral Data Exchange\\Behavioral Data Exchange 8.0.437 rev. 00437 (zh-CN).zip",
+                "size": 80923
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/Sitecore%20Connect%20for%20Salesforce%20Marketing%20Cloud%20-%20Content%20Exchange%208.0.220%20rev.%2000220.zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Content Exchange 8.0.220 rev. 00220.zip",
+                "size": 90390
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/SFMC%20CE%208.0.220%20rev.%2000220%20(da-DK).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Content Exchange\\SFMC CE 8.0.220 rev. 00220 (da-DK).zip",
+                "size": 2586
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/SFMC%20CE%208.0.220%20rev.%2000220%20(de-DE).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Content Exchange\\SFMC CE 8.0.220 rev. 00220 (de-DE).zip",
+                "size": 2656
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/SFMC%20CE%208.0.220%20rev.%2000220%20(ja-JP).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Content Exchange\\SFMC CE 8.0.220 rev. 00220 (ja-JP).zip",
+                "size": 2857
+            },
+            {
+                "code": "ModSalesforceCloud",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud/1x/Sitecore%20Connect%20software%20for%20Salesforce%20Marketing%20Cloud%2080/Secure/SFMC%20CE%208.0.220%20rev.%2000220%20(zh-CN).zip",
+                "path": "Modules\\Sitecore Connect for Salesforce Marketing Cloud 8.0\\Content Exchange\\SFMC CE 8.0.220 rev. 00220 (zh-CN).zip",
+                "size": 2578
+            },
+
+
+
+
+            {
+                "code": "ModCMP",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20for%20Content%20Hub/5x/Sitecore%20Connect%20for%20Content%20Hub%20510/Secure/SIF%20Installation%20Scripts%20For%20Sitecore%20Connector%20Content%20Hub%205.1.26%20rev.%2000372.zip",
+                "path": "Modules\\Sitecore Connect for Content Hub 5.1.0\\SIF Installation Scripts For Sitecore Connector Content Hub 5.1.26 rev. 00372.zip",
+                "size": 10252
+            },
+            {
+                "code": "ModCMP",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20for%20Content%20Hub/5x/Sitecore%20Connect%20for%20Content%20Hub%20510/Secure/Sitecore.Connector.ContentHub.WDP.5.1.26-r00372.4955.scwdp.zip",
+                "path": "Modules\\Sitecore Connect for Content Hub 5.1.0\\Sitecore.Connector.ContentHub.WDP.5.1.26-r00372.4955.scwdp.zip",
+                "size": 2364353
+            },
+            {
+                "code": "ModCMP",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20for%20Content%20Hub/5x/Sitecore%20Connect%20for%20Content%20Hub%20510/Secure/Sitecore%20Connect%20for%20Content%20Hub%205.1.26%20rev.%2000372%20(da-DK).zip",
+                "path": "Modules\\Sitecore Connect for Content Hub 5.1.0\\Sitecore Connect for Content Hub 5.1.26 rev. 00372 (da-DK).zip",
+                "size": 15870
+            },
+            {
+                "code": "ModCMP",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20for%20Content%20Hub/5x/Sitecore%20Connect%20for%20Content%20Hub%20510/Secure/Sitecore%20Connect%20for%20Content%20Hub%205.1.26%20rev.%2000372%20(de-DE).zip",
+                "path": "Modules\\Sitecore Connect for Content Hub 5.1.0\\Sitecore Connect for Content Hub 5.1.26 rev. 00372 (de-DE).zip",
+                "size": 16000
+            },
+            {
+                "code": "ModCMP",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20for%20Content%20Hub/5x/Sitecore%20Connect%20for%20Content%20Hub%20510/Secure/Sitecore%20Connect%20for%20Content%20Hub%205.1.26%20rev.%2000372%20(ja-JP).zip",
+                "path": "Modules\\Sitecore Connect for Content Hub 5.1.0\\Sitecore Connect for Content Hub 5.1.26 rev. 00372 (ja-JP).zip",
+                "size": 16436
+            },
+            {
+                "code": "ModCMP",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Connect%20for%20Content%20Hub/5x/Sitecore%20Connect%20for%20Content%20Hub%20510/Secure/Sitecore%20Connect%20for%20Content%20Hub%205.1.26%20rev.%2000372%20(zh-CN).zip",
+                "path": "Modules\\Sitecore Connect for Content Hub 5.1.0\\Sitecore Connect for Content Hub 5.1.26 rev. 00372 (zh-CN).zip",
+                "size": 15406
+            },
+
+
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/Data%20Exchange%20Framework%208.0.1631%20rev.%2001631.zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Data Exchange Framework 8.0.1631 rev. 01631.zip",
+                    "size": 1264142
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/Sitecore%20Data%20Exchange%20Framework%20Action%20Plugin%20for%20Marketing%20Automation%208.0.1631-r01631.2265.scwdp.zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Marketing Automation Plugins\\Action Plugin for Marketing Automation 8.0.1631-r01631.2265.scwdp.zip",
+                    "size": 18208
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/Sitecore%20Data%20Exchange%20Framework%20Tenant%20Web%20Service%208.0.1631%20rev.%2001631.scwdp.zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Tenant Service\\Tenant Web Service 8.0.1631 rev. 01631.scwdp.zip",
+                    "size": 9346260
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/AppInsights%20logger%20for%20Tenant%20Service%208.0.1631%20rev.%2001631.scwdp.zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Tenant Service\\AppInsights logger for Tenant Service 8.0.1631 rev. 01631.scwdp.zip",
+                    "size": 106734
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/SIFInstallationScriptsforTenantService.zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Tenant Service\\SIFInstallationScriptsforTenantService.zip",
+                    "size": 4509
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/Data%20Exchange%20Framework%208.0.1631%20rev.%2001631%20(da-DK).zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Data Exchange Framework 8.0.1631 rev. 01631 (da-DK)",
+                    "size": 137159
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/Data%20Exchange%20Framework%208.0.1631%20rev.%2001631%20(de-DE).zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Data Exchange Framework 8.0.1631 rev. 01631 (de-DE).zip",
+                    "size": 141711
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/Data%20Exchange%20Framework%208.0.1631%20rev.%2001631%20(ja-JP).zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Data Exchange Framework 8.0.1631 rev. 01631 (ja-JP).zip",
+                    "size": 139478
+                },
+                {
+                    "code": "ModDEF",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Data%20Exchange%20Framework/8x/Data%20Exchange%20Framework%20800/Secure/Data%20Exchange%20Framework%208.0.1631%20rev.%2001631%20(zh-CN).zip",
+                    "path": "Modules\\Data Exchange Framework 8.0.0\\Data Exchange Framework 8.0.1631 rev. 01631 (zh-CN).pdf",
+                    "size": 126182
+                },
+
+
+
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%2010.4.0%20rev.%2008675.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Sitecore Experience Accelerator 10.4.0 rev. 08675.zip",
+                    "size": 25287287
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%2010.4.0%20rev.%2008675%20CD.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Sitecore Experience Accelerator 10.4.0 rev. 08675 CD.zip",
+                    "size": 25287292
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore.PowerShell.Extensions-7.0-IAR.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Sitecore.PowerShell.Extensions-7.0-IAR.zip",
+                    "size": 1886088
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/SXA%20SIF%20Templates%2010.4.0%20rev.%2008675.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\SXA SIF Templates 10.4.0 rev. 08675.zip",
+                    "size": 20863
+                },
+
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/SXA_10_4_0_installation_guide-pdf-en.pdf",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\SXA_10_4_0_installation_guide-pdf-en.pdf",
+                    "size": 413812
+                },
+                {
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/SXA_10_4_0_upgrade_guide-pdf-en.pdf",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\SXA_10_4_0_upgrade_guide-pdf-en.pdf",
+                    "size": 395641
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%2010.4.0%20rev.%2008675.scwdp.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Azure AppService\\Sitecore Experience Accelerator 10.4.0 rev. 08675.scwdp.zip",
+                    "size": 26068142
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%2010.4.0%20rev.%2008675%20CD.scwdp.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Azure AppService\\Sitecore Experience Accelerator 10.4.0 rev. 08675 CD.scwdp.zip",
+                    "size": 14440002
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%20XM%2010.4.0%20rev.%2008675.scwdp.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Azure AppService\\Sitecore Experience Accelerator XM 10.4.0 rev. 08675.scwdp.zip",
+                    "size": 26068136
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%20XM%2010.4.0%20rev.%2008675%20CD.scwdp.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Azure AppService\\Sitecore Experience Accelerator XM 10.4.0 rev. 08675 CD.scwdp.zip",
+                    "size": 14440013
+                },
+                {
+                    "code": "ModSXA",
+                    "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore.PowerShell.Extensions-7.0-IAR.scwdp.zip",
+                    "path": "Modules\\Sitecore Experience Accelerator 10.4.0\\Azure AppService\\Sitecore.PowerShell.Extensions-7.0-IAR.scwdp.zip",
+                    "size": 1951067
+                },
+
+
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%20XM%2022.0.11.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Sitecore Headless Services Server XM 22.0.11.zip",
+                "size": 1536375
+            },
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%20XP%2022.0.11.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Sitecore Headless Services Server XP 22.0.11.zip",
+                "size": 1567090
+            },
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20ExperienceEdge%20Connector%20for%20Sitecore%2010.4.0%20XP%2022.0.2%20rev.%200002.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Sitecore ExperienceEdge Connector for Sitecore 10.4.0 XP 22.0.2 rev. 0002.zip",
+                "size": 8266279
+            },                            
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20ExperienceEdge%20Connector%20for%20Sitecore%2010.4.0%20XM%2022.0.2%20rev.%200002.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Sitecore ExperienceEdge Connector for Sitecore 10.4.0 XM 22.0.2 rev. 0002.zip",
+                "size": 8254848
+            },            
+
+
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20ExperienceEdge%20Connector%20for%20Sitecore%2010.4.0%20XP%2022.0.2%20rev.%200002.scwdp.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Azure AppService and On Premises\\Sitecore ExperienceEdge Connector for Sitecore 10.4.0 XP 22.0.2 rev. 0002.scwdp.zip",
+                "size": 8785802
+            },
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20ExperienceEdge%20Connector%20for%20Sitecore%2010.4.0%20XM%2022.0.2%20rev.%200002.scwdp.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Azure AppService and On Premises\\Sitecore ExperienceEdge Connector for Sitecore 10.4.0 XM 22.0.2 rev. 0002.scwdp.zip",
+                "size": 8774031
+            },
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%20XP%2022.0.11.scwdp.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Azure AppService and On Premises\\Sitecore Headless Services Server XP 22.0.11.scwdp.zip",
+                "size": 2068945
+            },
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%20XM%2022.0.11.scwdp.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Azure AppService and On Premises\\Sitecore Headless Services Server XM 22.0.11.scwdp.zip",
+                "size": 2037966
+            },
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%20XP%20CD%2022.0.11.scwdp.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Azure AppService and On Premises\\Sitecore Headless Services Server XP CD 22.0.11.scwdp.zip",
+                "size": 2065110
+            },
+            {
+                "code": "ModHeadless",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%20XM%20CD%2022.0.11.scwdp.zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Azure AppService and On Premises\\Sitecore Headless Services Server XM CD 22.0.11.scwdp.zip",
+                "size": 2034127
+            },
+
+            
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%2022.0.11%20(ja-JP).zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Client translations\\Sitecore Headless Services Server 22.0.11 (ja-JP).zip",
+                "size": 10438
+            },
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%2022.0.11%20(de-DE).zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Client translations\\Sitecore Headless Services Server 22.0.11 (de-DE).zip",
+                "size": 10224
+            },
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%2022.0.11%20(da-DK).zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Client translations\\Sitecore Headless Services Server 22.0.11 (da-DK).zip",
+                "size": 9917
+            },
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Headless%20Rendering/22x/Sitecore%20Headless%20Rendering%202200/Secure/Sitecore%20Headless%20Services%20Server%2022.0.11%20(zh-CN).zip",
+                "path": "Modules\\Sitecore Headless Rendering 22.0.0\\Client translations\\Sitecore Headless Services Server 22.0.11 (zh-CN).zip",
+                "size": 8290
+            }, 
+
+
+            {
+                "code": "ModIdentity",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Identity/7x/Sitecore%20Identity%207111/Sitecore.IdentityServer.7.1.11.scwdp.zip",
+                "path": "Modules\\Sitecore Identity 7.1.0\\Sitecore.IdentityServer.7.1.11.scwdp.zip",
+                "size": 17954827
+            },
+            {
+                "code": "ModIdentity",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Identity/7x/Sitecore%20Identity%207111/IdentityServer%20Deployment%20Configuration%207.1.zip",
+                "path": "Modules\\Sitecore Identity 7.1.0\\IdentityServer Deployment Configuration 7.1.zip",
+                "size": 13380
+            },
+            {
+                "code": "ModIdentity",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Identity/7x/Sitecore%20Identity%207111/Sitecore.IdentityServer.UpgradeScripts.7.1.zip",
+                "path": "Modules\\Sitecore Identity 7.1.0\\Sitecore.IdentityServer.UpgradeScripts.7.1.zip",
+                "size": 1388
+            },
+            {
+                "code": "ModIdentity",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Identity/7x/Sitecore%20Identity%207111/Sitecore%20Identity%20Server%20Upgrade%20Guide-7.1.X.pdf",
+                "path": "Modules\\Sitecore Identity 7.1.0\\Sitecore Identity Server Upgrade Guide-7.1.X.pdf",
+                "size": 207651
+            },
+          
+
+
+
+            {
+                "code": "ModPublishing",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Publishing%20Service%20Module/10x/Sitecore%20Publishing%20Service%20Module%201040/Sitecore%20Publishing%20Module%2010.4.0%20rev.%2000689.zip",
+                "path": "Modules\\Sitecore Publishing Service Module 10.4.0\\Sitecore Publishing Module 10.4.0 rev. 00689.zip",
+                "size": 927491
+            },
+            {
+                "code": "ModPublishing",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Publishing%20Service%20Module/10x/Sitecore%20Publishing%20Service%20Module%201040/Sitecore_Publishing_Service_Module_Installation_and_Configuration_Guide-10.4_en.pdf",
+                "path": "Modules\\Sitecore Publishing Service Module 10.4.0\\Sitecore_Publishing_Service_Module_Installation_and_Configuration_Guide-10.4_en.pdf",
+                "size": 824460
+            },
+            {
+                "code": "ModPublishing",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Publishing%20Service%20Module/10x/Sitecore%20Publishing%20Service%20Module%201040/Sitecore_Publishing_Service_Container_Deployment_Guide_10_4_0.pdf",
+                "path": "Modules\\Sitecore Publishing Service Module 10.4.0\\Sitecore_Publishing_Service_Container_Deployment_Guide_10_4_0.pdf",
+                "size": 491920
+            },
+
+
+
+
+
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.1.0%20rev.%20151003.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.1.0 rev. 151003.zip",
+                "size": 16102656
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.1.1%20rev.%20151207.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.1.1 rev. 151207.zip",
+                "size": 16500556
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.1.2%20rev.%20160302.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.1.2 rev. 160302.zip",
+                "size": 16480869
+            },
+
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.1.3%20rev.%20160519.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.1.3 rev. 160519.zip",
+                "size": 19003271
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.0%20rev.%20160729.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.0 rev. 160729.zip",
+                "size": 17430506
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.1%20rev.%20161115.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.1 rev. 161115.zip",
+                "size": 18526072
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.2%20rev.%20161221.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.2 rev. 161221.zip",
+                "size": 18526039
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.3%20rev.%20170407.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.3 rev. 170407.zip",
+                "size": 18554977
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.4%20rev.%20170614.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.4 rev. 170614.zip",
+                "size": 18521337
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.5%20rev.%20170728.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.5 rev. 170728.zip",
+                "size": 18508442
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.6%20rev.%20171121.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.6 rev. 171121.zip",
+                "size": 18495049
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%208.2.7%20rev.%20180406.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 8.2.7 rev. 180406.zi",
+                "size": 18502573
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.0.0%20rev.%20171002.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.0.0 rev. 171002.zip",
+                "size": 18493897
+            },
+
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.0.1%20rev.%20171219.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.0.1 rev. 171219.zip",
+                "size": 22139122
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.0.2%20rev.%20180604.zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.0.2 rev. 180604.zip",
+                "size": 22193833
+            },
+
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.1.0%20rev.%20001564%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.1.0 rev. 001564 (XM).zip",
+                "size": 16748173
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.1.0%20rev.%20001564%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.1.0 rev. 001564 (XP).zip",
+                "size": 24626972
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.1.1%20rev.%20002459%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.1.1 rev. 002459 (XM).zip",
+                "size": 16820413
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.1.1%20rev.%20002459%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.1.1 rev. 002459 (XP).zip",
+                "size": 24729062
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.2.0%20rev.%20002893%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.2.0 rev. 002893 (XM).zip",
+                "size": 15877425
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.2.0%20rev.%20002893%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.2.0 rev. 002893 (XP).zip",
+                "size": 21247083
+            },            
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.3.0%20rev.%20003498%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.3.0 rev. 003498 (XM).zip",
+                "size": 16035399
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%209.3.0%20rev.%20003498%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 9.3.0 rev. 003498 (XP).zip",
+                "size": 21564672
+            },            
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.0.0%20rev.%20004346%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.0.0 rev. 004346 (XM).zip",
+                "size": 16060234
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.0.0%20rev.%20004346%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.0.0 rev. 004346 (XP).zip",
+                "size": 21622294
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.0.1%20rev.%20004842%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.0.1 rev. 004842 (XM).zip",
+                "size": 16060234
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.0.1%20rev.%20004842%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.0.1 rev. 004842 (XP).zip",
+                "size": 21622294
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.0.2%20rev.%20006052%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.0.2 rev. 006052 (XM)",
+                "size": 16060234
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.0.2%20rev.%20006052%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.0.2 rev. 006052 (XP).zip",
+                "size": 21622294
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.0%20rev.%20005207%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.0 rev. 005207 (XM).zip",
+                "size": 16210400
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.0%20rev.%20005207%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.0 rev. 005207 (XP).zip",
+                "size": 21873808
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.1%20rev.%20005862%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.1 rev. 005862 (XM).zip",
+                "size": 16205405
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.1%20rev.%20005862%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.1 rev. 005862 (XP).zip",
+                "size": 21862462
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.2%20rev.%20006578%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.2 rev. 006578 (XM).zip",
+                "size": 16205405
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.2%20rev.%20006578%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.2 rev. 006578 (XP).zip",
+                "size": 21862462
+            },
+
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.3%20rev.%20009558%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.3 rev. 009558 (XM).zip",
+                "size": 16206662
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.1.3%20rev.%20009558%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.1.3 rev. 009558 (XP).zip",
+                "size": 21863700
+            },
+
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.2.0%20rev.%20006766%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.2.0 rev. 006766 (XM).zip",
+                "size": 16223484
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.2.0%20rev.%20006766%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.2.0 rev. 006766 (XP).zip",
+                "size": 21894966
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.2.1%20rev.%20009559%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.2.1 rev. 009559 (XM).zip",
+                "size": 16223837
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.2.1%20rev.%20009559%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.2.1 rev. 009559 (XP).zip",
+                "size": 21895254
+            },            
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.3.0%20rev.%20008463%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.3.0 rev. 008463 (XM).zip",
+                "size": 16340494
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.3.0%20rev.%20008463%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.3.0 rev. 008463 (XP).zip",
+                "size": 22015772
+            },            
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.3.1%20rev.%20009452%20(XM).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.3.1 rev. 009452 (XM).zip",
+                "size": 16340494
+            },
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20UpdateApp%20Tool/1x/Sitecore%20UpdateApp%20Tool%20141/Sitecore.UpdateApp%201.4.1%20for%20Sitecore%2010.3.1%20rev.%20009452%20(XP).zip",
+                "path": "Sitecore UpdateApp Tool 1.4.1\\Sitecore.UpdateApp 1.4.1 for Sitecore 10.3.1 rev. 009452 (XP).zip",
+                "size": 22015772
+            },
+
+            {
+                "code": "ProdUpgrade",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(upgrade%20files).zip",
+                "path": "Upgrade options\\Sitecore 10.4.0 rev. 010422 (upgrade files).zip",
+                "size": 3556255
+            },
+            
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/90/Sitecore%20Experience%20Platform%2090%20Initial%20Release/Secure/GeoIp%20Location%20China%20Localization%20Pack%201.0.0%20rev.%20180226.zip",
+                "path": "Client translations\\GeoIp Location China Localization Pack 1.0.0 rev. 180226.zip",
+                "size": 4532
+            }, 
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(zh-CN).zip",
+                "path": "Client translations\\Sitecore 10.4.0 rev. 010422 (zh-CN).zip",
+                "size": 1280585
+            }, 
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(ja-JP).zip",
+                "path": "Client translations\\Sitecore 10.4.0 rev. 010422 (ja-JP).zip",
+                "size": 1370566
+            }, 
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(de-DE).zip",
+                "path": "Client translations\\Sitecore 10.4.0 rev. 010422 (de-DE).zip",
+                "size": 1329973
+            },
+            {
+                "code": "Translations",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(da-DK).zip",
+                "path": "Client translations\\Sitecore 10.4.0 rev. 010422 (da-DK).zip",
+                "size": 1292543
             }
         ]
     }
