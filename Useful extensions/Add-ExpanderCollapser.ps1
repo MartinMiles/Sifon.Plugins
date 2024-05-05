@@ -27,7 +27,7 @@ if($InstanceUrl){
     Install-SitecorePackage -PackageFullPath $filename -Webroot $Webroot -Hostbase $InstanceUrl
     "."
     Show-Progress -Activity "Expand Collapse buttons for Experience Editor" -Status "completed successfully." -Percent 100
-    Show-Message -Fore White -Back Yellow -text "Installation completed successfully"
+    Show-Message -Fore White -Back Yellow -text "Installation completed successfully (you may need to delete browser cache to enforse this feature)"
 }
 else{
     Show-Message -Fore Red -Back Yellow -text "Installation failed: unable to retrieve instance URL hostbase from current profile."
