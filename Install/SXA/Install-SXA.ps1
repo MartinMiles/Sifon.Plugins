@@ -47,22 +47,19 @@ $CurrentProgress = 10;
 
 ForEach ($Url in $Urls) 
 {
-    $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
-    if ($found) 
-    {
-        $fileName = $Url[0].Replace(" ", "_") + ".zip"
-        $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
-        $packageFullPath = "$downloadsFolder\$fileName"
+    $fileName = $Url[0].Replace(" ", "_") + ".zip"
+    $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
+    
+    $packageFullPath = "$downloadsFolder\$fileName"
 
-        VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url[1] -progress $CurrentProgress
-        
-        $CurrentProgress += 20
-        Display-Progress -action "installing the downloaded module" -percent $CurrentProgress
+    VerifyOrDownload-File -moduleName $fileName -moduleResourceUrl $Url[1] -progress $CurrentProgress
+    
+    $CurrentProgress += 20
+    Display-Progress -action "installing the downloaded module" -percent $CurrentProgress
 
-        $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
-        Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
-        $CurrentProgress+=20
-    }    
+    $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
+    Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
+    $CurrentProgress+=20
 }
 Write-Output '.'
 Show-Message -Fore Green -Back White -Text "Sitecore PowerShell Extensions (SPE) and Sitecore Experience Accellerator (SXA) have been installed"

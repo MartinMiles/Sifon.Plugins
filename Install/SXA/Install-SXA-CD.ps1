@@ -64,9 +64,9 @@ $CurrentProgress = 10;
 
 ForEach ($Url in $Urls) 
 {
-    $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
-    if ($found) 
-    {
+    # $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
+    # if ($found) 
+    # {
         $fileName = $Url[0].Replace(" ", "_") + ".zip"
         $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
         $packageFullPath = "$downloadsFolder\$fileName"
@@ -111,7 +111,7 @@ ForEach ($Url in $Urls)
             Write-Host "Key '$newKey' already exists in <appSettings>. No changes made."
         }
         $CurrentProgress+=20
-    }    
+    # }    
 }
 Write-Output '.'
 Show-Message -Fore Green -Back White -Text "Sitecore Experience Accellerator (SXA) for content delicery (CD) have been installed", "", "Do not forget to pubish SXA items and rebuild the indexes at your CM instance"

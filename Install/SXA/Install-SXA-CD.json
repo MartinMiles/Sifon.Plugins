@@ -1,5 +1,10 @@
 [
     {
+        "name": "Sitecore Experience Accelerator 10.4.0 rev. 08675 CD",
+        "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%2010.4.0%20rev.%2008675%20CD.zip",
+        "dependencies": []
+    },
+    {
         "name": "Sitecore Experience Accelerator 10.3.0 rev. 00074 CD",
         "url": "https://sitecoredev.azureedge.net/~/media/9F5EF1A0BEDE4F0E8EC324A234B5B017.ashx",
         "dependencies": []
