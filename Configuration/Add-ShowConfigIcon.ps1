@@ -8,7 +8,13 @@ New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 
 Show-Progress -Activity "ShowConfig icon for Sitecore LaunchPad" -Status "downloading the package" -Percent 14
 
-$archiveName = "Sitecore.Improvements.LaunchPad.ShowConfig-1.1.zip"
+$SitecoreVersion =  Get-SitecoreVersion -Webroot $Webroot
+
+$major = [int]$SitecoreVersion.major
+$minor = [int]$SitecoreVersion.minor
+$version = $(if ($major -gt 10 -or ($major -eq 10 -and $minor -ge 1)) {"2.0"} else {"1.1"})
+
+$archiveName = "Sitecore.Improvements.LaunchPad.ShowConfig-$version.zip"
 $filename = (Get-Location).Path + "\Downloads\$archiveName"
 $remotingResource = "https://github.com/MartinMiles/Sitecore.Improvements/raw/master/.SitecorePackages/LaunchPad/$archiveName"
 

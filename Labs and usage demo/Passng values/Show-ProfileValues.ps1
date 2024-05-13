@@ -6,8 +6,10 @@ param($Profile)
 
  $SitecoreVersion = Get-SitecoreVersion -Webroot $Profile.Webroot -ToString
 
+ $topology = if ($Profile.IsXM) { "XM" } else { "XP" }
+
 Write-Output "."
-Show-Message -Fore "Yellow" -Back "White" -Text @("Sitecore platform version: $SitecoreVersion","Parameters passed into this script with `$Profile and their values")
+Show-Message -Fore "Yellow" -Back "White" -Text @("Sitecore $topology platform version: $SitecoreVersion","Parameters passed into this script with `$Profile and their values")
 Write-Output "."
 
 $Profile.PSObject.Properties | % {$_.Name + " = " + $_.Value}

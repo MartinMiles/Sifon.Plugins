@@ -1,16 +1,28 @@
-### Name: Sitecore SXA installer
-### Description: Installs Sitecore packages including remote profiles (copes local package to remote and installs there)
-### Compatibility: Sifon 1.0.1
-### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-SXA.json")
+### Name: Sitecore Headless Rendering
+### Description: Installs Sitecore Headless Rendering
+### Compatibility: Sifon 1.3.5
+### $Urls = new Sifon.Shared.Forms.PackageVersionSelectorDialog.PackageVersionSelector::GetFile("$PSScriptRoot\Install-HeadlessServices.json")
+
+# TODO: Parametrize the above menthod GetFile("$PSScriptRoot\Install-HeadlessServices.json") to accept the filter for TOPOLOGY:
+#       ("$PSScriptRoot\Install-HeadlessServices.json", Sitecore Headless Services Server $TOPOLOGY 21.0.583.zip)
 
 param(
     [string]$Webroot,
     [PSCredential]$PortalCredentials,
-    [string[][]]$Urls
+    [string[][]]$Urls,
+    $Profile
 )
 
+# if($Profile.IsXM){
+#     "XM"
+# }
+# else{
+#     "xp"
+# }
+# exit
+
 Function Display-Progress($action, $percent){
-    Write-Progress -Activity "Installing SXA packages" -CurrentOperation $action -PercentComplete $percent
+    Write-Progress -Activity "Installing Headless Rendering package" -CurrentOperation $action -PercentComplete $percent
 }
 
 Function VerifyOrDownload-File($moduleName, $moduleResourceUrl, $progress)
@@ -47,10 +59,10 @@ $CurrentProgress = 10;
 
 ForEach ($Url in $Urls) 
 {
-    $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
-    if ($found) 
-    {
-        $fileName = $Url[0].Replace(" ", "_") + ".zip"
+    # $found = $Url[1] -match '\/([0-9a-fA-F]+)\.ashx'
+    # if ($found) 
+    # {
+        $fileName = $Url[0].Replace(" ", "_")
         $downloadsFolder = New-Item -ItemType Directory -Path  "$((Get-Location).Path)\Downloads" -force
         $packageFullPath = "$downloadsFolder\$fileName"
 
@@ -62,9 +74,9 @@ ForEach ($Url in $Urls)
         $InstanceUrl = Get-InstanceUrl -Webroot $Webroot
         Install-SitecorePackage -PackageFullPath $PackageFullPath -Webroot $Webroot -Hostbase $InstanceUrl
         $CurrentProgress+=20
-    }    
+    # }    
 }
 Write-Output '.'
-Show-Message -Fore Green -Back White -Text "Sitecore PowerShell Extensions (SPE) and Sitecore Experience Accellerator (SXA) have been installed"
+Show-Message -Fore Green -Back White -Text "Sitecore Headless Rendering have been installed"
 Display-Progress -action "done." -percent 100
 

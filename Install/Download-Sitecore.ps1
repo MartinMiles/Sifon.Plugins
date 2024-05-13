@@ -67,8 +67,17 @@ Foreach ($i in $Selection)
             Write-Output "Downloading: $Filename"
 
             $ResourceUrl = If ($UseDownloadCDN) {$NewFormat} Else {$OldFormat}
+            # $ResourceUrl
             Write-Output "Sifon-MuteProgress"
-                Invoke-WebRequest -Uri $ResourceUrl.Replace("URL",$i.url) -OutFile $FullPath
+                if($i.url.Length -eq 32){
+                    # download from the old dev.sitecore.net portal
+                    Invoke-WebRequest -Uri $ResourceUrl.Replace("URL",$i.url) -OutFile $FullPath
+                }
+                else{
+                    # download resource by its full URL
+                    Invoke-WebRequest -Uri $i.url -OutFile $FullPath
+                }
+                
                 # Download-Resource -PortalCredentials $PortalCredentials -ResourceUrl $i.url -TargertFilename $FullPath
             Write-Output "Sifon-UnmuteProgress"
     

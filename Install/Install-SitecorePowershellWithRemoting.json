@@ -1,4 +1,26 @@
 [
+
+    {
+        "name": "Sitecore PowerShell Extension 7.0",
+        "url": "https://github.com/SitecorePowerShell/Console/releases/download/7.0/Sitecore.PowerShell.Extensions-7.0.zip",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Remoting 7.0",
+                "url": "https://github.com/SitecorePowerShell/Console/releases/download/7.0/SPE.Remoting-7.0.zip"
+            }
+        ]
+    },
+
+    {
+        "name": "Sitecore PowerShell Extension 6.4",
+        "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.4/Sitecore.PowerShell.Extensions-6.4.zip",
+        "dependencies": [
+            {
+                "name": "Sitecore PowerShell Remoting 6.4",
+                "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.4/SPE.Remoting-6.4.zip"
+            }
+        ]
+    },
     {
         "name": "Sitecore PowerShell Extension 6.3",
         "url": "https://github.com/SitecorePowerShell/Console/releases/download/6.3/Sitecore.PowerShell.Extensions-6.3.zip",

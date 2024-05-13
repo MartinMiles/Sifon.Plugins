@@ -1,5 +1,46 @@
 [
     {
+        "name": "Sitecore Experience Accelerator 10.4.0 rev. 08675",
+        "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%2010.4.0%20rev.%2008675.zip",
+        "dependencies": [
+            {
+                "name": "Sitecore.PowerShell.Extensions-7.0-IAR",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore.PowerShell.Extensions-7.0-IAR.zip"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore Experience Accelerator 10.4.0 rev. 08675 CD.zip",
+        "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore%20Experience%20Accelerator%2010.4.0%20rev.%2008675%20CD.zip",
+        "dependencies": [
+            {
+                "name": "Sitecore.PowerShell.Extensions-7.0-IAR",
+                "url": "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Accelerator/10x/Sitecore%20Experience%20Accelerator%201040/Sitecore.PowerShell.Extensions-7.0-IAR.zip"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore Experience Accelerator 10.3.0 rev. 00074",
+        "url": "https://sitecoredev.azureedge.net/~/media/8B8E134C7FD446999F5831A5EE7197C1.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore.PowerShell.Extensions-6.4",
+                "url": "https://sitecoredev.azureedge.net/~/media/CC53B0F6C87D4FFFA8F72199B85278F0.ashx"
+            }
+        ]
+    },
+    {
+        "name": "Sitecore Experience Accelerator 10.3.0 rev. 00074 CD",
+        "url": "https://sitecoredev.azureedge.net/~/media/9F5EF1A0BEDE4F0E8EC324A234B5B017.ashx",
+        "dependencies": [
+            {
+                "name": "Sitecore.PowerShell.Extensions-6.4",
+                "url": "https://sitecoredev.azureedge.net/~/media/CC53B0F6C87D4FFFA8F72199B85278F0.ashx"
+            }
+        ]
+    },
+    
+    {
         "name": "Sitecore Experience Accelerator 10.2.0 rev. 04247",
         "url": "https://sitecoredev.azureedge.net/~/media/D0263710FE3442B1AD2D8B0F8D447A45.ashx",
         "dependencies": [
