@@ -9,8 +9,10 @@ New-Item -ItemType Directory -Force -Path "Downloads" | Out-Null
 Show-Progress -Activity "ShowConfig icon for Sitecore LaunchPad" -Status "downloading the package" -Percent 14
 
 $SitecoreVersion =  Get-SitecoreVersion -Webroot $Webroot
-$version = $(if ($SitecoreVersion.major -gt 10 -or ($SitecoreVersion.major -eq 10 -and $SitecoreVersion.minor -ge 1)) {"2.0"} else {"1.1"})
 
+$major = [int]$SitecoreVersion.major
+$minor = [int]$SitecoreVersion.minor
+$version = $(if ($major -gt 10 -or ($major -eq 10 -and $minor -ge 1)) {"2.0"} else {"1.1"})
 
 $archiveName = "Sitecore.Improvements.LaunchPad.ShowConfig-$version.zip"
 $filename = (Get-Location).Path + "\Downloads\$archiveName"
