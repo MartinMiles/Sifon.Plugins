@@ -13,7 +13,7 @@ $salt = 'OM5gu45RQuJ76itRvkSPFw=='
 
 $PasswordResetQuery = "use ${Prefix}_Core; UPDATE aspnet_Membership SET Password='$pwd', PasswordSalt='$salt', IsLockedOut = 0, FailedPasswordAttemptCount = 0 WHERE UserId IN (SELECT UserId FROM aspnet_Users WHERE UserName = 'sitecore\Admin'); SELECT COUNT (*) FROM [aspnet_Membership] WHERE Password='$pwd'"
 
-$output = Invoke-Sqlcmd -Hostname $ServerInstance -Credential $SqlCredentials -Query $PasswordResetQuery
+$output = Invoke-Sqlcmd -Hostname $ServerInstance -Credential $SqlCredentials -Query $PasswordResetQuery -TrustServerCertificate
 
 if($output.Item("Column1") -eq "1"){
     Write-Output "."
